@@ -17,10 +17,11 @@ export default {
     },
     extend: {
       backgroundImage: {
-        'index-background': "url('/images/background.png')",
+        'index-background': "url('/images/background.png')"
       },
       colors: {
         'charcoal': 'rgb(22, 37, 33)',
+        'navy': 'rgb(29,51,61)',
         'aqua1': 'rgb(158, 239, 229)',
         'blue1': '#4F7CAC',
       },

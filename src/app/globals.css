@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes movement {
+  0% {
+      transform: translateY(-10vh) translateX(16vw) rotate(0deg);
+  }
+  100% {
+      transform: translateY(50vh) translateX(-16vw) rotate(360deg);
+  }
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.snowflake {
+  will-change: transform, opacity;
+  transition: opacity 2s ease-in-out;
+  position: absolute;
+}
+
+.snowflake::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url(/images/snowflake.svg);
+  background-size: contain;
+  animation: fadeInOut var(--fall-duration) linear infinite;
+}
+
+.snowflake.clicked {
+  opacity: 0 !important;
+  pointer-events: none;
+}

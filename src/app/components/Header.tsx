@@ -4,7 +4,7 @@ interface HeaderProps {}
 
 export default function Header({}: HeaderProps) {
     return (
-      <div className="w-full h-20 fixed top-0 bg-white flex flex-row items-center justify-between">
+      <div className="w-full h-20 z-40 fixed top-0 bg-white flex flex-row items-center justify-between">
         <nav className="hidden xs:flex text-md sm:text-lg md:text-xl lg:text-2xl pl-4 text-blue1 select-none items-center h-full z-20">
           <a href="/" className="flex items-center h-full hover:text-3xl duration-500 no-underline">
             Home
