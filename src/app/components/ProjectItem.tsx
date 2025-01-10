@@ -3,15 +3,19 @@ import React from 'react';
 
 interface ProjectItemProps {
     index: number;
-    date: string;
+    start: string;
+    end: string;
     title: string;
     tagline: string;
-    description: HTMLParagraphElement;
 }
 
-export default function ProjectItem({index, date, title, description }: ProjectItemProps) {
+export default function ProjectItem({start, end, title, tagline}: ProjectItemProps) {
 
     return (
-        <div></div>
+        <div className="flex flex-col items-center justify-around text-white border-white border-2 w-64 h-32">
+            <div>{title}</div>
+            <div>{start} - {end}</div>
+            <div>{tagline}</div>
+        </div>
     );
 }
