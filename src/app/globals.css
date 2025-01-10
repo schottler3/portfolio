@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+.varela-round-regular {
+  font-family: "Varela Round", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+/* Home */
+
 @keyframes movement {
   0% {
       transform: translateY(-10vh) translateX(16vw) rotate(0deg);
@@ -37,3 +54,31 @@
   opacity: 0 !important;
   pointer-events: none;
 }
+
+/* End Home */
+
+/* About */
+@keyframes mainPulse {
+  0% {
+    background-position: 0 -50%;
+  }
+  100% {
+    background-position: 0 150%;
+  }
+}
+
+.timeline-pulse {
+  background: linear-gradient(
+    to bottom,
+    white 0%,
+    white 20%,
+    rgb(158, 239, 229) 40%,
+    rgb(158, 239, 229) 50%,
+    white 80%,
+    white 100%
+  );
+  background-size: 100% 50%;
+  animation: mainPulse 32s linear infinite;
+}
+
+/* End About */
