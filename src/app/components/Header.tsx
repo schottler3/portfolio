@@ -80,6 +80,24 @@ export default function Header({}: HeaderProps) {
             />
           </svg>
         </div>
+        <div
+        className={`
+          w-min h-min bg-white
+          fixed left-0
+          transition-all duration-1000 ease-in-out
+          ${isOpen
+            ? 'opacity-100 visible top-20 pointer-events-auto'
+            : 'opacity-0 invisible top-0 pointer-events-none'
+          }
+        `}
+      >
+        <div className="flex flex-col gap-6 p-6">
+          <a href="/" className="hover:text-blue1">Home</a>
+          <a href="/about" className="hover:text-blue1">About</a>
+          <a href="/projects" className="hover:text-blue1">Projects</a>
+          <a href="/contact" className="hover:text-blue1">Contact</a>
+        </div>
+      </div>
         <nav className="flex items-center h-full text-blue1 pr-4 space-x-4 select-none *:hover:cursor-pointer">
           <a
             href="https://github.com/schottler3"
@@ -98,24 +116,6 @@ export default function Header({}: HeaderProps) {
             <img src="/images/linkedin.png" alt="LinkedIn" className="w-10 h-auto" />
           </a>
         </nav>
-      </div>
-      <div
-        className={`
-          w-min h-min bg-white
-          fixed left-0
-          transition-all duration-1000 ease-in-out
-          ${isOpen
-            ? 'opacity-100 visible top-20 pointer-events-auto'
-            : 'opacity-0 invisible top-0 pointer-events-none'
-          }
-        `}
-      >
-        <div className="flex flex-col gap-6 p-6">
-          <a href="/" className="hover:text-blue1">Home</a>
-          <a href="/about" className="hover:text-blue1">About</a>
-          <a href="/projects" className="hover:text-blue1">Projects</a>
-          <a href="/contact" className="hover:text-blue1">Contact</a>
-        </div>
       </div>
     </div>
   );

@@ -12,7 +12,7 @@ interface ProjectItemProps {
 export default function ProjectItem({start, end, title, tagline}: ProjectItemProps) {
 
     return (
-        <div className="flex flex-col items-center justify-around text-white border-white border-2 w-64 h-32">
+        <div className="w-full h-full flex flex-col items-center justify-around text-white border-white border-2">
             <div>{title}</div>
             <div>{start} - {end}</div>
             <div>{tagline}</div>
