@@ -18,7 +18,7 @@ export default function About() {
     <div className="bg-charcoal min-h-screen w-full max-h-screen overflow-y-auto">
     <Header />
     <div className="flex flex-col md:grid md:grid-cols-2 bg-charcoal text-white text-center pt-10">
-      <div className="bg-navy max-h-full pt-32 flex flex-col overflow-y-auto pb-10 items-center">
+      <div className="bg-navy max-h-full flex flex-col overflow-y-auto items-center justify-center">
         <div className="justify-center flex"> 
           <div className="flex w-full items-center flex-col xl:flex-row xl:justify-start xl:gap-8">
             <img 
@@ -32,7 +32,7 @@ export default function About() {
         </div>
         <div className="flex justify-center w-full">
           <div className="w-3/4 items-center pt-10">
-            <p className="text-center">
+            <p className="text-center text-xl">
               I'm a recent graduate from the University of Minnesota - Twin Cities with a degree in Computer Science from the college of Science and Engineering.
               I have a passion for software development and am always looking for new ways to learn and grow as a developer, but I have a particular interest in web development. 
               I have experience with a variety of programming languages and frameworks, and am always looking to expand my skillset.
