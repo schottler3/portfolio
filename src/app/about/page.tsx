@@ -15,9 +15,9 @@ export default function About() {
   const timelineItems: TimelineItemType[] = timelineData;
 
   return (
-    <div className="bg-charcoal min-h-screen w-full">
+    <div className="bg-charcoal min-h-screen w-full max-h-screen overflow-y-auto">
     <Header />
-    <div className="w-full h-full flex flex-col md:grid md:grid-cols-2 bg-charcoal text-white text-center pt-10">
+    <div className="flex flex-col md:grid md:grid-cols-2 bg-charcoal text-white text-center pt-10">
       <div className="bg-navy max-h-full pt-32 flex flex-col overflow-y-auto pb-10 items-center">
         <div className="justify-center flex"> 
           <div className="flex w-full items-center flex-col xl:flex-row xl:justify-start xl:gap-8">
@@ -45,7 +45,7 @@ export default function About() {
         <div className="bg-charcoal w-full h-full">
           {timelineItems.map(item => (
             item.key % 2 === 0 && (
-              <div key={item.key} className="pt-32 w-full flex flex-col items-center justify-around pb-10">
+              <div key={item.key} className="pt-16 md:pt-32 w-full flex flex-col items-center justify-around pb-10">
                 <TimelineItem
                   index={item.key}
                   date={item.date}
@@ -60,7 +60,7 @@ export default function About() {
         <div className="bg-charcoal w-full h-full pt-32">
           {timelineItems.map(item => (
             item.key % 2 === 1 && (
-              <div key={item.key} className="pt-32 w-full flex flex-col items-center pb-10">
+              <div key={item.key} className="pt-16 md:pt-32 w-full flex flex-col items-center pb-10">
                 <TimelineItem
                   index={item.key}
                   date={item.date}

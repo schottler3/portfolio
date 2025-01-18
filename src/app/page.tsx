@@ -57,7 +57,7 @@ export default function Home() {
   return (
     <main className="relative min-h-screen w-full overflow-hidden">
       <div className="fixed inset-0 bg-charcoal">
-        <div className="fixed bottom-0 bg-index-background bg-cover bg-center h-[50%] w-full z-0"></div>
+        <div className="fixed bottom-0 bg-index-background bg-cover bg-center h-[60%] w-full z-0"></div>
         <div className="fixed bottom-0 bg-white w-full z-10 bg-center h-5"></div>
         <Header />
         <div className="overflow-hidden z-10">

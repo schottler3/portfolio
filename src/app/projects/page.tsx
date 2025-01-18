@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useState } from 'react';
 import Header from '../components/Header';
 import projectData from './projects.json' assert { type: 'json' };
 import ProjectItem from '../components/ProjectItem';
@@ -6,37 +7,84 @@ import ProjectItem from '../components/ProjectItem';
 interface ProjectItemType {
     index: number;
     start: string;
-    end: string;
+    end?: string;
     title: string;
     tagline: string;
+    description: string[];
+    images?: string[];
+    video?: string[];
 }
 
 export default function Projects() {
 
     const projectItems: ProjectItemType[] = projectData as ProjectItemType[];
+    const [selectedProject, setSelectedProject] = useState<ProjectItemType>(projectItems[0]);
 
     return (
-        <div className="bg-charcoal min-h-screen w-screen">
+        <div className="bg-charcoal min-h-screen min-w-screen overflow-hidden hide-scrollbar">
             <Header />
-            <div className="grid grid-cols-2 min-h-screen">
-                <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8">
+            <div className="flex flex-col sm:grid sm:grid-cols-2 sm:min-h-screen">
+                <div className="flex sm:grid max-h-[50vh] sm:max-h-[100vh] hide-scrollbar overflow-y-auto sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8 p-8 pt-32 ">
                     {projectItems.map(item => (
-                    <div key={item.index} className="aspect-[3/2]">
+                    <div 
+                    key={item.index} 
+                    className="aspect-[3/2] transform hover:scale-110 hover:cursor-pointer transition-all duration-300 ease-in-out origin-center"
+                    onClick={() => setSelectedProject(item)}
+                    >
                         <ProjectItem
-                        key={item.index}
-                        index={item.index}
-                        start={item.start}
-                        end={item.end}
                         title={item.title}
-                        tagline={item.tagline}
                         />
                     </div>
                     ))}
                 </div>
-                <div className="bg-[rgb(50,61,60)]">
-                    a
+                <div className="bg-[rgb(50,61,60)] max-h-[100vh] overflow-y-auto hide-scrollbar pt-6 sm:pt-32">
+                    {selectedProject ? (
+                        <div className="p-4 items-center text-center text-white">
+                            <p className="text-4xl font-bold">{selectedProject.title}</p>
+                            <p className="text-xl font-thin">{selectedProject.tagline}</p>
+                            <div className="w-full flex flex-row justify-center items-center gap-2 text-aqua1 font-thin">
+                                <p className="text-center">{selectedProject.start}</p>
+                                {selectedProject.end ? <p className="text-center"> - {selectedProject.end}</p> : null}
+                            </div>
+                            <div>
+                                {selectedProject.description.map((paragraph, index) => (
+                                    <div key={index} className="p-4 text-xl text-center text-white">
+                                        <p>{paragraph}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ) : null}
+                    {selectedProject && selectedProject.images && (
+                        <div>
+                            {selectedProject.images.map((image, index) => (
+                                <div key={index} className="p-4 flex flex-row justify-center items-center">
+                                    <img src={image} alt={selectedProject.title} className="max-w-[90%]"/>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    {selectedProject && selectedProject.video && (
+                        <div className="p-4 flex flex-row justify-center items-center">
+                        {selectedProject.video.map((videoId, index) => {
+                            const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`;
+                            
+                            return (
+                                <div className="w-full max-w-4xl aspect-video" key={index}>
+                                    <iframe
+                                        className="w-full h-full"
+                                        src={embedUrl}
+                                        title="YouTube video player"
+                                        allow="picture-in-picture"
+                                        allowFullScreen
+                                    />
+                                </div>
+                            );
+                        })}
+                    </div>
+                    )}
                 </div>
             </div>
         </div>
-    )
+    );
 }
