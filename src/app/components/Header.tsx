@@ -107,7 +107,7 @@ export default function Header({}: HeaderProps) {
             rel="noopener noreferrer"
             className="hover:opacity-80"
           >
-            <img src="/images/github.svg" alt="GitHub" className="w-16 h-auto" />
+            <img src="/images/github.svg" alt="GitHub" className="w-[8vw] max-w-16 min-w-8 h-auto" />
           </a>
           <a
             href="https://www.linkedin.com/in/lucasschottler/"
@@ -115,7 +115,7 @@ export default function Header({}: HeaderProps) {
             rel="noopener noreferrer"
             className="hover:opacity-80"
           >
-            <img src="/images/linkedin.png" alt="LinkedIn" className="w-16 h-auto" />
+            <img src="/images/linkedin.png" alt="LinkedIn" className="w-[8vw] max-w-16 min-w-8 h-auto" />
           </a>
         </nav>
       </div>
