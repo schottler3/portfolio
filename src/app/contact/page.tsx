@@ -5,7 +5,7 @@ import Coin from '../components/Coin';
 import { addMail } from '../DataBasing';
 
 export default function Contact() {
-    const [status, setStatus] = useState('Required Fields: Name, Email, Message');
+    const [status, setStatus] = useState('');
 
     const [displayText, setDisplayText] = useState('');
 
@@ -38,13 +38,15 @@ export default function Contact() {
             let cursor = document.getElementById('cursor');
 
             cursor?.classList.add('cursorBlink');
-            // Wait 3 seconds, then add background (no transition)
+            // Wait 2 seconds, then add background (no transition)
             await new Promise(resolve => setTimeout(resolve, 2000));
+            cursor?.classList.add('invisible');
             element?.classList.add('lightLine');
             
             // Wait briefly, then add transition classes and remove background
             await new Promise(resolve => setTimeout(resolve, 800));
             element?.classList.remove('lightLine');
+            cursor?.classList.remove('invisible');
             element?.classList.add('opacity-0');
             cursor?.classList.remove('cursorBlink');
             
@@ -129,61 +131,78 @@ export default function Contact() {
     return (
         <div className="bg-charcoal min-h-screen overflow-y-auto max-h-[100vh]">
             <Header />
-            <div className="h-full p-4 pt-20 text-white w-1/2 items-center justify-center flex flex-col mx-auto">
+            <div className="flex flex-col w-full mt-48 mb-[8vh]">
+                <div className="flex flex-col items-center *:justify-around *:select-none w-2/3 mx-auto *:text-white">
+                    <div className="mx-auto flex items-center justify-center varela-round-regular text-xl sm:text-2xl md:text-4xl lg:text-6xl xl:text-7xl text-center w-fit">
+                        <p id="displayText">{displayText}
+                            <span id="cursor" className="inline-block text-aqua1">
+                                |
+                            </span>
+                        </p>
+                    </div>
 
-                <div className="pt-32 varela-round-regular text-xl sm:text-2xl md:text-4xl lg:text-6xl xl:text-7xl text-center">
-                    <p id="displayText">{displayText}
-                        <span id="cursor" className="inline-block text-aqua1">
-                            |
-                        </span>
-                    </p>
+                    <div className="flex flex-col items-center *:justify-center *:space-x-24 *:select-none w-full *:bubble">
+                        <nav className="flex items-center h-full *:hover:cursor-pointer w-full mt-16">
+                            <Coin 
+                                front="GitHub" 
+                                back="schottler3" 
+                                link="https://github.com/schottler3"
+                            />
+                            <div className="ml-16 mr-16 mb-16 -mt-8">
+                                <Coin 
+                                    front="LinkedIn" 
+                                    back="Lucas Schottler" 
+                                    link="https://www.linkedin.com/in/lucasschottler/" 
+                                />
+                            </div>
+                            <div className="-mb-8">
+                                <Coin 
+                                    front="Handshake" 
+                                    back="Lucas Schottler" 
+                                    link="https://app.joinhandshake.com/profiles/73wng5" 
+                                />
+                            </div>
+                        </nav>
+
+                        <nav className="flex items-center h-full *:hover:cursor-pointer w-2/3">
+                            <div className="-mt-64">
+                                <Coin 
+                                    front="Phone" 
+                                    back="763-229-5934" 
+                                    link="tel:1-763-229-5934" 
+                                />
+                            </div>
+                            <div className="-ml-64">
+                                <Coin 
+                                    front="Email" 
+                                    back="Lucas@LucasSchottler.dev" 
+                                    link="mailto:Lucas@lucasschottler.dev" 
+                                />
+                            </div>
+                        </nav>
+                    </div>
                 </div>
-
-                <div className="flex flex-col items-center justify-center *:justify-around *:select-none w-full *:bubble">
-                    <nav className="flex items-center h-full *:hover:cursor-pointer w-full mt-20">
-                        <Coin 
-                            front="GitHub" 
-                            back="schottler3" 
-                            link="https://github.com/schottler3"
-                        />
-                        <Coin 
-                            front="LinkedIn" 
-                            back="Lucas Schottler" 
-                            link="https://www.linkedin.com/in/lucasschottler/" 
-                        />
-                        <Coin 
-                            front="Handshake" 
-                            back="Lucas Schottler" 
-                            link="https://app.joinhandshake.com/profiles/73wng5" 
-                        />
-                    </nav>
-
-                    <nav className="flex items-center h-full *:hover:cursor-pointer w-2/3">
-                        <Coin 
-                            front="Phone" 
-                            back="763-229-5934" 
-                            link="tel:1-763-229-5934" 
-                        />
-                        <Coin 
-                            front="Email" 
-                            back="Lucas@LucasSchottler.dev" 
-                            link="mailto:Lucas@lucasschottler.dev" 
-                        />
-                    </nav>
-                </div>
-
-                <div className="text-charcoal text-2xl flex flex-col space-y-4 *:rounded-md items-center justify-center mt-96 pb-48">
-                    <p className="text-white text-5xl font-bold pb-6">Contact Me Via Email</p>
-                    <p id="status" className="text-blue1 hidden">{status}</p>
-                    <input className="w-3/4 p-2" type="text" id="name" placeholder="Name" />
-                    <input className="w-3/4 p-2" type="text" id="email" placeholder="Email" />
-                    <textarea className="w-3/4 p-2" id="message" placeholder="Message" />
-                    <button 
-                        className="text-white bg-blue1 w-1/2 h-8 rounded-full flex items-center justify-center hover:bg-slate-700" 
-                        onClick={() => handleSubmit()}
-                    >
-                        Submit
-                    </button>
+                <div 
+    style={{ backgroundImage: 'url(/images/Cloud.svg)' }} 
+    className="mt-[16vh] w-3/4 flex flex-col text-charcoal text-2xl 
+              items-center space-y-2 text-center mx-auto 
+              bg-no-repeat bg-center p-64 bg-contain"
+>           
+                    <p className="text-white text-center text-6xl font-bold pb-16">Contact Me Via Email</p>
+                    <p id="status" className={`text-blue1 ${status ? 'flex' : 'hidden'}`}>{status}</p>
+                    <div className="flex flex-row w-1/2 justify-center">
+                        <input className="w-1/2 p-2 mr-1 " type="text" id="name" placeholder="Name" />
+                        <input className="w-1/2 p-2 ml-1" type="text" id="email" placeholder="Email" />
+                    </div>
+                    <textarea className="w-1/2 p-2" id="message" placeholder="Message"></textarea>
+                    <div className="w-full h-full flex items-center justify-center pt-16">
+                        <button 
+                            className="text-white justify-center bg-blue1 w-1/4 h-8 items-center rounded-full flex hover:bg-slate-700" 
+                            onClick={() => handleSubmit()}
+                        >
+                            Submit
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
