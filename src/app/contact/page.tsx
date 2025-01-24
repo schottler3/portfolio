@@ -1,6 +1,7 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Header';
+import Coin from '../components/Coin';
 import { addMail } from '../DataBasing';
 
 export default function Contact() {
@@ -130,7 +131,7 @@ export default function Contact() {
             <Header />
             <div className="h-full p-4 pt-20 text-white w-1/2 items-center justify-center flex flex-col mx-auto">
 
-                <div className="pt-48 varela-round-regular text-xl sm:text-2xl md:text-4xl lg:text-6xl xl:text-7xl text-center">
+                <div className="pt-32 varela-round-regular text-xl sm:text-2xl md:text-4xl lg:text-6xl xl:text-7xl text-center">
                     <p id="displayText">{displayText}
                         <span id="cursor" className="inline-block text-aqua1">
                             |
@@ -138,37 +139,36 @@ export default function Contact() {
                     </p>
                 </div>
 
-                <div className="flex flex-col items-center justify-center mt-20 *:justify-around *:select-none w-full">
+                <div className="flex flex-col items-center justify-center *:justify-around *:select-none w-full *:bubble">
                     <nav className="flex items-center h-full *:hover:cursor-pointer w-full mt-20">
-                        <div
-                            onClick={(event) => (event.currentTarget as HTMLDivElement).classList.toggle('flipped')}
-                            className="hover:bg-slate-700 hover:border-aqua1 hover:border-4 bg-navy w-[8vw] h-[8vw] rounded-full items-center justify-center flex font-bold text-3xl"
-                        >
-                            GitHub
-                        </div>
-                        <div
-                            className="hover:bg-slate-700 hover:border-aqua1 hover:border-4 bg-navy w-[8vw] h-[8vw] rounded-full items-center justify-center flex font-bold text-3xl"
-                        >
-                            LinkedIn
-                        </div>
-                        <div
-                            className="hover:bg-slate-700 hover:border-aqua1 hover:border-4 bg-navy w-[8vw] h-[8vw] rounded-full items-center justify-center flex font-bold text-3xl"
-                        >
-                            Handshake
-                        </div>
+                        <Coin 
+                            front="GitHub" 
+                            back="schottler3" 
+                            link="https://github.com/schottler3"
+                        />
+                        <Coin 
+                            front="LinkedIn" 
+                            back="Lucas Schottler" 
+                            link="https://www.linkedin.com/in/lucasschottler/" 
+                        />
+                        <Coin 
+                            front="Handshake" 
+                            back="Lucas Schottler" 
+                            link="https://app.joinhandshake.com/profiles/73wng5" 
+                        />
                     </nav>
 
-                    <nav className="flex items-center h-full *:hover:cursor-pointer w-2/3 mt-20">
-                        <div
-                            className="hover:bg-slate-700 hover:border-aqua1 hover:border-4 bg-navy w-[8vw] h-[8vw] rounded-full items-center justify-center flex font-bold text-3xl"
-                        >
-                            Phone
-                        </div>
-                        <div
-                            className="hover:bg-slate-700 hover:border-aqua1 hover:border-4 bg-navy w-[8vw] h-[8vw] rounded-full items-center justify-center flex font-bold text-3xl"
-                        >
-                            Email
-                        </div>
+                    <nav className="flex items-center h-full *:hover:cursor-pointer w-2/3">
+                        <Coin 
+                            front="Phone" 
+                            back="763-229-5934" 
+                            link="tel:1-763-229-5934" 
+                        />
+                        <Coin 
+                            front="Email" 
+                            back="Lucas@LucasSchottler.dev" 
+                            link="mailto:Lucas@lucasschottler.dev" 
+                        />
                     </nav>
                 </div>
 
