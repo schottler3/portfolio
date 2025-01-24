@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global */
+
 .varela-round-regular {
   font-family: "Varela Round", serif;
   font-weight: 400;
@@ -16,6 +18,13 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+
+::selection {
+  background-color: #4F7CAC;
+  color:white;
+}
+
+/* End Global */
 
 /* Home */
 
@@ -82,3 +91,66 @@
 }
 
 /* End About */
+
+/* Contact */
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  49% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes highlightText {
+  0% {
+    background: linear-gradient(to right, #4F7CAC 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+  }
+  100% {
+    background: linear-gradient(to right, #4F7CAC 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: 0 0;
+  }
+}
+
+.lightLine {
+  animation: highlightText .25s ease-in forwards;
+}
+
+.cursorBlink {
+  animation: blink 1s linear infinite;
+  transition: opacity 0.3s ease;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.hideCursor {
+  animation: fadeOut 1s ease;
+  opacity: 0;
+}
+
+.flipped {
+  transform-origin: center;
+  transform: rotate(180deg);
+}
+
+/* End Contact */

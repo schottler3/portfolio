@@ -12,9 +12,14 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Lucas Schottler",
   description: "A portfolio website for Lucas Schottler.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" }
+    ]
+  }
 };
 
 export default function RootLayout({
