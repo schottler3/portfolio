@@ -239,7 +239,7 @@ export default function Contact() {
                     >           
                     <p className="text-white text-center text-5xl font-bold pb-16">Got Mail?</p>
                     <p id="status" className={`text-blue1 ${status ? 'flex' : 'hidden'}`}>{status}</p>
-                    <div className="flex flex-col md:flex-row justify-center items-center space-y-2">
+                    <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0">
                         <input className="md:w-1/2 p-2 md:mr-1 " type="text" id="name" placeholder="Name" />
                         <input className="md:w-1/2 p-2 md:ml-1" type="text" id="email" placeholder="Email" />
                     </div>
