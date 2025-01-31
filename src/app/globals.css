@@ -194,7 +194,13 @@
   transform: rotateY(180deg);
 }
 
-.popped {
+.popBlue {
+  background-color: rgb(158, 239, 229);
+  transition: background-color 0.2s ease;
+}
+
+.popAqua {
   background-color: #4F7CAC;
+  transition: background-color 0.2s ease;
 }
 /* End Contact */

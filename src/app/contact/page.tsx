@@ -150,7 +150,7 @@ export default function Contact() {
                                     link="https://github.com/schottler3"
                                 />
                             </div>
-                            {/* Smallest top left */}
+                            {/* Below Github */}
                             <div className="absolute left-[42%] top-[30%] z-0">
                                 <Bubble
                                     bubbleSize={7}
@@ -160,12 +160,14 @@ export default function Contact() {
                             <div className="absolute left-[70%] top-[-10%] z-0">
                                 <Bubble
                                     bubbleSize={5}
+                                    aqua={true}
                                 />
                             </div>
                             {/* Right middle*/}
                             <div className="absolute left-[80%] top-[80%] z-0">
                                 <Bubble
                                     bubbleSize={4}
+                                    aqua={true}
                                 />
                             </div>
                             <div className="absolute left-[12%] top-[40%] z-20">
@@ -185,6 +187,7 @@ export default function Contact() {
                             <div className="absolute left-[10%] top-[-20%] z-0">
                                 <Bubble
                                     bubbleSize={2}
+                                    aqua={true}
                                 />
                             </div>
                             {/* Smaller top left */}
@@ -207,6 +210,7 @@ export default function Contact() {
                             <div className="absolute left-[10%] md:left-[30%] top-0 z-0">
                                 <Bubble
                                     bubbleSize={6}
+                                    aqua={true}
                                 />
                             </div>
                             <div className="absolute left-[20%] bottom-16 z-20">
@@ -235,7 +239,7 @@ export default function Contact() {
                 <div 
                     className="lg:bg-[url(/images/Cloud.svg)] flex flex-col text-charcoal text-2xl 
                             items-center space-y-2 text-center w-3/4 mx-auto
-                            bg-no-repeat bg-center pt-32 pb-64 bg-contain"
+                            bg-no-repeat bg-center mt-32 pt-32 pb-64 bg-contain"
                     >           
                     <p className="text-white text-center text-5xl font-bold pb-16">Got Mail?</p>
                     <p id="status" className={`text-blue1 ${status ? 'flex' : 'hidden'}`}>{status}</p>

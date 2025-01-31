@@ -23,7 +23,7 @@ export default function Header({}: HeaderProps) {
 
   return (
     <div className="w-full">
-      <div className="w-full h-20 fixed top-0 bg-white flex flex-row items-center justify-between z-50">
+      <div className="w-full p-2 fixed top-0 bg-white flex flex-row items-center justify-between z-50">
         <nav className="hidden xs:flex text-md sm:text-lg md:text-xl lg:text-2xl pl-4 text-blue1 select-none items-center h-full">
           <a href="/" className="flex items-center h-full hover:text-3xl duration-500 no-underline">
             Home
@@ -98,7 +98,7 @@ export default function Header({}: HeaderProps) {
           </div>
         </div>
         <div className="hidden sm:block absolute left-1/2 transform -translate-x-1/2">
-          <img className="max-h-16 max-w-auto" src="/images/Sowilo.svg" alt="Logo" />
+          <img className="max-h-16 max-w-auto select-none" src="/images/Sowilo.svg" alt="Logo" />
         </div>
         <nav className="flex items-center h-full text-blue1 pr-4 space-x-4 select-none *:hover:cursor-pointer">
           <a
