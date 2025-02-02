@@ -1,3 +1,5 @@
+"use client"
+import { useState } from 'react';
 import Header from '../components/Header';
 import TimelineItem from '../components/TimelineItem';
 import timelineData from './timeline.json';
@@ -13,6 +15,7 @@ interface TimelineItemType {
 export default function About() {
 
   const timelineItems: TimelineItemType[] = timelineData;
+  const [personal, setPersonal] = useState(false);
 
   return (
     <div className="bg-charcoal min-h-screen w-full max-h-screen overflow-y-auto">
@@ -41,36 +44,51 @@ export default function About() {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-x-4 w-full max-h-[50vh] md:max-h-[100vh] hide-scrollbar overflow-y-auto timeline-pulse">
-        <div className="bg-charcoal w-full h-full">
-          {timelineItems.map(item => (
-            item.key % 2 === 0 && (
-              <div key={item.key} className="pt-16 md:pt-32 w-full flex flex-col items-center justify-around pb-10">
-                <TimelineItem
-                  index={item.key}
-                  date={item.date}
-                  title={item.title}
-                  location={item.location}
-                  description={item.description}
-                />
-              </div>
-            )
-          ))}
+      <div className="relative">
+        <div className="
+          absolute left-3 top-16 *:pb-1 w-shrink *:pl-1 *:pr-1 h-6 gap-4
+          origin-left *:rounded-t hover:cursor-pointer rotate-90 z-10 flex
+          tracking-widest text-center *:bg-navy text-aqua1 *:border-t-2 *:border-r-2 *:border-l-2 *:border-white"
+        > 
+        {
+        personal ? 
+          <p onClick={() => setPersonal(!personal)} className="hover:bg-blue1  hover:text-white hover:border-aqua1">Professional</p> 
+          : <p onClick={() => setPersonal(!personal)} className="hover:bg-blue1  hover:text-white hover:border-aqua1">Personal</p>
+        }
+          <p className="hover:bg-blue1 hover:text-white hover:border-aqua1">Resume</p>
+          <p className="hover:bg-blue1 hover:text-white hover:border-aqua1">CV</p>
         </div>
-        <div className="bg-charcoal w-full h-full pt-32">
-          {timelineItems.map(item => (
-            item.key % 2 === 1 && (
-              <div key={item.key} className="pt-16 md:pt-32 w-full flex flex-col items-center pb-10">
-                <TimelineItem
-                  index={item.key}
-                  date={item.date}
-                  title={item.title}
-                  location={item.location}
-                  description={item.description}
-                />
-              </div>
-            )
-          ))}
+        <div className="grid grid-cols-2 gap-x-4 w-full max-h-[50vh] md:max-h-[100vh] hide-scrollbar overflow-y-auto timeline-pulse">
+          <div className="bg-charcoal w-full h-full">
+            {timelineItems.map(item => (
+              item.key % 2 === 0 && (
+                <div key={item.key} className="pt-16 md:pt-32 w-full flex flex-col items-center justify-around pb-10">
+                  <TimelineItem
+                    index={item.key}
+                    date={item.date}
+                    title={item.title}
+                    location={item.location}
+                    description={item.description}
+                  />
+                </div>
+              )
+            ))}
+          </div>
+          <div className="bg-charcoal w-full h-full pt-32">
+            {timelineItems.map(item => (
+              item.key % 2 === 1 && (
+                <div key={item.key} className="pt-16 md:pt-32 w-full flex flex-col items-center pb-10">
+                  <TimelineItem
+                    index={item.key}
+                    date={item.date}
+                    title={item.title}
+                    location={item.location}
+                    description={item.description}
+                  />
+                </div>
+              )
+            ))}
+          </div>
         </div>
       </div>
     </div>
