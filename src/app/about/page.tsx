@@ -19,10 +19,10 @@ export default function About() {
   const [page, setPage] = useState('timeline');
 
   return (
-    <div className="bg-charcoal min-h-screen w-full max-h-screen">
+    <div className="bg-charcoal min-h-screen w-full max-h-screen overflow-y-auto">
     <Header />
     <div className="flex flex-col md:grid md:grid-cols-2 bg-charcoal text-white text-center pt-10 overflow-y-auto">
-      <div className="bg-navy h-1/2-screen md:h-screen flex flex-col items-center justify-center pt-16 pb-16">
+      <div className="bg-navy h-1/2-screen md:h-[95vh] flex flex-col items-center justify-center pt-16 pb-16">
         <div className="justify-center flex"> 
           <div className="flex w-full items-center flex-col xl:flex-row xl:justify-start xl:gap-8">
             <img 
@@ -64,7 +64,7 @@ export default function About() {
           switch(page) {
             case 'timeline':
               return (
-                <div className="grid grid-cols-2 gap-x-4 w-full max-h-[50vh] md:max-h-[100vh] hide-scrollbar overflow-y-scroll timeline-pulse" >
+                <div className="grid grid-cols-2 gap-x-4 w-full max-h-[50vh] md:max-h-[95vh] hide-scrollbar overflow-y-scroll timeline-pulse" >
                   <div className="bg-charcoal w-full h-full">
                     {timelineItems.map(item => (
                       item.key % 2 === 0 && (
@@ -97,12 +97,19 @@ export default function About() {
                   </div>
                 </div>
               );
-            case 'resume':
-              return (
-                <div className="w-full max-h-[50vh] md:max-h-[100vh] overflow-y-auto">
-                  Resume
-                </div>
-              );
+              case 'resume':
+                return (
+                  <div className="w-full h-full overflow-hidden">
+                    <iframe
+                      src="./documents/LucasSchottler.pdf"
+                      className="w-full h-full"
+                    >
+                      <a href="./documents/LucasSchottler.pdf" className="text-aqua1 hover:text-blue1">
+                        Download PDF
+                      </a>
+                    </iframe>
+                  </div>
+                );
             case 'cv':
               return (
                 <div className="w-full max-h-[50vh] md:max-h-[100vh] overflow-y-auto">
