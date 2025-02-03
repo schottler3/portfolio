@@ -16,12 +16,13 @@ export default function About() {
 
   const timelineItems: TimelineItemType[] = timelineData;
   const [personal, setPersonal] = useState(false);
+  const [page, setPage] = useState('timeline');
 
   return (
-    <div className="bg-charcoal min-h-screen w-full max-h-screen overflow-y-auto">
+    <div className="bg-charcoal min-h-screen w-full max-h-screen">
     <Header />
-    <div className="flex flex-col md:grid md:grid-cols-2 bg-charcoal text-white text-center pt-10">
-      <div className="bg-navy max-h-full flex flex-col overflow-y-auto items-center justify-center">
+    <div className="flex flex-col md:grid md:grid-cols-2 bg-charcoal text-white text-center pt-10 overflow-y-auto">
+      <div className="bg-navy h-1/2-screen md:h-screen flex flex-col items-center justify-center pt-16 pb-16">
         <div className="justify-center flex"> 
           <div className="flex w-full items-center flex-col xl:flex-row xl:justify-start xl:gap-8">
             <img 
@@ -55,41 +56,63 @@ export default function About() {
           <p onClick={() => setPersonal(!personal)} className="hover:bg-blue1  hover:text-white hover:border-aqua1">Professional</p> 
           : <p onClick={() => setPersonal(!personal)} className="hover:bg-blue1  hover:text-white hover:border-aqua1">Personal</p>
         }
-          <p className="hover:bg-blue1 hover:text-white hover:border-aqua1">Resume</p>
-          <p className="hover:bg-blue1 hover:text-white hover:border-aqua1">CV</p>
+          <p onClick={() => setPage('resume')} className="hover:bg-blue1 hover:text-white hover:border-aqua1">Resume</p>
+          <p onClick={() => setPage('cv')} className="hover:bg-blue1 hover:text-white hover:border-aqua1">CV</p>
+          <p onClick={() => setPage('timeline')} className="hover:bg-blue1 hover:text-white hover:border-aqua1">Timeline</p>
         </div>
-        <div className="grid grid-cols-2 gap-x-4 w-full max-h-[50vh] md:max-h-[100vh] hide-scrollbar overflow-y-auto timeline-pulse">
-          <div className="bg-charcoal w-full h-full">
-            {timelineItems.map(item => (
-              item.key % 2 === 0 && (
-                <div key={item.key} className="pt-16 md:pt-32 w-full flex flex-col items-center justify-around pb-10">
-                  <TimelineItem
-                    index={item.key}
-                    date={item.date}
-                    title={item.title}
-                    location={item.location}
-                    description={item.description}
-                  />
+        {(() => {
+          switch(page) {
+            case 'timeline':
+              return (
+                <div className="grid grid-cols-2 gap-x-4 w-full max-h-[50vh] md:max-h-[100vh] hide-scrollbar overflow-y-scroll timeline-pulse" >
+                  <div className="bg-charcoal w-full h-full">
+                    {timelineItems.map(item => (
+                      item.key % 2 === 0 && (
+                        <div key={item.key} className="pt-16 md:pt-32 w-full flex flex-col items-center justify-around pb-10 last:pb-32">
+                          <TimelineItem
+                            index={item.key}
+                            date={item.date}
+                            title={item.title}
+                            location={item.location}
+                            description={item.description}
+                          />
+                        </div>
+                      )
+                    ))}
+                  </div>
+                  <div className="bg-charcoal w-full h-full pt-32">
+                    {timelineItems.map(item => (
+                      item.key % 2 === 1 && (
+                        <div key={item.key} className="pt-16 md:pt-32 w-full flex flex-col items-center pb-10 last:pb-32">
+                          <TimelineItem
+                            index={item.key}
+                            date={item.date}
+                            title={item.title}
+                            location={item.location}
+                            description={item.description}
+                          />
+                        </div>
+                      )
+                    ))}
+                  </div>
                 </div>
-              )
-            ))}
-          </div>
-          <div className="bg-charcoal w-full h-full pt-32">
-            {timelineItems.map(item => (
-              item.key % 2 === 1 && (
-                <div key={item.key} className="pt-16 md:pt-32 w-full flex flex-col items-center pb-10">
-                  <TimelineItem
-                    index={item.key}
-                    date={item.date}
-                    title={item.title}
-                    location={item.location}
-                    description={item.description}
-                  />
+              );
+            case 'resume':
+              return (
+                <div className="w-full max-h-[50vh] md:max-h-[100vh] overflow-y-auto">
+                  Resume
                 </div>
-              )
-            ))}
-          </div>
-        </div>
+              );
+            case 'cv':
+              return (
+                <div className="w-full max-h-[50vh] md:max-h-[100vh] overflow-y-auto">
+                  CV
+                </div>
+              );
+            default:
+              return null;
+          }
+        })()}
       </div>
     </div>
   </div>
