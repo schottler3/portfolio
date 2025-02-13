@@ -26,8 +26,10 @@ export default function About() {
         <div className="justify-center flex"> 
           <div className="flex w-full items-center flex-col xl:flex-row xl:justify-start xl:gap-8">
             <img 
-              src="./images/headshot.jpg" 
-              className="w-52 h-52 rounded-full border-8 border-white shrink-0"
+              src={personal ? "./images/personal.jpg" : "./images/headshot.jpg"}
+              className={`w-52 h-52 rounded-full border-8 object-cover ${
+                personal ? "border-aqua1" : "border-white"
+              }`}
             />
             <div className="varela-round-regular text-6xl text-white text-center tracking-widest border-b-2 border-t-2 xl:w-auto pt-4 pb-4 border-white mt-8 xl:mt-0">
               Lucas <br /> Schottler
@@ -36,12 +38,34 @@ export default function About() {
         </div>
         <div className="flex justify-center w-full">
           <div className="w-3/4 items-center pt-10">
-            <p className="text-center text-xl">
-              I'm a recent graduate from the University of Minnesota - Twin Cities with a degree in Computer Science from the college of Science and Engineering.
-              I have a passion for software development and am always looking for new ways to learn and grow as a developer, but I have a particular interest in web development. 
-              I have experience with a variety of programming languages and frameworks, and am always looking to expand my skillset.
-              I am currently seeking a full-time software development position where I can continue to grow and learn as a developer.
-            </p>
+            {personal ? (
+              <>
+                <article className="w-3/4 space-y-6">
+                  <p className="text-center text-xl">
+                    In my free time, I enjoy playing video games, watching anime, and spending time with my friends and family. 
+                    My current gaming rotation includes Phasmophobia, Terraria, Minecraft, Rocket League, and occasionally Fortnite 
+                    with my significant other and friends.
+                  </p>
+
+                  <p className="text-center text-xl">
+                    While I used to play soccer, I now stay active through hiking, pickleball, and biking. I also enjoy board games 
+                    and card games with family and friends. Some of our favorites include Catan, Dutch Blitz, Hearts, 500, and Liars' Dice.
+                  </p>
+
+                  <p className="text-center text-xl">
+                    Music is a big part of my life. My taste spans across alternative, indie, and pop genres. When coding, I prefer 
+                    familiar songs to maintain focus. During other activities like chores or commuting, I love discovering new music and artists.
+                  </p>
+                </article>
+              </>
+            ) : (
+              <p className="text-center text-xl">
+                I'm a recent graduate from the University of Minnesota - Twin Cities with a degree in Computer Science from the college of Science and Engineering.
+                I have a passion for software development and am always looking for new ways to learn and grow as a developer, but I have a particular interest in web development. 
+                I have experience with a variety of programming languages and frameworks, and am always looking to expand my skillset.
+                I am currently seeking a full-time software development position where I can continue to grow and learn as a developer.
+              </p>
+            )}
           </div>
         </div>
       </div>
@@ -112,8 +136,15 @@ export default function About() {
                 );
             case 'cv':
               return (
-                <div className="w-full max-h-[50vh] md:max-h-[100vh] overflow-y-auto">
-                  CV
+                <div className="w-full h-full overflow-hidden">
+                  <iframe
+                    src="./documents/CV.pdf"
+                    className="w-full h-full"
+                  >
+                    <a href="./documents/CV.pdf" className="text-aqua1 hover:text-blue1">
+                      Download PDF
+                    </a>
+                  </iframe>
                 </div>
               );
             default:
