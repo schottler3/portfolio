@@ -1,0 +1,58 @@
+[
+    {
+        "key": 0,
+        "date": "May 2021",
+        "title": "Graduated",
+        "description": "Buffalo High School",
+        "location": "Buffalo, MN"
+    },
+    {
+        "key": 1,
+        "date": "September 2021",
+        "title": "Started College",
+        "description": "University of Minnesota - Twin Cities",
+        "location": "Minneapolis, MN"
+    },
+    {
+        "key": 2,
+        "date": "May 2022",
+        "title": "Started Hyvee",
+        "description": "Part Time, Personal Shopper",
+        "location": "Maple Grove, MN"
+    },
+    {
+        "key": 3,
+        "date": "September 2022",
+        "title": "Resigned Hyvee",
+        "description": "Going Back to College",
+        "location": "Maple Grove, MN"
+    },
+    {
+        "key": 4,
+        "date": "May 2023",
+        "title": "Started Target",
+        "description": "Team Member, Consumables",
+        "location": "New Brighton, MN"
+    },
+    {
+        "key": 5,
+        "date": "June 2023",
+        "title": "Started UMN OIT",
+        "description": "Student Staff Tier-1 Technical Support",
+        "location": "Minneapolis, MN"
+    },
+    {
+        "key": 6,
+        "date": "November 2024",
+        "title": "Resigned UMN OIT",
+        "description": "Focusing on Graduation",
+        "location": "Minneapolis, MN"
+    },
+    {
+        "key": 7,
+        "date": "December 2024",
+        "title": "Graduated",
+        "description": "Bachelor of Science in Computer Science",
+        "location": "Minneapolis, MN"
+    }
+]

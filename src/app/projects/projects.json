@@ -1,0 +1,242 @@
+[
+    {
+        "index": 0,
+        "title": "Text Based Adventure Game",
+        "start": "Fall 2020",
+        "tagline": "My First Programming Project",
+        "description": ["A text-based game created in Java that utilizes class structures and object-oriented programming. The game is a simple text-based adventure where the user can explore a dungeon, fight monsters, collect items, and progress through levels."]
+    },
+    {
+        "index": 1,
+        "title": "Dice Simulator",
+        "start": "Fall 2020",
+        "tagline": "My First Graphical Program",
+        "description": ["Created in my AP Computer Science class, this project was my first experience with programming. It is a simple dice simulator that allows the user to roll dice."]
+    },
+    {
+        "index": 2,
+        "title": "Asteroids",
+        "start": "Fall 2021",
+        "tagline": "Mini Spaceship Game",
+        "description": ["My first experience with Python. This project was during my first semester of college. It is a simple game where the player controls a spaceship to avoid crashing into asteroids."]
+    },
+    {
+        "index": 3,
+        "title": "Fractal Drawer",
+        "start": "Spring 2022",
+        "tagline": "Draws Fractals Using Recursion",
+        "description": ["A project created in my Data Structures class. This project uses recursion to draw fractals. The user can select the type of fractal."]
+    },
+    {
+        "index": 4,
+        "title": "Text Based Battleship",
+        "start": "Spring 2022",
+        "tagline": "Character Display Based Battleship",
+        "description": ["This project is a text based battleship game where the user can play against a randomly generated board. The game is displayed in a character grid, and allows for multiple play types."]
+    },
+    {
+        "index": 5,
+        "title": "Java Technical Description",
+        "start": "Spring 2022",
+        "tagline": "Java Introduction Manual",
+        "description":["A short introduction for the Java programming language for beginners. This project was created for my Technical Writing class."]
+    },
+    {
+        "index": 6,
+        "title": "Linear Least Squares",
+        "start": "Fall 2022",
+        "tagline": "Linear Algebra Final Project",
+        "description": ["A project created for my Linear Algebra class. This project uses the least squares method to find the best fit line for a set of data points."]
+    },
+    {
+        "index": 7,
+        "title": "Embedded Battery Simulator",
+        "start": "Spring 2023",
+        "tagline": "Simulation of a Battery Display",
+        "description": ["Text based representation of a battery using bit level manipulations. The first part of the project was programmed in C. The second half of the project was converting that code to x86_64 assembly."]
+    },
+    {
+        "index": 8,
+        "title": "schottler3.github.io",
+        "start": "Summer 2023",
+        "end": "Fall 2024",
+        "tagline": "Old Portfolio Website",
+        "description": ["This served as my first portfolio website. It was created using HTML, CSS, and JavaScript. The website was never fully finished as I was learning web development as I was creating it. Upon completion of my web development class, I decided to start fresh and create a new website with modern frameworks with the original as a template for design."]
+    },
+    {
+        "index": 9,
+        "title": "Application Extension",
+        "start": "Fall 2023",
+        "tagline": "Adding Features to an Existing Application",
+        "description":[ "This was a class long project for Program Design and Development that extended the functionality of an existing application. The project was created in C++ and added features to a 3D model routing application."]
+    },
+    {
+        "index": 10,
+        "title": "Merkle Tree Generator",
+        "start": "Fall 2023",
+        "tagline": "Splits Text Files into Blocks and Hashes",
+        "description": ["Program created for my operating systems class. This program reads a text file and splits it into blocks. The program then hashes the blocks and creates a Merkle tree."]
+    },
+    {
+        "index": 11,
+        "title": "Fire Structure Cleaner",
+        "start": "Fall 2023",
+        "tagline": "Changes Duplicate Files to Symbolic Links",
+        "description": ["Given a directory, this program will search for duplicate files and change the duplicates to symbolic links. This project was created for my operating systems class."]
+    },
+    {
+        "index": 12,
+        "title": "Simple Website",
+        "start": "Spring 2024",
+        "tagline": "First Website Project",
+        "description": ["Consisting of a couple of pages with information about me. This project was created for my Internet Programming class."]
+    },
+    {
+        "index": 13,
+        "title": "Schedule Website",
+        "start": "Spring 2024",
+        "tagline": "Add and Remove Events",
+        "description": ["A website that allows the user to add and remove events from a schedule. This project was created for my Internet Programming class. It utilizes a form to add events and a json file to store the events locally."]
+    },
+    {
+        "index": 14,
+        "title": "Virtual Memory Management",
+        "start": "Spring 2024",
+        "tagline": "Simulates a Memory Management System",
+        "description": ["Built for my second operating systems class, this project simulates a virtual memory management system. The program implements page fault handling and page replacement algorithms and tests their access patterns."]
+    },
+    {
+        "index": 15,
+        "title": "User Level Threads",
+        "start": "Spring 2024",
+        "tagline": "A User Level Thread Library",
+        "description": ["Implemented using POSIX threads and C. This project was created for my second operating systems class. The project implements a user level thread library that allows for thread creation, joining, waiting, yielding, stopping, resuming, and termination."]
+    },
+    {
+        "index": 16,
+        "title": "Grocery List App",
+        "start": "Spring 2024",
+        "tagline": "Ideation, Research, and Design of an App",
+        "description": ["Created for my User Interface and Design class. This project was a group project that involved ideation, research, and design of an app of our choosing. We chose to pursue a grocery list app. The project included a user study, data analysis, design process, AB testing, and final presentation."]
+    },
+    {
+        "index": 17,
+        "title": "Raytracer",
+        "start": "Spring 2024",
+        "tagline": "A Raytracer Built From Scratch",
+        "description": ["Implementation of a raytracer from scratch. This project was created for my Computer Graphics class. The project includes a scene description file that describes the objects in the scene, and the program renders the scene using raytracing. It also implements shadows, textures, reflections, and refractions."]
+    },
+    {
+        "index": 18,
+        "title": "Website Redesign",
+        "start": "Spring 2024",
+        "tagline": "Redesign an Ecommerce Website",
+        "description": ["A group project for my Web Design class. The project involved redesigning an ecommerce website. The project included a competitive analysis, user personas, wireframes, mockups, a redesign, and a final presentation."]
+    },
+    {
+        "index": 19,
+        "title": "Web Application Design",
+        "start": "Spring 2024",
+        "tagline": "A Smart Home Web Application",
+        "description": ["Looking at market competition, information hierarchy, and key features, I created my own design for a smart home assistance web application. This project was created for my Web Design class."]
+    },
+    {
+        "index": 20,
+        "title": "Rasterizer Project",
+        "start": "Spring 2024",
+        "tagline": "Rasterization with OpenGL in C++",
+        "description": ["Created for my graphics class. This project is a rasterizer that uses OpenGL in C++. The program takes in a 3D model file and renders the scene using rasterization. It then allows you to move around the scene and view it from different angles."]
+    },
+    {
+        "index": 21,
+        "title": "FriendCore",
+        "start": "Summer 2024",
+        "end": "Current",
+        "tagline": "Minecraft Plugin",
+        "description": ["Created as a plugin for a Minecraft server that I play with friends on. This plugin adds a commands description board, elevators, server state voting, custom minecarts, and custom tools with special abilities."]
+    },
+    {
+        "index": 22,
+        "title": "Maze Search Comparison",
+        "start": "Fall 2024",
+        "end": "Current",
+        "tagline": "Research Paper on Graph Search Algorithms",
+        "description": ["Implementation of graph search algorithms and comparison of their performance. This project was created for my Introduction to AI class. The project includes a research paper that compares the performance of BFS, DFS, Best First Search, Dijkstra's, and A* search algorithms. The user interface is hosted on a server and allows the user to select a start and end node or a random maze and run the algorithms."]
+    },
+    {
+        "index": 23,
+        "title": "TaskNext",
+        "start": "Fall 2024",
+        "tagline": "Priority Task Manager",
+        "description": [
+            "This was a project done at the University of Minnesota as a personal assignment. The project was to create a todo website using Ember.js, Firebase, and Tailwind CSS. TaskNext uses Ember.js SPA framework to create a web application that is functional and easy to use. The website uses Firebase to store the data and to authenticate users. Tailwind CSS was used for all of the styling of the web app. The web app started as a fundamental project that didn't have any style requirements, but the more I coded it the more I fell in love with its overall design and functionality.",
+            "There are plenty of features that I would like to add to the website in the future. I would like to add more functionality with how you can filter or sort tasks as well as a calendar option to view tasks by a designated period of time. This project turned into a passion project and I am excited to see where it goes in the future.",
+            "I had never worked with Ember.js or any type of SPA framework before this project. I learned a lot about how to use Ember.js to render components and use tracked variables to have effective data binding. I also learned how to use Firebase to store data as collections and documents. Firebase also offered authentication services that I used to authenticate users. Firebase is easy to understand and the integration with GitHub Actions is seamless. I'm really happy I got to learn these new frameworks along with my newfound love for Tailwind CSS."
+        ],
+        "images": [
+            "/images/TaskNext1.png",
+            "/images/TaskNext2.png",
+            "/images/TaskNext3.png"
+        ]
+    },
+    {
+        "index": 24,
+        "title": "Culinary Cards",
+        "start": "Fall 2024",
+        "tagline": "Recipe Website",
+        "description": [
+            "This website is unfortunately hosted on Render.com. This means that the website takes some time to spin up. The data in the database is wiped every month due to it being a free service. Render.com is able to do this by storing our Git repository information. After some time of inactivity, the website will spin down and the data will be wiped from their servers. This is a great service for hosting a website for free, but it is not ideal for a website that needs to store data for long periods of time.",
+            "The website is a recipe website that allows users to create, read, update, and delete recipes. The website is built using HTML, CSS, and JavaScript. The website uses a PostgreSQL database to store the recipes. The backend is hosted in Flask with a frontend CSS framework of PureCSS.",
+            "This website was an excellent learning experience for me. I learned how to use a SQL database, how to use a backend server, and how to use a frontend framework. I also learned how to use Git to push and pull code from a repository as well as dealing with merge conflicts and other Git issues. The project heavily relied on my group's teamwork and communication skills. We got to work together to create the website and make sure that we were all on the same page. We had weekly meetings to discuss what we had done and what we were going to do. We also had a group chat to discuss any issues that we were having. This project was a great learning experience for me and I am glad that I was able to work on it with such an amazing team!"
+        ],
+        "images": [
+            "/images/Culinary1.png",
+            "/images/Culinary2.png",
+            "/images/Culinary3.png",
+            "/images/Culinary4.png",
+            "/images/Culinary5.png",
+            "/images/Culinary6.png"
+        ]
+    },
+    {
+        "index": 25,
+        "title": "Tailwind CSS Demo",
+        "start": "Fall 2024",
+        "tagline": "Demonstration of Tailwind CSS",
+        "description": [
+            "This was a University project where my team and I needed to research a tech stack component and present it to the class. My team and I chose to research Tailwind CSS. Upon researching Tailwind, we found that it was a utility-first CSS framework that was easy to use and had many features. We decided to create a demo website instead of a standard presentation. The website was built using HTML, CSS, and JavaScript. The website was hosted using Ember.js. The website was a great learning experience for me. I learned how to use a new CSS framework and how to use Ember.js.",
+            "The interactive website utilizes core Ember.js concepts such as components and routes. The website is a great example of the basics of using Ember.js as well as providing real-time renders of the HTML/Tailwind code.",
+            "My team and I worked together to create the website. We had weekly meetings to discuss what we had done and what we needed to improve. In the end, we came together to record the presentation and my team member posted it on YouTube."
+        ],
+        "video": ["G9Nbt66Y7H8"]
+    },
+    {
+        "index": 26,
+        "title": "Globe Trotter",
+        "start": "Fall 2024",
+        "tagline": "Travel Tracker Web Application",
+        "description": ["A travel diary web application with Ember.js, Firestore, and Firebase for real-time storage. Designed the UI with Tailwind CSS for a modern responsive design. Implemented features for users to log locations, add photos, tags, and people enhancing the user experience."],
+        "images": [
+            "/images/Globe1.png",
+            "/images/Globe2.png",
+            "/images/Globe3.png",
+            "/images/Globe4.png",
+            "/images/Globe5.png",
+            "/images/Globe6.png",
+            "/images/Globe7.png",
+            "/images/Globe8.png"
+        ]
+    },
+    {
+        "index": 27,
+        "title": "Personal Website",
+        "start": "September 2023",
+        "end": "Current",
+        "tagline": "Showcasing My Work and Skills",
+        "description": [
+            "A portfolio website built with React and Next.js, hosted on Google Firebase. Designed to showcase my web development abilities and past projects through a clean, responsive interface.",
+            "Built with maintainability in mind, allowing easy updates for life events, projects, skills, and other content.",
+            "Implements modern web practices with responsive design, animations, and cross-device compatibility via Tailwind CSS."
+        ]    
+    }
+]
