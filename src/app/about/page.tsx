@@ -123,30 +123,38 @@ export default function About() {
               );
               case 'resume':
                 return (
-                  <div className="w-full h-full overflow-hidden">
+                  <div className="w-full h-[50vh] md:h-[95vh] overflow-hidden relative">
                     <iframe
                       src="./documents/LucasSchottler.pdf"
                       className="w-full h-full"
+                      title="Lucas Schottler Resume"
+                    />
+                    <a 
+                      href="./documents/LucasSchottler.pdf" 
+                      className="absolute top-2 right-2 bg-navy text-aqua1 hover:text-white hover:bg-blue1 px-4 py-2 rounded-md"
+                      download
                     >
-                      <a href="./documents/LucasSchottler.pdf" className="text-aqua1 hover:text-blue1">
-                        Download PDF
-                      </a>
-                    </iframe>
-                  </div>
-                );
-            case 'cv':
-              return (
-                <div className="w-full h-full overflow-hidden">
-                  <iframe
-                    src="./documents/CV.pdf"
-                    className="w-full h-full"
-                  >
-                    <a href="./documents/CV.pdf" className="text-aqua1 hover:text-blue1">
                       Download PDF
                     </a>
-                  </iframe>
-                </div>
-              );
+                  </div>
+                );
+              case 'cv':
+                return (
+                  <div className="w-full h-[50vh] md:h-[95vh] overflow-hidden relative">
+                    <iframe
+                      src="./documents/CV.pdf"
+                      className="w-full h-full"
+                      title="Lucas Schottler CV"
+                    />
+                    <a 
+                      href="./documents/CV.pdf" 
+                      className="absolute top-2 right-2 bg-navy text-aqua1 hover:text-white hover:bg-blue1 px-4 py-2 rounded-md"
+                      download
+                    >
+                      Download PDF
+                    </a>
+                  </div>
+                );
             default:
               return null;
           }

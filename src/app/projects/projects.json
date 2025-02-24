@@ -79,7 +79,7 @@
     },
     {
         "index": 11,
-        "title": "Fire Structure Cleaner",
+        "title": "File Structure Cleaner",
         "start": "Fall 2023",
         "tagline": "Changes Duplicate Files to Symbolic Links",
         "description": ["Given a directory, this program will search for duplicate files and change the duplicates to symbolic links. This project was created for my operating systems class."]
