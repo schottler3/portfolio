@@ -71,9 +71,9 @@ export default function About() {
       </div>
       <div className="relative">
         <div className="
-          absolute left-3 top-16 *:pb-1 w-shrink *:pl-1 *:pr-1 h-6 gap-4
-          origin-left *:rounded-t hover:cursor-pointer rotate-90 z-10 flex
-          tracking-widest text-center *:bg-navy text-aqua1 *:border-t-2 *:border-r-2 *:border-l-2 *:border-white"
+          absolute left-3 top-0 md:top-16 *:pb-1 w-shrink *:pl-1 *:pr-1 h-6 gap-4
+          origin-left *:rounded-b md:*:rounded-b-none md:*:rounded-t hover:cursor-pointer md:rotate-90 z-10 flex
+          tracking-widest text-center *:bg-navy text-aqua1 *:border-b-2 md:*:border-b-0 md:*:border-t-2 *:border-r-2 *:border-l-2 *:border-white"
         > 
         {
         personal ? 
