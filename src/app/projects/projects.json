@@ -174,9 +174,9 @@
             "I had never worked with Ember.js or any type of SPA framework before this project. I learned a lot about how to use Ember.js to render components and use tracked variables to have effective data binding. I also learned how to use Firebase to store data as collections and documents. Firebase also offered authentication services that I used to authenticate users. Firebase is easy to understand and the integration with GitHub Actions is seamless. I'm really happy I got to learn these new frameworks along with my newfound love for Tailwind CSS."
         ],
         "images": [
-            "/images/TaskNext1.png",
-            "/images/TaskNext2.png",
-            "/images/TaskNext3.png"
+            "/projects/tasknext/TaskNext1.png",
+            "/projects/tasknext/TaskNext2.png",
+            "/projects/tasknext/TaskNext3.png"
         ]
     },
     {
@@ -190,12 +190,12 @@
             "This website was an excellent learning experience for me. I learned how to use a SQL database, how to use a backend server, and how to use a frontend framework. I also learned how to use Git to push and pull code from a repository as well as dealing with merge conflicts and other Git issues. The project heavily relied on my group's teamwork and communication skills. We got to work together to create the website and make sure that we were all on the same page. We had weekly meetings to discuss what we had done and what we were going to do. We also had a group chat to discuss any issues that we were having. This project was a great learning experience for me and I am glad that I was able to work on it with such an amazing team!"
         ],
         "images": [
-            "/images/Culinary1.png",
-            "/images/Culinary2.png",
-            "/images/Culinary3.png",
-            "/images/Culinary4.png",
-            "/images/Culinary5.png",
-            "/images/Culinary6.png"
+            "/projects/culinarycards/Culinary1.png",
+            "/projects/culinarycards/Culinary2.png",
+            "/projects/culinarycards/Culinary3.png",
+            "/projects/culinarycards/Culinary4.png",
+            "/projects/culinarycards/Culinary5.png",
+            "/projects/culinarycards/Culinary6.png"
         ]
     },
     {
@@ -217,14 +217,12 @@
         "tagline": "Travel Tracker Web Application",
         "description": ["A travel diary web application with Ember.js, Firestore, and Firebase for real-time storage. Designed the UI with Tailwind CSS for a modern responsive design. Implemented features for users to log locations, add photos, tags, and people enhancing the user experience."],
         "images": [
-            "/images/Globe1.png",
-            "/images/Globe2.png",
-            "/images/Globe3.png",
-            "/images/Globe4.png",
-            "/images/Globe5.png",
-            "/images/Globe6.png",
-            "/images/Globe7.png",
-            "/images/Globe8.png"
+            "/projects/globetrotter/Globe2.png",
+            "/projects/globetrotter/Globe3.png",
+            "/projects/globetrotter/Globe4.png",
+            "/projects/globetrotter/Globe5.png",
+            "/projects/globetrotter/Globe6.png",
+            "/projects/globetrotter/Globe7.png"
         ]
     },
     {

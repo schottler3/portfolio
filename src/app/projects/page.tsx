@@ -1,8 +1,9 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import projectData from './projects.json' assert { type: 'json' };
 import ProjectItem from '../components/ProjectItem';
+import Storage from '../storage';
 
 interface ProjectItemType {
     index: number;
@@ -19,6 +20,24 @@ export default function Projects() {
 
     const projectItems: ProjectItemType[] = projectData as ProjectItemType[];
     const [selectedProject, setSelectedProject] = useState<ProjectItemType>(projectItems[0]);
+    const [imageUrls, setImageUrls] = useState<{ [key: string]: string }>({});
+
+    useEffect(() => {
+        if (selectedProject && selectedProject.images) {
+            // Load all image URLs for the selected project
+            selectedProject.images.forEach(async (image) => {
+                try {
+                    const url = await Storage.getImageUrl(image);
+                    setImageUrls(prev => ({
+                        ...prev,
+                        [image]: url
+                    }));
+                } catch (error) {
+                    console.error("Error loading image:", error);
+                }
+            });
+        }
+    }, [selectedProject]);
 
     return (
         <div className="bg-charcoal min-h-screen">
@@ -61,7 +80,15 @@ export default function Projects() {
                                 <div className="pb-8">
                                     {selectedProject.images.map((image, index) => (
                                         <div key={index} className="p-4 flex justify-center">
-                                            <img src={image} alt={selectedProject.title} className="max-w-[90%]"/>
+                                            {imageUrls[image] ? (
+                                                <img 
+                                                    src={imageUrls[image]} 
+                                                    alt={selectedProject.title} 
+                                                    className="max-w-[90%]"
+                                                />
+                                            ) : (
+                                                <div className="w-[90%] aspect-video bg-gray-200 animate-pulse" />
+                                            )}
                                         </div>
                                     ))}
                                 </div>
