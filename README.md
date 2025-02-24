@@ -2,6 +2,10 @@
 
 A modern, responsive portfolio website showcasing my professional experience and personal interests.
 
+## Description
+
+This portfolio website is built using modern web technologies to showcase my work, skills, and interests. It features a clean, responsive design with both professional and personal sections, allowing visitors to learn more about my development experience and personality.
+
 ## Tech Stack
 
 - **Frontend Framework:** React with Next.js
@@ -18,6 +22,11 @@ A modern, responsive portfolio website showcasing my professional experience and
 - Personal and professional information toggle
 - Modern UI with smooth transitions
 - Dynamic content rendering
+
+## Prerequisites
+
+- Node.js 18.0 or higher
+- npm 9.0 or higher
 
 ## Getting Started
 
@@ -51,10 +60,14 @@ This is a personal portfolio project, but if you notice any bugs or have suggest
 
 ## License
 
-[Your chosen license]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Deployment
+
+This site is deployed on Firebase. View the live version at [LucasSchottler.dev](https://lucasschottler.dev)
 
 ## Contact
 
-- **Email:** [Your email]
-- **LinkedIn:** [Your LinkedIn]
-- **GitHub:** [Your GitHub]
+- **Email:** LucasSchottler@gmail.com
+- **LinkedIn:** [Lucas Schottler](https://www.linkedin.com/in/lucasschottler/)
+- **GitHub:** [schottler3](https://github.com/schottler3)
