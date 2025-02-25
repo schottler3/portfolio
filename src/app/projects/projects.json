@@ -4,21 +4,28 @@
         "title": "Text Based Adventure Game",
         "start": "Fall 2020",
         "tagline": "My First Programming Project",
-        "description": ["A text-based game created in Java that utilizes class structures and object-oriented programming. The game is a simple text-based adventure where the user can explore a dungeon, fight monsters, collect items, and progress through levels."]
+        "description": ["A text-based game created in Java that utilizes class structures and object-oriented programming. The game is a simple text-based adventure where the user can explore a dungeon, fight monsters, collect items, and progress through levels."],
+        "images": [
+            "/projects/adventure/adventure1.png",
+            "/projects/adventure/adventure2.png",
+            "/projects/adventure/adventure3.png"
+        ]
     },
     {
         "index": 1,
         "title": "Dice Simulator",
         "start": "Fall 2020",
         "tagline": "My First Graphical Program",
-        "description": ["Created in my AP Computer Science class, this project was my first experience with programming. It is a simple dice simulator that allows the user to roll dice."]
+        "description": ["Created in my AP Computer Science class, this project was my first experience with programming. It is a simple dice simulator that allows the user to roll dice."],
+        "video": ["gMlLK8fD3hM"]
     },
     {
         "index": 2,
         "title": "Asteroids",
         "start": "Fall 2021",
         "tagline": "Mini Spaceship Game",
-        "description": ["My first experience with Python. This project was during my first semester of college. It is a simple game where the player controls a spaceship to avoid crashing into asteroids."]
+        "description": ["My first experience with Python. This project was during my first semester of college. It is a simple game where the player controls a spaceship to avoid crashing into asteroids."],
+        "video": ["jhFfHEqsRLw"]
     },
     {
         "index": 3,
