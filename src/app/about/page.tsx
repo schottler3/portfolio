@@ -37,29 +37,29 @@ export default function About() {
           </div>
         </div>
         <div className="flex justify-center w-full">
-          <div className="w-3/4 *:items-center pt-10">
+          <div className="w-3/4 pt-10 tracking-widest">
             {personal ? (
               <>
                 <article className="w-full space-y-6">
-                  <p className="text-center text-xl">
+                  <p className="text-left text-xl">
                     In my free time, I enjoy playing video games, watching anime, and spending time with my friends and family. 
                     My current gaming rotation includes Phasmophobia, Terraria, Minecraft, Rocket League, and occasionally Fortnite 
                     with my significant other and friends.
                   </p>
 
-                  <p className="text-center text-xl">
+                  <p className="text-left text-xl">
                     While I used to play soccer, I now stay active through hiking, pickleball, and biking. I also enjoy board games 
                     and card games with family and friends. Some of our favorites include Catan, Dutch Blitz, Hearts, 500, and Liars' Dice.
                   </p>
 
-                  <p className="text-center text-xl">
+                  <p className="text-left text-xl">
                     Music is a big part of my life. My taste spans across alternative, indie, and pop genres. When coding, I prefer 
                     familiar songs to maintain focus. During other activities like chores or commuting, I love discovering new music and artists.
                   </p>
                 </article>
               </>
             ) : (
-              <p className="text-center text-xl">
+              <p className="text-xl text-left w-full">
                 I'm a recent graduate from the University of Minnesota - Twin Cities with a degree in Computer Science from the college of Science and Engineering.
                 I have a passion for software development and am always looking for new ways to learn and grow as a developer, but I have a particular interest in web development. 
                 I have experience with a variety of programming languages and frameworks, and am always looking to expand my skillset.
