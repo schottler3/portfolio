@@ -168,7 +168,8 @@
         "start": "Fall 2024",
         "end": "Current",
         "tagline": "Research Paper on Graph Search Algorithms",
-        "description": ["Implementation of graph search algorithms and comparison of their performance. This project was created for my Introduction to AI class. The project includes a research paper that compares the performance of BFS, DFS, Best First Search, Dijkstra's, and A* search algorithms. The user interface is hosted on a server and allows the user to select a start and end node or a random maze and run the algorithms."]
+        "description": ["Implementation of graph search algorithms and comparison of their performance. This project was created for my Introduction to AI class. The project includes a research paper that compares the performance of BFS, DFS, Best First Search, Dijkstra's, and A* search algorithms. The user interface is hosted on a server and allows the user to select a start and end node or a random maze and run the algorithms."],
+        "link": "https://LucasSchottler.dev/pathFinder"
     },
     {
         "index": 23,

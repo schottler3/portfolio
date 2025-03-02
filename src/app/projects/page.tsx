@@ -14,6 +14,7 @@ interface ProjectItemType {
     description: string[];
     images?: string[];
     video?: string[];
+    link?: string;
 }
 
 export default function Projects() {
@@ -64,11 +65,11 @@ export default function Projects() {
                                 <p className="text-xl font-thin">{selectedProject.tagline}</p>
                                 <div className="w-full flex flex-row justify-center items-center gap-2 text-aqua1 font-thin">
                                     <p className="text-center">{selectedProject.start}</p>
-                                    {selectedProject.end ? <p className="text-center"> - {selectedProject.end}</p> : null}
+                                    {selectedProject.end ? <p className="text-left"> - {selectedProject.end}</p> : null}
                                 </div>
                                 <div>
                                     {selectedProject.description.map((paragraph, index) => (
-                                        <div key={index} className="p-4 text-xl text-center text-white">
+                                        <div key={index} className="p-4 text-xl text-left text-white">
                                             <p>{paragraph}</p>
                                         </div>
                                     ))}
@@ -79,7 +80,7 @@ export default function Projects() {
                             {selectedProject && selectedProject.images && (
                                 <div className="pb-8">
                                     {selectedProject.images.map((image, index) => (
-                                        <div key={index} className="p-4 flex justify-center">
+                                        <div key={index} className="p-8">
                                             {imageUrls[image] ? (
                                                 <img 
                                                     src={imageUrls[image]} 
@@ -94,7 +95,7 @@ export default function Projects() {
                                 </div>
                             )}
                             {selectedProject && selectedProject.video && (
-                                <div className="p-4 flex flex-row justify-center items-center">
+                                <div className="p-4 flex flex-row">
                                 {selectedProject.video.map((videoId, index) => {
                                     const embedUrl = `https://www.youtube-nocookie.com/embed/${videoId}?rel=0&modestbranding=1`;
                                     
