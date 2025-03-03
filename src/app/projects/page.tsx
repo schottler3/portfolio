@@ -78,7 +78,7 @@ export default function Projects() {
                                     ))}
                                 </div>
                                 {selectedProject.links ? (
-                                    <div className="flex flex-row ml-4 gap-4 *:hover:cursor-pointer *:p-4 text-xl text-center font-bold *:rounded-full *:w-48 *:bg-blue1 text-navy items-center">
+                                    <div className="flex flex-row ml-4 gap-4 *:hover:cursor-pointer *:p-4 text-xl text-center font-bold *:rounded-full *:w-48 *:bg-blue1 text-white items-center">
                                         {selectedProject.links.live ? (
                                             <a href={selectedProject.links.live} className="group hover:bg-charcoal">
                                                 <p className="group-hover:text-aqua1">Project Link</p>
