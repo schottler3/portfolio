@@ -14,7 +14,10 @@ interface ProjectItemType {
     description: string[];
     images?: string[];
     video?: string[];
-    link?: string;
+    links?: {
+        live?: string;
+        git?: string;
+    };
 }
 
 export default function Projects() {
@@ -74,9 +77,19 @@ export default function Projects() {
                                         </div>
                                     ))}
                                 </div>
+                                {selectedProject.links ? (
+                                    <div className="flex flex-row ml-8 gap-4 *:hover:cursor-pointer *:p-4 text-xl text-center font-bold *:rounded-full *:w-48 *:bg-blue1 text-navy">
+                                        <a href={selectedProject.links.live} className="group hover:bg-charcoal">
+                                            <p className="group-hover:text-aqua1">Project Link</p>
+                                        </a>
+                                        <a href={selectedProject.links.git} className="group hover:bg-charcoal">
+                                            <p className="group-hover:text-aqua1">Github Repo</p>
+                                        </a>
+                                    </div>
+                                ) : null}
                             </div>
                         ) : null}
-                        <div className="mt-8">
+                        <div className="">
                             {selectedProject && selectedProject.images && (
                                 <div className="pb-8">
                                     {selectedProject.images.map((image, index) => (

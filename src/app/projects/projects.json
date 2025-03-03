@@ -68,7 +68,11 @@
         "start": "Summer 2023",
         "end": "Fall 2024",
         "tagline": "Old Portfolio Website",
-        "description": ["This served as my first portfolio website. It was created using HTML, CSS, and JavaScript. The website was never fully finished as I was learning web development as I was creating it. Upon completion of my web development class, I decided to start fresh and create a new website with modern frameworks with the original as a template for design."]
+        "description": ["This served as my first portfolio website. It was created using HTML, CSS, and JavaScript. The website was never fully finished as I was learning web development as I was creating it. Upon completion of my web development class, I decided to start fresh and create a new website with modern frameworks with the original as a template for design."],
+        "links": {
+            "live": "https://schottler3.github.io",
+            "git": "https://github.com/schottler3/schottler3.github.io"
+        }
     },
     {
         "index": 9,
@@ -110,14 +114,20 @@
         "title": "Virtual Memory Management",
         "start": "Spring 2024",
         "tagline": "Simulates a Memory Management System",
-        "description": ["Built for my second operating systems class, this project simulates a virtual memory management system. The program implements page fault handling and page replacement algorithms and tests their access patterns."]
+        "description": ["Built for my second operating systems class, this project simulates a virtual memory management system. The program implements page fault handling and page replacement algorithms and tests their access patterns."],
+        "links": {
+            "git": "https://github.com/schottler3/PageTable"
+        }
     },
     {
         "index": 15,
         "title": "User Level Threads",
         "start": "Spring 2024",
         "tagline": "A User Level Thread Library",
-        "description": ["Implemented using POSIX threads and C. This project was created for my second operating systems class. The project implements a user level thread library that allows for thread creation, joining, waiting, yielding, stopping, resuming, and termination."]
+        "description": ["Implemented using POSIX threads and C. This project was created for my second operating systems class. The project implements a user level thread library that allows for thread creation, joining, waiting, yielding, stopping, resuming, and termination."],
+        "links": {
+            "git": "https://github.com/schottler3/UserThreads"
+        }
     },
     {
         "index": 16,
@@ -160,7 +170,10 @@
         "start": "Summer 2024",
         "end": "Current",
         "tagline": "Minecraft Plugin",
-        "description": ["Created as a plugin for a Minecraft server that I play with friends on. This plugin adds a commands description board, elevators, server state voting, custom minecarts, and custom tools with special abilities."]
+        "description": ["Created as a plugin for a Minecraft server that I play with friends on. This plugin adds a commands description board, elevators, server state voting, custom minecarts, and custom tools with special abilities."],
+        "links": {
+            "git": "https://github.com/schottler3/FriendCore"
+        }
     },
     {
         "index": 22,
@@ -169,7 +182,10 @@
         "end": "Current",
         "tagline": "Research Paper on Graph Search Algorithms",
         "description": ["Implementation of graph search algorithms and comparison of their performance. This project was created for my Introduction to AI class. The project includes a research paper that compares the performance of BFS, DFS, Best First Search, Dijkstra's, and A* search algorithms. The user interface is hosted on a server and allows the user to select a start and end node or a random maze and run the algorithms."],
-        "link": "https://LucasSchottler.dev/pathFinder"
+        "links": {
+            "live": "https://LucasSchottler.dev/pathFinder",
+            "git": "https://github.com/schottler3/pathFinder"
+        }
     },
     {
         "index": 23,
@@ -185,7 +201,12 @@
             "/projects/tasknext/TaskNext1.png",
             "/projects/tasknext/TaskNext2.png",
             "/projects/tasknext/TaskNext3.png"
-        ]
+        ],
+        "links": {
+            "live": "https://tasknext-96ce7.web.app/todos",
+            "git": "https://github.com/schottler3/TaskNext"
+        }
+            
     },
     {
         "index": 24,
@@ -204,7 +225,10 @@
             "/projects/culinarycards/Culinary4.png",
             "/projects/culinarycards/Culinary5.png",
             "/projects/culinarycards/Culinary6.png"
-        ]
+        ],
+        "links": {
+            "git": "https://github.com/schottler3/Culinary-Cards"
+        }
     },
     {
         "index": 25,
@@ -231,7 +255,11 @@
             "/projects/globetrotter/Globe5.png",
             "/projects/globetrotter/Globe6.png",
             "/projects/globetrotter/Globe7.png"
-        ]
+        ],
+        "links": {
+            "live": "https://globetrotter-1bc35.web.app/visited",
+            "git": "https://github.com/schottler3/Globe-Trotter"
+        }
     },
     {
         "index": 27,
@@ -243,6 +271,11 @@
             "A portfolio website built with React and Next.js, hosted on Google Firebase. Designed to showcase my web development abilities and past projects through a clean, responsive interface.",
             "Built with maintainability in mind, allowing easy updates for life events, projects, skills, and other content.",
             "Implements modern web practices with responsive design, animations, and cross-device compatibility via Tailwind CSS."
-        ]    
+        ],
+        "links": {
+            "live": "https://lucasschottler.dev",
+            "git": "https://github.com/schottler3/portfolio"
+        }
+
     }
 ]
