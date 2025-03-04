@@ -131,7 +131,7 @@ export default function About() {
                     />
                     <a 
                       href="./documents/LucasSchottler.pdf" 
-                      className="absolute top-2 right-2 bg-navy text-aqua1 hover:text-white hover:bg-blue1 px-4 py-2 rounded-md"
+                      className="absolute top-8 right-2 bg-navy text-aqua1 hover:text-white hover:bg-blue1 px-4 py-2 rounded-md"
                       download
                     >
                       Download PDF
@@ -148,7 +148,7 @@ export default function About() {
                     />
                     <a 
                       href="./documents/CV.pdf" 
-                      className="absolute top-2 right-2 bg-navy text-aqua1 hover:text-white hover:bg-blue1 px-4 py-2 rounded-md"
+                      className="absolute top-8 right-2 bg-navy text-aqua1 hover:text-white hover:bg-blue1 px-4 py-2 rounded-md"
                       download
                     >
                       Download PDF
