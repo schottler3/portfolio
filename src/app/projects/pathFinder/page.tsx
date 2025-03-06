@@ -45,10 +45,13 @@ export default function Page() {
                         <li>Red: Start</li>
                     </ul>
                 </div>
-                <div className="col-span-1">
-                    <div id="grid">
-                        {cells && cells.map((cell) => cell)}
-                    </div>
+                <div className="aspect-square w-full" id="grid" style={{
+                    display: 'grid',
+                    gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
+                    gridTemplateRows: `repeat(${gridSize}, 1fr)`,
+                    gridGap: '0',
+                }}>
+                    {cells}
                 </div>
             </div>
         </div>
