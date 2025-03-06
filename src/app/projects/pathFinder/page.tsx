@@ -1,55 +1,51 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Cell from './components/cell';
 import { ReactElement } from 'react';
 
-const gridSize = 20;
-let start: ReactElement|null = null;
-let algorithm:string = 'BFS';
-let goals: ReactElement[] = [];
-let cells: ReactElement[] = [];
-let blocks: ReactElement[] = [];
-let mousedown:boolean = false;
-let editing:boolean = true;
-
-let populateGrid = function() {
-
-    for(let i = 0; i < gridSize; i++) {
-        for(let j = 0; j < gridSize; j++) {
-            let cell = <Cell cords={[i, j]} state={0} key={`${i}-${j}`} />;
-            cells.push(cell);
-        }
-    }
-
-}
-
 export default function Page() {
-    const [initialized, setInitialized] = useState(false);
+    const [gridSize, setGridSize] = useState(50);
+    const [cells, setCells] = useState<ReactElement[]>([]);
     
-    if (!initialized) {
-        cells = [];
-        populateGrid();
-        setInitialized(true);
+    function populateGrid(size: number) {
+        const newCells: ReactElement[] = [];
+        for(let i = 0; i < size; i++) {
+            for(let j = 0; j < size; j++) {
+                newCells.push(<Cell cords={[i, j]} state={0} key={`${i}-${j}`} />);
+            }
+        }
+        setCells(newCells);
     }
 
+    useEffect(() => {
+        populateGrid(gridSize);
+    }, [gridSize]);
+    
     return (
         <div className="bg-charcoal h-screen">
-            <div className="grid grid-cols-2 text-white p-4">
+            <div className="grid grid-cols-[40%_60%] text-white p-4">
                 <div className="col-span-1">
-                    <h2 className="text-2xl mb-4">Path Finder | This is under Development! Please view the original project that is fully functional at the github repo link!</h2>
-                    <p className="mb-2">Click cells to toggle:</p>
-                    <ul className="list-disc pl-5 mb-4">
-                        <li>White: Empty</li>
-                        <li>Black: Wall</li>
-                        <li>Green: Goal</li>
-                        <li>Red: Start</li>
-                    </ul>
+                    <h2 className="text-2xl mb-4">Path Finder | This is under Development!</h2>
+                    <div>
+                        <input 
+                            type="text" 
+                            id="gridSize" 
+                            className="text-black"
+                            defaultValue={gridSize}
+                        />
+                        <button className="bg-green-500 text-white px-2 py-1" onClick={() => {
+                            const input = document.getElementById("gridSize") as HTMLInputElement;
+                            if (input) {
+                                setGridSize(Number(input.value) || 50);
+                            }
+                        }}>Set</button>
+                    </div>
                 </div>
-                <div className="aspect-square w-full" id="grid" style={{
+                <div className="aspect-square overflow-auto" id="grid" style={{
                     display: 'grid',
-                    gridTemplateColumns: `repeat(${gridSize}, 1fr)`,
-                    gridTemplateRows: `repeat(${gridSize}, 1fr)`,
-                    gridGap: '0',
+                    gridTemplateColumns: `repeat(${gridSize}, calc(45vw / ${gridSize}))`,
+                    gridTemplateRows: `repeat(${gridSize}, calc(45vw / ${gridSize}))`,
+                    gap: '0',
                 }}>
                     {cells}
                 </div>

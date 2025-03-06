@@ -17,7 +17,7 @@ export default function Cell({cords, state}: CellItemProps) {
 
     return (
         <div 
-            className={`w-full h-full border border-charcoal ${colors[state as keyof typeof colors]}`}
+            className={`aspect-square border border-charcoal ${colors[state as keyof typeof colors]}`}
             data-x={cords[0]}
             data-y={cords[1]}
         />
