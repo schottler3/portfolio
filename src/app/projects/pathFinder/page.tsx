@@ -19,6 +19,22 @@ export default function Page() {
         setCells(newCells);
     }
 
+    function clearGrid() {
+        const newCells: ReactElement[] = [];
+        for(let i = 0; i < gridSize; i++) {
+            for(let j = 0; j < gridSize; j++) {
+                newCells.push(
+                    <Cell 
+                        cords={[i, j]} 
+                        state={0} 
+                        key={`clear-${Date.now()}-${i}-${j}`} 
+                    />
+                );
+            }
+        }
+        setCells(newCells);
+    }
+
     useEffect(() => {
         populateGrid(gridSize);
     }, [gridSize]);
@@ -41,6 +57,9 @@ export default function Page() {
                                 setGridSize(Number(input.value) || 50);
                             }
                         }}>Set</button>
+                        <button className="bg-red-500 text-white px-2 py-1" onClick={() => {
+                            clearGrid();
+                        }}>Clear</button>
 
                     </div>
                 </div>
