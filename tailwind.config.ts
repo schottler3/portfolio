@@ -21,6 +21,7 @@ export default {
       },
       colors: {
         'charcoal': 'rgb(22, 37, 33)',
+        'gray1': 'rgb(50,61,60)',
         'navy': 'rgb(29,51,61)',
         'aqua1': 'rgb(158, 239, 229)',
         'blue1': '#4F7CAC',

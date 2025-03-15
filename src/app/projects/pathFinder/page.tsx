@@ -8,6 +8,8 @@ export default function Page() {
     const [gridSize, setGridSize] = useState(50);
     const [cells, setCells] = useState<ReactElement[]>([]);
     const [mouse, setMouse] = useState(false);
+    const [algorithm, setAlgorithm] = useState<string>("");
+    const [heuristic, setHeuristic] = useState<string>("");
     
     function populateGrid(size: number) {
         const newCells: ReactElement[] = [];
@@ -42,55 +44,70 @@ export default function Page() {
     return (
         <div className="bg-charcoal h-screen">
             <div className="grid grid-cols-[40%_60%] text-white p-4">
-                <div className="col-span-1">
-                    <h2 className="text-2xl mb-4">Path Finder | This is under Development!</h2>
-                    <div>
+                <div className="col-span-1 flex justify-center flex-col text-center">
+                    <h2 className="text-5xl mb-32">Path Finder | This is under Development!</h2>
+                    <div className="flex justify-center mb-16">
                         <input 
                             type="text" 
                             id="gridSize" 
-                            className="text-black"
+                            className="text-black px-4 py-2"
                             defaultValue={gridSize}
                         />
-                        <button className="bg-green-500 text-white px-2 py-1" onClick={() => {
+                        <button className="bg-green-900 text-white px-4 py-2 w-1/6" onClick={() => {
                             const input = document.getElementById("gridSize") as HTMLInputElement;
                             if (input) {
                                 setGridSize(Number(input.value) || 50);
                             }
                         }}>Set</button>
-                        <button className="bg-red-500 text-white px-2 py-1" onClick={() => {
+                        <button className="bg-red-900 text-white px-4 py-2 w-1/6" onClick={() => {
                             clearGrid();
                         }}>Clear</button>
 
                     </div>
+                    <div className="bg-navy rounded-full py-8 flex items-center flex-col justify-center">
+                        <div className="flex justify-center font-bold gap-4 my-8 *:bg-charcoal *:w-48 *:py-2 *:rounded-md *:transition-shadow *:ease-in-out *:duration-300">
+                            <button className="hover:bg-gray1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setHeuristic("Euclidean")}}>Euclidean</button>
+                            <button className="hover:bg-gray1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setHeuristic("Manhattan")}}>Manhattan</button>
+                        </div>
+                        <div className="flex flex-col gap-2 *:bg-blue1 text-white text-center items-center w-full *:w-1/2 font-bold *:rounded-md *:transition-shadow *:ease-in-out *:duration-300">
+                            <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("BFS")}}>BFS</button>
+                            <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("DFS")}}>DFS</button>
+                            <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("BestFS")}}>BestFS</button>
+                            <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("A")}}>A*</button>
+                            <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("Dijkstra")}}>Dijkstra</button>
+                        </div>
+                    </div>
                 </div>
-                <div 
-                className="aspect-square overflow-auto" 
-                id="grid" 
-                style={{
-                    display: 'grid',
-                    gridTemplateColumns: `repeat(${gridSize}, calc(45vw / ${gridSize}))`,
-                    gridTemplateRows: `repeat(${gridSize}, calc(45vw / ${gridSize}))`,
-                    gap: '0',
-                }}
-                onMouseDown={(e) => {
-                    const target = e.target as HTMLDivElement;
-                    if (target.className.includes("aspect-square")) {
-                        setMouse(true);
-                    }
-                }}
-                onMouseUp={() => {
-                    setMouse(false);
-                }}
-                onMouseOver={(e) => {
-                    if (mouse) {
-                        if(e.currentTarget.classList.contains("cell")){
-                            const x = e.currentTarget.getAttribute("data-x");
-                            const y = e.currentTarget.getAttribute("data-y");
+                <div className="flex justify-center h-screen items-center">
+                    <div 
+                    className="aspect-square overflow-auto" 
+                    id="grid" 
+                    style={{
+                        display: 'grid',
+                        gridTemplateColumns: `repeat(${gridSize}, calc(45vw / ${gridSize}))`,
+                        gridTemplateRows: `repeat(${gridSize}, calc(45vw / ${gridSize}))`,
+                        gap: '0',
+                    }}
+                    onMouseDown={(e) => {
+                        const target = e.target as HTMLDivElement;
+                        if (target.className.includes("aspect-square")) {
+                            setMouse(true);
                         }
-                    }
-                }}
-                >
-                    {cells}
+                    }}
+                    onMouseUp={() => {
+                        setMouse(false);
+                    }}
+                    onMouseOver={(e) => {
+                        if (mouse) {
+                            if(e.currentTarget.classList.contains("cell")){
+                                const x = e.currentTarget.getAttribute("data-x");
+                                const y = e.currentTarget.getAttribute("data-y");
+                            }
+                        }
+                    }}
+                    >
+                        {cells}
+                    </div>
                 </div>
             </div>
         </div>

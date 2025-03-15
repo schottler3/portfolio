@@ -60,7 +60,7 @@ export default function Projects() {
                         </div>
                     ))}
                 </div>
-                <div className="bg-[rgb(50,61,60)] h-full overflow-y-auto">
+                <div className="bg-gray1 h-full overflow-y-auto">
                     <div className="flex flex-col h-full pt-6 sm:pt-32">
                         {selectedProject ? (
                             <div className="p-4 items-center text-center text-white h-max">
