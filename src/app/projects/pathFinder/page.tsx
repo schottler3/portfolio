@@ -2,10 +2,10 @@
 import React, { useState, useEffect } from 'react';
 import Cell from './components/cell';
 import { ReactElement } from 'react';
-import { clear } from 'console';
 
 export default function Page() {
     const [gridSize, setGridSize] = useState(50);
+    const [invalid, setInvalid] = useState(false);
     const [cells, setCells] = useState<ReactElement[]>([]);
     const [mouse, setMouse] = useState(false);
     const [algorithm, setAlgorithm] = useState<string>("");
@@ -43,28 +43,39 @@ export default function Page() {
     
     return (
         <div className="bg-charcoal h-screen">
-            <div className="grid grid-cols-[40%_60%] text-white p-4">
-                <div className="col-span-1 flex justify-center flex-col text-center">
-                    <h2 className="text-5xl mb-32">Path Finder | This is under Development!</h2>
-                    <div className="flex justify-center mb-16">
-                        <input 
-                            type="text" 
-                            id="gridSize" 
-                            className="text-black px-4 py-2"
-                            defaultValue={gridSize}
-                        />
-                        <button className="bg-green-900 text-white px-4 py-2 w-1/6" onClick={() => {
-                            const input = document.getElementById("gridSize") as HTMLInputElement;
-                            if (input) {
-                                setGridSize(Number(input.value) || 50);
-                            }
-                        }}>Set</button>
-                        <button className="bg-red-900 text-white px-4 py-2 w-1/6" onClick={() => {
-                            clearGrid();
-                        }}>Clear</button>
-
+            <div className="sm:grid sm:grid-cols-[40%_60%] text-white p-4">
+                <div className="col-span-1 flex justify-center flex-col text-center mt-8">
+                    <h2 className="text-5xl mb-16">Path Finder: Under Development</h2>
+                    <div className="flex justify-center">
+                        <div>
+                            <input 
+                                type="text" 
+                                id="gridSize" 
+                                className="text-black px-4 py-2"
+                                defaultValue={gridSize}
+                            />
+                            <button className="bg-green-900 text-white px-4 py-2 w-1/6" onClick={() => {
+                                const input = document.getElementById("gridSize") as HTMLInputElement;
+                                if (input) {
+                                    const inputValue = Number(input.value);
+                                    
+                                    if (inputValue > 100) {
+                                        input.value = "100";
+                                        setInvalid(true);
+                                        setGridSize(100);
+                                    } else {
+                                        setInvalid(false);
+                                        setGridSize(inputValue || 50);
+                                    }
+                                }
+                            }}>Set</button>
+                            <button className="bg-red-900 text-white px-4 py-2 w-1/6" onClick={() => {
+                                clearGrid();
+                            }}>Clear</button>
+                        </div>
+                        {invalid ? <p className="absolute text-red-500 text-xl mt-12">Grid Max is 100</p> : null}
                     </div>
-                    <div className="bg-navy rounded-full py-8 flex items-center flex-col justify-center">
+                    <div className="bg-navy rounded-full py-8 flex items-center flex-col justify-center mt-16">
                         <div className="flex justify-center font-bold gap-4 my-8 *:bg-charcoal *:w-48 *:py-2 *:rounded-md *:transition-shadow *:ease-in-out *:duration-300">
                             <button className="hover:bg-gray1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setHeuristic("Euclidean")}}>Euclidean</button>
                             <button className="hover:bg-gray1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setHeuristic("Manhattan")}}>Manhattan</button>
@@ -86,7 +97,7 @@ export default function Page() {
                         display: 'grid',
                         gridTemplateColumns: `repeat(${gridSize}, calc(45vw / ${gridSize}))`,
                         gridTemplateRows: `repeat(${gridSize}, calc(45vw / ${gridSize}))`,
-                        gap: '0',
+                        gap: '0'
                     }}
                     onMouseDown={(e) => {
                         const target = e.target as HTMLDivElement;
