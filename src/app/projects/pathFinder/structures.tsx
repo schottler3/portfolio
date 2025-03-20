@@ -155,3 +155,23 @@ export class Graph {
         };
     }
 }
+
+export class Queue {
+    data: Node[];
+
+    constructor() {
+        this.data = [];
+    }
+
+    enQueue(node: Node): void {
+        this.data.push(node);
+    }
+
+    deQueue(): Node {
+        return this.data.shift()!;
+    }
+
+    isEmpty(): boolean {
+        return this.data.length === 0;
+    }
+}

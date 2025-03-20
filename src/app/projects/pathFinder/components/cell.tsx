@@ -12,7 +12,8 @@ export default function Cell({cords, state}: CellItemProps) {
         0: "bg-white",
         1: "bg-black",
         2: "bg-green-500",
-        3: "bg-red-500"
+        3: "bg-red-500",
+        4: "bg-blue-500"
     };
 
     return (

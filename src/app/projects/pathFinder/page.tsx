@@ -4,6 +4,7 @@ import Cell from './components/cell';
 import { ReactElement } from 'react';
 import { Graph } from './structures';
 import { Maze } from './maze';
+import { Search } from './search';
 
 export default function Page() {
     const [gridSize, setGridSize] = useState(50);
@@ -53,6 +54,42 @@ export default function Page() {
                 }
             });
         }
+    }
+
+    function printSteps(steps: Node[]): void {
+        setCells(cells.map((cell) => {
+            const cellProps = (cell as any).props;
+            const [x, y] = cellProps.cords;
+            
+            if (cellProps.state === 4) {
+                return <Cell cords={[x, y]} state={0} key={`${x}-${y}`} />;
+            }
+            return cell;
+        }));
+        
+        let i = 0;
+        const animationSpeed = 50;
+        
+        const animateStep = () => {
+            if (i >= steps.length) return;
+            
+            setCells((currentCells) => {
+                return currentCells.map((cell) => {
+                    const cellProps = (cell as any).props;
+                    const [x, y] = cellProps.cords;
+                    if(!steps[i]) return cell;
+                    if (steps[i].x === x && steps[i].y === y) {
+                        return <Cell cords={[x, y]} state={4} key={`${x}-${y}`} />;
+                    }
+                    return cell;
+                });
+            });
+            
+            i++;
+            setTimeout(animateStep, animationSpeed);
+        };
+        
+        setTimeout(animateStep, 100);
     }
 
     
@@ -155,6 +192,24 @@ export default function Page() {
                             <button className="bg-blue1 text-white px-4 py-2 w-1/2 mt-8"
                                 onClick={() => {
                                     
+                                    switch(algorithm) {
+                                        case "BFS":
+                                            const search = new Search();
+                                            const steps: Node[] = search.BFS(graph);
+                                            printSteps(steps);
+                                            break;
+                                        case "DFS":
+                                            break;
+                                        case "BestFS":
+                                            break;
+                                        case "A":
+                                            break;
+                                        case "Dijkstra":
+                                            break;
+                                        default:
+                                            break;
+                                    }
+
                                 }}>Solve</button>
                         </div>
                     </div>
