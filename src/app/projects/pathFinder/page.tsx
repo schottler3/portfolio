@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import Cell from './components/cell';
 import { ReactElement } from 'react';
+import { Graph } from './structures';
+import { Maze } from './maze';
 
 export default function Page() {
     const [gridSize, setGridSize] = useState(50);
@@ -86,6 +88,38 @@ export default function Page() {
                             <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("BestFS")}}>BestFS</button>
                             <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("A")}}>A*</button>
                             <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("Dijkstra")}}>Dijkstra</button>
+                        </div>
+                        <div>
+                            <button className="bg-blue1 text-white px-4 py-2 w-1/2 mt-8" 
+                                onClick={() => {
+                                    let graph: Graph = new Graph(gridSize);
+                                    const maze = new Maze(graph);
+                                    graph = maze.generate();
+
+                                graph.nodes.forEach(row => {
+                                    row.forEach(node => {
+                                        let cell: ReactElement;
+                                        if(graph.start && node.equals(graph.start)) {
+                                            cell = <Cell cords={[node.x, node.y]} state={3} key={`${node.x}-${node.y}`} />;
+                                        }
+                                        else if(graph.goals && graph.goals.length > 0 && graph.goals.some(goal => node.equals(goal))) {
+                                            cell = <Cell cords={[node.x, node.y]} state={2} key={`${node.x}-${node.y}`} />;
+                                        }
+                                        else if(node.open === true) {
+                                            cell = <Cell cords={[node.x, node.y]} state={0} key={`${node.x}-${node.y}`} />;
+                                        }
+                                        else {
+                                            cell = <Cell cords={[node.x, node.y]} state={1} key={`${node.x}-${node.y}`} />;
+                                        }
+                                        setCells((prev) => {
+                                            const newCells = [...prev];
+                                            const index = newCells.findIndex((cell) => cell.key === `${node.x}-${node.y}`);
+                                            newCells[index] = cell;
+                                            return newCells;
+                                        });
+                                    });
+                                });
+                            }}>Generate Maze</button>
                         </div>
                     </div>
                     <div className="flex md:hidden justify-center">
