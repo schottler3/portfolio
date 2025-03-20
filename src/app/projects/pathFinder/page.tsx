@@ -9,6 +9,7 @@ export default function Page() {
     const [gridSize, setGridSize] = useState(50);
     const [invalid, setInvalid] = useState(false);
     const [cells, setCells] = useState<ReactElement[]>([]);
+    const [graph, setGraph] = useState<Graph>(new Graph(gridSize));
     const [mouse, setMouse] = useState(false);
     const [algorithm, setAlgorithm] = useState<string>("");
     const [heuristic, setHeuristic] = useState<string>("");
@@ -42,6 +43,18 @@ export default function Page() {
     useEffect(() => {
         populateGrid(gridSize);
     }, [gridSize]);
+
+    function toggleActive(target: HTMLElement): void {
+        const otherButtons = target.parentElement?.children;
+        if (otherButtons) {
+            Array.from(otherButtons).forEach((button: Element) => {
+                if(button !== target) {
+                    button.classList.remove("bg-aqua1");
+                }
+            });
+        }
+    }
+
     
     return (
         <div className="bg-charcoal h-screen w-screen overflow-auto mx-auto">
@@ -79,22 +92,41 @@ export default function Page() {
                     </div>
                     <div className="bg-navy rounded-full py-8 flex items-center flex-col justify-center mt-8">
                         <div className="flex justify-center font-bold gap-4 my-8 *:bg-charcoal *:w-24 md:*:w-48 *:py-2 *:rounded-md *:transition-shadow *:ease-in-out *:duration-300">
-                            <button className="hover:bg-gray1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setHeuristic("Euclidean")}}>Euclidean</button>
-                            <button className="hover:bg-gray1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setHeuristic("Manhattan")}}>Manhattan</button>
+                            <button className="hover:bg-gray1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={() => {setHeuristic("Euclidean")}}>Euclidean</button>
+                            <button className="hover:bg-gray1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={() => {setHeuristic("Manhattan")}}>Manhattan</button>
                         </div>
-                        <div className="flex flex-col gap-2 *:bg-blue1 text-white text-center items-center w-full *:w-1/3 md:*:w-1/2 font-bold *:rounded-md *:transition-shadow *:ease-in-out *:duration-300">
-                            <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("BFS")}}>BFS</button>
-                            <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("DFS")}}>DFS</button>
-                            <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("BestFS")}}>BestFS</button>
-                            <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("A")}}>A*</button>
-                            <button className="hover:bg-charcoal hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(e) => {setAlgorithm("Dijkstra")}}>Dijkstra</button>
+                        <div className="flex flex-col gap-2 text-white text-center items-center w-full *:w-1/3 md:*:w-1/2 font-bold *:rounded-md *:transition-shadow *:ease-in-out *:duration-300">
+                            <button className="hover:bg-charcoal bg-opacity-50 hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(event) => {
+                                setAlgorithm("BFS");
+                                event.currentTarget.classList.toggle("bg-aqua1");
+                                toggleActive(event.currentTarget);
+                            }}>BFS</button>
+                            <button className="hover:bg-charcoal bg-opacity-50 hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(event) => {
+                                setAlgorithm("DFS");
+                                event.currentTarget.classList.toggle("bg-aqua1");
+                                toggleActive(event.currentTarget);
+                            }}>DFS</button>
+                            <button className="hover:bg-charcoal bg-opacity-50 hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(event) => {
+                                setAlgorithm("BestFS");
+                                event.currentTarget.classList.toggle("bg-aqua1");
+                                toggleActive(event.currentTarget);
+                            }}>BestFS</button>
+                            <button className="hover:bg-charcoal bg-opacity-50 hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(event) => {
+                                setAlgorithm("A");
+                                event.currentTarget.classList.toggle("bg-aqua1");
+                                toggleActive(event.currentTarget);
+                            }}>A*</button>
+                            <button className="hover:bg-charcoal bg-opacity-50 hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(event) => {
+                                setAlgorithm("Dijkstra");
+                                event.currentTarget.classList.toggle("bg-aqua1");
+                                toggleActive(event.currentTarget);
+                            }}>Dijkstra</button>
                         </div>
                         <div>
                             <button className="bg-blue1 text-white px-4 py-2 w-1/2 mt-8" 
                                 onClick={() => {
-                                    let graph: Graph = new Graph(gridSize);
                                     const maze = new Maze(graph);
-                                    graph = maze.generate();
+                                    setGraph(maze.generate());
 
                                 graph.nodes.forEach(row => {
                                     row.forEach(node => {
@@ -120,6 +152,10 @@ export default function Page() {
                                     });
                                 });
                             }}>Generate Maze</button>
+                            <button className="bg-blue1 text-white px-4 py-2 w-1/2 mt-8"
+                                onClick={() => {
+                                    
+                                }}>Solve</button>
                         </div>
                     </div>
                     <div className="flex md:hidden justify-center">
