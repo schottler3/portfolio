@@ -26,6 +26,7 @@ export default {
         'aqua1': 'rgb(158, 239, 229)',
         'blue1': '#4F7CAC',
       },
+      
     },
   },
   plugins: [],

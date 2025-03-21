@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Cell from './components/cell';
 import { ReactElement } from 'react';
-import { Graph } from './structures';
+import { Graph, Node } from './structures';
 import { Maze } from './maze';
 import { Search } from './search';
 
