@@ -5,6 +5,7 @@ import { ReactElement } from 'react';
 import { Graph, Node } from './structures';
 import { Maze } from './maze';
 import { Search } from './search';
+import Algorithm from './components/algorithm';
 
 export default function Page() {
     const [gridSize, setGridSize] = useState(50);
@@ -16,6 +17,8 @@ export default function Page() {
     const [heuristic, setHeuristic] = useState<string>("");
 
     const [activeButton, setActiveButton] = useState<HTMLElement | null>(null);
+
+    const algorithms = ["BFS", "DFS", "BestFS", "A*", "Dijkstra"];
     
     function populateGrid(size: number) {
         const newCells: ReactElement[] = [];
@@ -48,22 +51,6 @@ export default function Page() {
         setAlgorithm("BFS");
         setHeuristic("Euclidean");
     }, [gridSize]);
-
-    function toggleActive(target: HTMLElement): void {
-        if (!target.parentElement) return;
-        
-        const buttons = Array.from(target.parentElement.children) as HTMLElement[];
-        
-        buttons.forEach((button) => {
-            if (button === target) {
-                button.classList.add("bg-aqua1");
-            } else {
-                button.classList.remove("bg-aqua1");
-            }
-        });
-        
-        setActiveButton(target);
-    }
 
     function printSteps(steps: Node[]): void {
         setCells(cells.map((cell) => {
@@ -141,27 +128,31 @@ export default function Page() {
                             <button className="hover:bg-gray1 bg-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={() => {setHeuristic("Euclidean")}}>Euclidean</button>
                             <button className="hover:bg-gray1 bg-charcoal hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={() => {setHeuristic("Manhattan")}}>Manhattan</button>
                         </div>
-                        <div className="flex flex-col gap-2 text-white text-center items-center w-full *:w-1/3 md:*:w-1/2 font-bold *:rounded-md *:transition-shadow *:ease-in-out *:duration-300">
-                            <button className="hover:bg-charcoal bg-opacity-50 bg-aqua1 hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(event) => {
-                                setAlgorithm("BFS");
-                                toggleActive(event.currentTarget);
-                            }}>BFS</button>
-                            <button className="hover:bg-charcoal bg-opacity-50 hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(event) => {
-                                setAlgorithm("DFS");
-                                toggleActive(event.currentTarget);
-                            }}>DFS</button>
-                            <button className="hover:bg-charcoal bg-opacity-50 hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(event) => {
-                                setAlgorithm("BestFS");
-                                toggleActive(event.currentTarget);
-                            }}>BestFS</button>
-                            <button className="hover:bg-charcoal bg-opacity-50 hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(event) => {
-                                setAlgorithm("A");
-                                toggleActive(event.currentTarget);
-                            }}>A*</button>
-                            <button className="hover:bg-charcoal bg-opacity-50 hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={(event) => {
-                                setAlgorithm("Dijkstra");
-                                toggleActive(event.currentTarget);
-                            }}>Dijkstra</button>
+                        <div className="flex flex-col gap-2 *:select-none text-white text-center items-center w-full *:w-1/3 md:*:w-1/2 font-bold *:rounded-md *:transition-shadow *:ease-in-out *:duration-300">
+                            {algorithms.map((alg, index) => (
+                                <div key={index} className="flex flex-row justify-around items-center w-full">
+                                    {alg === algorithm ? (
+                                        <img src="../images/Selector.svg" className="w-8 h-8" alt="Selected" />
+                                    ) : (
+                                        <img src="../images/Selector.svg" className="hidden" alt="Not selected" />
+                                    )}
+                                    
+                                    <Algorithm 
+                                        key={index} 
+                                        name={alg}
+                                        onSelect={() => {
+                                            setAlgorithm(alg);
+                                            console.log("Set Algorithm: ", alg);
+                                        }}
+                                    />
+
+                                    {alg === algorithm ? (
+                                        <img src="../images/Selector.svg" className="w-8 h-8 rotate-180" alt="Selected" />
+                                    ) : (
+                                        <img src="../images/Selector.svg" className="hidden" alt="Not selected" />
+                                    )}
+                                </div>
+                            ))}
                         </div>
                         <div className="flex flex-row mt-8 *:p-4 *:bg-blue1 gap-2 text-center font-bold">
                             <button className="hover:bg-aqua1 hover:-text-blue1 hover:text-blue1" 
