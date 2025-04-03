@@ -4,14 +4,15 @@ import React from 'react';
 interface AlgorithmItemProps {
     name: string;
     onSelect?: () => void;
+    className?: string;
 }
 
-export default function Cell({name, onSelect}: AlgorithmItemProps) {
+export default function Cell({name, className, onSelect}: AlgorithmItemProps) {
 
     return (
         <div>
             <button 
-                className="hover:bg-charcoal w-full bg-opacity-50 bg-aqua1 hover:text-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" 
+                className={className}
                 onClick={onSelect}
             >
                 {name}

@@ -18,6 +18,7 @@ export default function Page() {
 
     const [activeButton, setActiveButton] = useState<HTMLElement | null>(null);
 
+    const heuristics = ["Manhattan", "Euclidean"];
     const algorithms = ["BFS", "DFS", "BestFS", "A*", "Dijkstra"];
     
     function populateGrid(size: number) {
@@ -123,39 +124,72 @@ export default function Page() {
                         </div>
                         {invalid ? <div className="absolute text-red-500 text-xl mt-12">Grid Max is 100</div> : null}
                     </div>
-                    <div className="bg-navy rounded-full py-8 flex items-center flex-col justify-center mt-8">
-                        <div className="flex justify-center font-bold gap-4 my-8 *:border-gray-400 *:border-2 *:bg-opacity-50 *:w-24 md:*:w-48 *:py-2 *:rounded-md *:transition-shadow *:ease-in-out *:duration-300">
-                            <button className="hover:bg-gray1 bg-aqua1 hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={() => {setHeuristic("Euclidean")}}>Euclidean</button>
-                            <button className="hover:bg-gray1 bg-charcoal hover:shadow-[inset_0_0_0_2px_#9eefe5]" onClick={() => {setHeuristic("Manhattan")}}>Manhattan</button>
-                        </div>
-                        <div className="flex flex-col gap-2 *:select-none text-white text-center items-center w-full *:w-1/3 md:*:w-1/2 font-bold *:rounded-md *:transition-shadow *:ease-in-out *:duration-300">
-                            {algorithms.map((alg, index) => (
-                                <div key={index} className="flex flex-row justify-around items-center w-full">
-                                    {alg === algorithm ? (
-                                        <img src="../images/Selector.svg" className="w-8 h-8" alt="Selected" />
+                    <div className="bg-navy rounded-full py-8 flex items-center flex-col justify-center mt-8 gap-8 font-bold">
+                        <div className="flex flex-row text-xl gap-6">
+                            {heuristics.map((heur, index) => (
+                                <div key={index} className="flex items-center">
+                                    {heur === heuristic ? (
+                                         <Algorithm 
+                                         name={heur}
+                                         className="bg-charcoal py-2 px-6 text-aqua1 border-aqua1 border-2 rounded-md"
+                                         onSelect={() => {
+                                             setHeuristic(heur);
+                                             console.log("Set Heuristic: ", heur);
+                                         }}
+                                     />
                                     ) : (
-                                        <img src="../images/Selector.svg" className="hidden" alt="Not selected" />
-                                    )}
-                                    
-                                    <Algorithm 
-                                        key={index} 
-                                        name={alg}
+                                        <Algorithm 
+                                        name={heur}
+                                        className="bg-charcoal py-2 px-6 hover:text-aqua1 hover:border-aqua1 border-2 border-blue1 rounded-md"
                                         onSelect={() => {
-                                            setAlgorithm(alg);
-                                            console.log("Set Algorithm: ", alg);
+                                            setHeuristic(heur);
+                                            console.log("Set Heuristic: ", heur);
                                         }}
                                     />
-
-                                    {alg === algorithm ? (
-                                        <img src="../images/Selector.svg" className="w-8 h-8 rotate-180" alt="Selected" />
-                                    ) : (
-                                        <img src="../images/Selector.svg" className="hidden" alt="Not selected" />
                                     )}
                                 </div>
                             ))}
                         </div>
-                        <div className="flex flex-row mt-8 *:p-4 *:bg-blue1 gap-2 text-center font-bold">
-                            <button className="hover:bg-aqua1 hover:-text-blue1 hover:text-blue1" 
+                        <div className="flex flex-col gap-2 *:select-none text-white items-center justify-center font-bold">
+                            {algorithms.map((alg, index) => (
+                                <div key={index} className="flex flex-row justify-around items-center w-full">
+                                    {alg === algorithm ? (
+                                        <>
+                                            <img src="../images/Selector.svg" className="w-6 h-6" alt="Selected" />
+                                            <Algorithm
+                                                key={index} 
+                                                name={alg}
+                                                className="hover:bg-charcoal text-aqua1 bg-opacity-100 bg-charcoal border-2 border-aqua1 w-32"
+                                                onSelect={() => {
+                                                    setAlgorithm(alg);
+                                                    console.log("Set Algorithm: ", alg);
+                                                }}
+                                            />
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Algorithm
+                                                key={index} 
+                                                name={alg}
+                                                className="hover:bg-charcoal bg-opacity-50 bg-charcoal border-2 border-blue1 hover:border-aqua1 hover:text-aqua1 w-32"
+                                                onSelect={() => {
+                                                    setAlgorithm(alg);
+                                                    console.log("Set Algorithm: ", alg);
+                                                }}
+                                            />
+                                        </>
+                                    )}
+
+                                    {alg === algorithm ? (
+                                        <img src="../images/Selector.svg" className="w-6 h-6 rotate-180" alt="Selected" />
+                                    ) : (
+                                        null
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex flex-row items-center *:w-full *:h-full *:p-2 *:bg-blue1 gap-2 text-center font-bold">
+                            <button className="hover:bg-aqua1 hover:text-blue1 rounded-md" 
                                 onClick={() => {
                                     const maze = new Maze(graph);
                                     setGraph(maze.generate());
@@ -184,7 +218,7 @@ export default function Page() {
                                     });
                                 });
                             }}>Generate Maze</button>
-                            <button className="hover:bg-aqua1 hover:text-blue1"
+                            <button className="hover:bg-aqua1 hover:text-blue1 rounded-md"
                                 onClick={() => {
                                     
                                     switch(algorithm) {
