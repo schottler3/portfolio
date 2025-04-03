@@ -95,15 +95,16 @@ export default function Page() {
             <div className="flex flex-col md:grid md:grid-cols-[40%_60%] text-white p-4">
                 <div className="flex justify-center flex-col text-center mt-8">
                     <h2 className="text-3xl md:text-5xl mb-16">Path Finder: Under Development</h2>
+                    <p className="m-2">Grid Size Adjustments</p>
                     <div className="flex justify-center">
                         <div className="*:text-center">
                             <input 
                                 type="text" 
                                 id="gridSize" 
-                                className="text-black px-4 py-2 w-1/2"
+                                className="text-black px-4 py-2 w-1/2 outline-none"
                                 defaultValue={gridSize}
                             />
-                            <button className="bg-green-900 text-white px-4 py-2 w-1/4" onClick={() => {
+                            <button className="bg-gray-200 text-navy font-bold px-4 py-2 w-1/4 border-x-2 border-navy hover:bg-gray-300" onClick={() => {
                                 const input = document.getElementById("gridSize") as HTMLInputElement;
                                 if (input) {
                                     const inputValue = Number(input.value);
@@ -117,7 +118,7 @@ export default function Page() {
                                     }
                                 }
                             }}>Set</button>
-                            <button className="bg-red-900 text-white px-4 py-2 w-1/4" onClick={() => {
+                            <button className="bg-gray-200 text-navy font-bold px-4 py-2 w-1/4 hover:bg-gray-300" onClick={() => {
                                 clearGrid();
                                 setInvalid(false);
                             }}>Clear</button>
