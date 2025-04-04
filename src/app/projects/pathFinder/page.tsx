@@ -53,6 +53,17 @@ export default function Page() {
         setHeuristic("Euclidean");
     }, [gridSize]);
 
+    function construct_path(node: Node): Node[] {
+        let path: Node[] = [];
+        while(node) {
+            path.push(node);
+            node = node.parent as Node;
+            if (!node) break;
+        }
+        path.reverse();
+        return path;
+    }
+
     function printSteps(steps: Node[]): void {
         setCells(cells.map((cell) => {
             const cellProps = (cell as any).props;
@@ -221,14 +232,21 @@ export default function Page() {
                             }}>Generate Maze</button>
                             <button className="hover:bg-aqua1 hover:text-blue1 rounded-md"
                                 onClick={() => {
+
+                                    console.log("Solving with: ", algorithm);
                                     
                                     switch(algorithm) {
                                         case "BFS":
-                                            const search = new Search();
-                                            const steps: Node[] = search.BFS(graph);
-                                            printSteps(steps);
+                                            const searchBFS = new Search();
+                                            const stepsTaken: {time: number, node: Node}[] = searchBFS.BFS(graph);
+                                            printSteps(stepsTaken.map(step => step.node));
+                                            let solution: Node[] = construct_path(stepsTaken[stepsTaken.length - 1].node);
+                                            printSteps(solution);
                                             break;
                                         case "DFS":
+                                            const searchDFS = new Search();
+                                            //const stepsDFS: Node[] = searchDFS.DFS(graph);
+                                            //printSteps(stepsDFS);
                                             break;
                                         case "BestFS":
                                             break;
