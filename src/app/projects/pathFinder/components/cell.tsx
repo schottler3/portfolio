@@ -8,15 +8,14 @@ interface CellItemProps {
     walls: Node[];
     cords: [number, number];
     state: number;
-    node: Node;
     setStart: (start: Node | null) => void;
     setGoals: (goals: Node[]) => void;
     setWalls: (walls: Node[]) => void;
 }
 
-export default function Cell({cords, state, startingCell, finishingCells, walls, setStart, setGoals, setWalls, node}: CellItemProps) {
+export default function Cell({cords, state, startingCell, finishingCells, walls, setStart, setGoals, setWalls}: CellItemProps) {
 
-    const [cellNode, setCellNode] = useState<Node | null>(null);
+    const [node, setNode] = useState<Node | null>(null);
 
     const colors = {
         0: "bg-white",
@@ -27,7 +26,7 @@ export default function Cell({cords, state, startingCell, finishingCells, walls,
     };
 
     useEffect(() => {
-        setCellNode(new Node(cords[0], cords[1], true));
+        setNode(new Node(cords[0], cords[1], true));
     }, []);
         
 
@@ -43,6 +42,9 @@ export default function Cell({cords, state, startingCell, finishingCells, walls,
                 if (x && y) {
                     console.log(`Clicked on cell: ${x}, ${y}`);
                     state += 1;
+                    if (node === null) {
+                        return;
+                    }
                     if(state === 2){
                         if(finishingCells.some(goal => goal.x === node.x && goal.y === node.y)){
                             setGoals(finishingCells.filter(goal => goal.x !== node.x || goal.y !== node.y));
