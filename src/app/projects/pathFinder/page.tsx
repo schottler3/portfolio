@@ -7,6 +7,12 @@ import { Maze } from './maze';
 import { Search } from './search';
 import Algorithm from './components/algorithm';
 
+declare global {
+    interface Window {
+        stopAnimation: () => void;
+    }
+}
+
 export default function Page() {
     const [gridSize, setGridSize] = useState(50);
     const [invalid, setInvalid] = useState(false);
@@ -15,8 +21,12 @@ export default function Page() {
     const [mouse, setMouse] = useState(false);
     const [algorithm, setAlgorithm] = useState<string>("");
     const [heuristic, setHeuristic] = useState<string>("");
+    const [isGenerated, setIsGenerated] = useState(false);
+    const [start, setStart] = useState<Node | null>(null);
+    const [goals, setGoals] = useState<Node[]>([]);
+    const [walls, setWalls] = useState<Node[]>([]);
 
-    const [activeButton, setActiveButton] = useState<HTMLElement | null>(null);
+    const [isAnimated, setIsAnimated] = useState(false);
 
     const heuristics = ["Manhattan", "Euclidean"];
     const algorithms = ["BFS", "DFS", "BestFS", "A*", "Dijkstra"];
@@ -25,7 +35,9 @@ export default function Page() {
         const newCells: ReactElement[] = [];
         for(let i = 0; i < size; i++) {
             for(let j = 0; j < size; j++) {
-                newCells.push(<Cell cords={[i, j]} state={0} key={`${i}-${j}`} />);
+                newCells.push(<Cell cords={[i, j]} state={0} startingCell={start} finishingCells={goals} walls={walls} key={`${i}-${j}`} setStart={setStart}
+                    setGoals={setGoals}
+                    setWalls={setWalls}/>);
             }
         }
         setCells(newCells);
@@ -38,7 +50,13 @@ export default function Page() {
                 newCells.push(
                     <Cell 
                         cords={[i, j]} 
-                        state={0} 
+                        state={0}
+                        startingCell={start}
+                        finishingCells={goals}
+                        walls={walls}
+                        setStart={setStart}
+                        setGoals={setGoals}
+                        setWalls={setWalls}
                         key={`clear-${Date.now()}-${i}-${j}`} 
                     />
                 );
@@ -64,40 +82,141 @@ export default function Page() {
         return path;
     }
 
-    function printSteps(steps: Node[]): void {
+    function generateMaze() {
+        const maze = new Maze(graph);
+        const newGraph = maze.generate();
+        setGraph(newGraph);
+    
+        // Create a brand new cells array
+        const newCells: ReactElement[] = [];
+        
+        newGraph.nodes.forEach(row => {
+            row.forEach(node => {
+                let cell: ReactElement;
+                if(newGraph.start && node.equals(newGraph.start)) {
+                    cell = <Cell cords={[node.x, node.y]} state={3} startingCell={start} finishingCells={goals} walls={walls} key={`${node.x}-${node.y}`} setStart={setStart}
+                    setGoals={setGoals}
+                    setWalls={setWalls} />;
+                }
+                else if(newGraph.goals && newGraph.goals.length > 0 && 
+                        newGraph.goals.some(goal => node.equals(goal))) {
+                    cell = <Cell cords={[node.x, node.y]} state={2} startingCell={start} finishingCells={goals} walls={walls} key={`${node.x}-${node.y}`} setStart={setStart}
+                    setGoals={setGoals}
+                    setWalls={setWalls}/>;
+                }
+                else if(node.open === true) {
+                    cell = <Cell cords={[node.x, node.y]} state={0} startingCell={start} finishingCells={goals} walls={walls} key={`${node.x}-${node.y}`} setStart={setStart}
+                    setGoals={setGoals}
+                    setWalls={setWalls}/>;
+                }
+                else {
+                    cell = <Cell cords={[node.x, node.y]} state={1} startingCell={start} finishingCells={goals} walls={walls} key={`${node.x}-${node.y}`} setStart={setStart}
+                    setGoals={setGoals}
+                    setWalls={setWalls}/>;
+                }
+                newCells.push(cell);
+            });
+        });
+        
+        // Set all cells at once
+        setCells(newCells);
+    }
+
+    async function solveMaze(){
+        if(isAnimated) return;
+        console.log("Solving with: ", algorithm);
+        switch(algorithm) {
+            case "BFS":
+                const searchBFS = new Search();
+                const stepsTaken: {time: number, node: Node}[] = searchBFS.BFS(graph);
+                await printSteps(stepsTaken.map(step => step.node));
+                
+                let solution: Node[] = construct_path(stepsTaken[stepsTaken.length - 1].node);
+                await printSteps(solution);
+                break;
+            case "DFS":
+                // Commented out to avoid unused variable warning
+                // const searchDFS = new Search();
+                //const stepsDFS: Node[] = searchDFS.DFS(graph);
+                //printSteps(stepsDFS);
+                break;
+            case "BestFS":
+                break;
+            case "A*":
+                break;
+            case "Dijkstra":
+                break;
+            default:
+                break;
+        }
+    }
+
+    async function printSteps(steps: Node[]): Promise<void> {
+        setIsAnimated(true);
+
+        let shouldContinue: boolean = true;
+
+        window.stopAnimation = () => {
+            shouldContinue = false;
+            setIsAnimated(false);
+        }
+
         setCells(cells.map((cell) => {
             const cellProps = (cell as any).props;
             const [x, y] = cellProps.cords;
             
             if (cellProps.state === 4) {
-                return <Cell cords={[x, y]} state={0} key={`${x}-${y}`} />;
-            }
+                return <Cell cords={[x, y]} state={0} startingCell={start} finishingCells={goals} walls={walls} key={`${x}-${y}`} setStart={setStart}
+                setGoals={setGoals}
+                setWalls={setWalls}/>;
+            } 
             return cell;
         }));
         
         let i = 0;
         const animationSpeed = 50;
+
+        let timeoutId: NodeJS.Timeout;
         
-        const animateStep = () => {
-            if (i >= steps.length) return;
+        const animateStep = async () => {
+            if (!shouldContinue) {
+                setIsAnimated(false);
+                clearTimeout(timeoutId);
+                return;
+            }
             
-            setCells((currentCells) => {
-                return currentCells.map((cell) => {
-                    const cellProps = (cell as any).props;
-                    const [x, y] = cellProps.cords;
-                    if(!steps[i]) return cell;
-                    if (steps[i].x === x && steps[i].y === y) {
-                        return <Cell cords={[x, y]} state={4} key={`${x}-${y}`} />;
-                    }
-                    return cell;
+            if (i >= steps.length) {
+                clearTimeout(timeoutId);
+                setIsAnimated(false); // Make sure to set this to false when done
+                return;
+            }
+            
+            // Update the grid
+            await new Promise<void>(resolve => {
+                setCells((currentCells) => {
+                    const newCells = currentCells.map((cell) => {
+                        const cellProps = (cell as any).props;
+                        const [x, y] = cellProps.cords;
+                        if(!steps[i]) return cell;
+                        if (steps[i].x === x && steps[i].y === y) {
+                            return <Cell cords={[x, y]} state={4} startingCell={start} finishingCells={goals} walls={walls} key={`${x}-${y}`} setStart={setStart}
+                            setGoals={setGoals}
+                            setWalls={setWalls}/>;
+                        }
+                        return cell;
+                    });
+                    
+                    // After the update is scheduled
+                    setTimeout(resolve, 10);
+                    return newCells;
                 });
             });
             
             i++;
-            setTimeout(animateStep, animationSpeed);
+            timeoutId = setTimeout(() => animateStep(), animationSpeed);
         };
         
-        setTimeout(animateStep, 100);
+        timeoutId = setTimeout(animateStep, 100);
     }
 
     
@@ -202,62 +321,40 @@ export default function Page() {
                         </div>
                         <div className="flex flex-row items-center *:w-full *:h-full *:p-2 *:bg-blue1 gap-2 text-center font-bold">
                             <button className="hover:bg-aqua1 hover:text-blue1 rounded-md" 
+                                disabled={isAnimated}
                                 onClick={() => {
-                                    const maze = new Maze(graph);
-                                    setGraph(maze.generate());
-
-                                graph.nodes.forEach(row => {
-                                    row.forEach(node => {
-                                        let cell: ReactElement;
-                                        if(graph.start && node.equals(graph.start)) {
-                                            cell = <Cell cords={[node.x, node.y]} state={3} key={`${node.x}-${node.y}`} />;
-                                        }
-                                        else if(graph.goals && graph.goals.length > 0 && graph.goals.some(goal => node.equals(goal))) {
-                                            cell = <Cell cords={[node.x, node.y]} state={2} key={`${node.x}-${node.y}`} />;
-                                        }
-                                        else if(node.open === true) {
-                                            cell = <Cell cords={[node.x, node.y]} state={0} key={`${node.x}-${node.y}`} />;
-                                        }
-                                        else {
-                                            cell = <Cell cords={[node.x, node.y]} state={1} key={`${node.x}-${node.y}`} />;
-                                        }
-                                        setCells((prev) => {
-                                            const newCells = [...prev];
-                                            const index = newCells.findIndex((cell) => cell.key === `${node.x}-${node.y}`);
-                                            newCells[index] = cell;
-                                            return newCells;
-                                        });
-                                    });
-                                });
-                            }}>Generate Maze</button>
-                            <button className="hover:bg-aqua1 hover:text-blue1 rounded-md"
-                                onClick={() => {
-
-                                    console.log("Solving with: ", algorithm);
-                                    
-                                    switch(algorithm) {
-                                        case "BFS":
-                                            const searchBFS = new Search();
-                                            const stepsTaken: {time: number, node: Node}[] = searchBFS.BFS(graph);
-                                            printSteps(stepsTaken.map(step => step.node));
-                                            let solution: Node[] = construct_path(stepsTaken[stepsTaken.length - 1].node);
-                                            printSteps(solution);
-                                            break;
-                                        case "DFS":
-                                            const searchDFS = new Search();
-                                            //const stepsDFS: Node[] = searchDFS.DFS(graph);
-                                            //printSteps(stepsDFS);
-                                            break;
-                                        case "BestFS":
-                                            break;
-                                        case "A":
-                                            break;
-                                        case "Dijkstra":
-                                            break;
-                                        default:
-                                            break;
+                                    if(isGenerated){
+                                        clearGrid();
                                     }
+                                    generateMaze();
+                                }}>Generate Maze</button>
+                            <button className="hover:bg-aqua1 hover:text-blue1 rounded-md"
+                            disabled={isAnimated}
+                                onClick={() => {
+                                    let newGraph = new Graph(gridSize);
+                                    if(!start){
+                                        console.log("Start node is null");
+                                        return;
+                                    }
+                                    if(!goals){
+                                        console.log("Goal node is null");
+                                        return;
+                                    }
+                                    if(!walls)
+                                        console.log("Wall node is null");
 
+                                    newGraph.setStart(start.x, start.y);
+                                    walls?.forEach((wall) => {
+                                        newGraph.setOpen(wall.x, wall.y, false);
+                                    });
+                                    newGraph.setOpen(start.x, start.y, true);
+                                    goals?.forEach((goal) => {
+                                        newGraph.addGoal(goal.x, goal.y);
+                                    });
+
+                                    setGraph(newGraph);
+                                    
+                                    solveMaze();
                                 }}>Solve</button>
                         </div>
                     </div>
@@ -290,23 +387,6 @@ export default function Page() {
                             gridTemplateRows: `repeat(${gridSize}, 1fr)`,
                             gap: '0'
                         }}
-                    onMouseDown={(e) => {
-                        const target = e.target as HTMLDivElement;
-                        if (target.className.includes("aspect-square")) {
-                            setMouse(true);
-                        }
-                    }}
-                    onMouseUp={() => {
-                        setMouse(false);
-                    }}
-                    onMouseOver={(e) => {
-                        if (mouse) {
-                            if(e.currentTarget.classList.contains("cell")){
-                                const x = e.currentTarget.getAttribute("data-x");
-                                const y = e.currentTarget.getAttribute("data-y");
-                            }
-                        }
-                    }}
                     >
                         {cells}
                     </div>

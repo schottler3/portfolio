@@ -1,12 +1,22 @@
 "use client"
-import React from 'react';
+import React, { use, useEffect, useState } from 'react';
+import { Node } from '../structures';
 
 interface CellItemProps {
+    startingCell: Node | null;
+    finishingCells: Node[];
+    walls: Node[];
     cords: [number, number];
     state: number;
+    node: Node;
+    setStart: (start: Node | null) => void;
+    setGoals: (goals: Node[]) => void;
+    setWalls: (walls: Node[]) => void;
 }
 
-export default function Cell({cords, state}: CellItemProps) {
+export default function Cell({cords, state, startingCell, finishingCells, walls, setStart, setGoals, setWalls, node}: CellItemProps) {
+
+    const [cellNode, setCellNode] = useState<Node | null>(null);
 
     const colors = {
         0: "bg-white",
@@ -15,6 +25,11 @@ export default function Cell({cords, state}: CellItemProps) {
         3: "bg-red-500",
         4: "bg-blue-500"
     };
+
+    useEffect(() => {
+        setCellNode(new Node(cords[0], cords[1], true));
+    }, []);
+        
 
     return (
         <div 
@@ -28,6 +43,24 @@ export default function Cell({cords, state}: CellItemProps) {
                 if (x && y) {
                     console.log(`Clicked on cell: ${x}, ${y}`);
                     state += 1;
+                    if(state === 2){
+                        if(finishingCells.some(goal => goal.x === node.x && goal.y === node.y)){
+                            setGoals(finishingCells.filter(goal => goal.x !== node.x || goal.y !== node.y));
+                        }
+                        setStart(node);
+                    }
+                    else if (state === 3){
+                        if(walls.some(wall => wall.x === node.x && wall.y === node.y)){
+                            setWalls(walls.filter(wall => wall.x !== node.x || wall.y !== node.y));
+                        }
+                        setGoals([...finishingCells, node]);
+                    }
+                    else if (state === 0){
+                        if(startingCell && startingCell.x === node.x && startingCell.y === node.y){
+                            setStart(null);
+                        }
+                        setWalls([...walls, node]);
+                    }
                     if (state > 3) {
                         state = 0;
                     }
