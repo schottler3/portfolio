@@ -48,6 +48,7 @@
   will-change: transform, opacity;
   transition: opacity 2s ease-in-out;
   position: absolute;
+  background-image: url('/images/snowflake.png');
 }
 
 .snowflake::before {

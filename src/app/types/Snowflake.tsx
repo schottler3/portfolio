@@ -5,4 +5,5 @@ export interface Snowflake {
   size: number;
   clicked: boolean;
   fallDuration: number;
+  onClick: CallableFunction;
 }

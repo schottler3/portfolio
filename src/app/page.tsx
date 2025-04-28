@@ -11,18 +11,19 @@ export default function Home() {
 
   //Snowflake generation
   useEffect(() => {
-    setSnowFlakes(Array.from({ length: 50 }, (_, i) => ({
+    return setSnowFlakes(Array.from({ length: 50 }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 50,
       size: Math.random() * 16 + 8,
       clicked: false,
       fallDuration: Math.random() * 32 + 32,
+      onClick: () => handleSnowflakeClick(i),
     })));
   }, []);
 
   //Snowflake click handler
-  const handleSnowflakeClick = useCallback((id: number) => {
+  function handleSnowflakeClick(id: number)  {
     console.log('clicked', id);
     setSnowFlakes(prevFlakes => 
       prevFlakes.map(flake => 
@@ -31,7 +32,7 @@ export default function Home() {
           : flake
       )
     );
-  }, []);
+  }
 
   //Snowflake opacity transition end handler
   const handleOpacityEnd = useCallback((id: number, event: React.TransitionEvent<HTMLDivElement>) => {
@@ -63,10 +64,13 @@ export default function Home() {
         <div className="overflow-hidden z-10">
           {snowFlakes.map(flake => (
             <div
+              id={`snowflake-${flake.id}`}
               onClick={() => handleSnowflakeClick(flake.id)}
               onTransitionEnd={(e) => handleOpacityEnd(flake.id, e)}
               key={flake.id}
-              className={`absolute snowflake z-10 hover:cursor-pointer ${flake.clicked ? 'clicked' : ''}`}
+              className={`absolute z-10 hover:cursor-pointer ${
+                flake.clicked ? 'raindrop' : 'snowflake'
+              } ${flake.clicked ? 'clicked' : ''}`}
               style={{
                 left: `${flake.x}vw`,
                 top: `${flake.y}vh`,
@@ -79,15 +83,15 @@ export default function Home() {
             />
           ))}
         </div>
-        <div className="w-full z-40 relative">
+        <div className="w-full z-0 relative">
           <div className="pl-[10vw] pt-[32vh]">
-            <h1 className="text-aqua1 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold duration-500 z-40">
+            <h1 className="text-aqua1 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold duration-500 z-0">
               Welcome to
             </h1>
-            <h1 className="text-aqua1 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold pt-2 duration-500 z-40">
+            <h1 className="text-aqua1 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold pt-2 duration-500 z-0">
               LucasSchottler.dev
             </h1>
-            <h1 className="text-blue1 text-lg sm:text-xl md:text-2xl lg:text-3xl pt-10 duration-500 z-40">
+            <h1 className="text-blue1 text-lg sm:text-xl md:text-2xl lg:text-3xl pt-10 duration-500 z-0">
               A portfolio site by Lucas Schottler
             </h1>
           </div>
