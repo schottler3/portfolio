@@ -125,12 +125,12 @@ export default function About() {
                 return (
                   <div className="w-full h-[50vh] md:h-[95vh] overflow-hidden relative">
                     <iframe
-                      src="./documents/LucasSchottler.pdf"
+                      src="/documents/LucasSchottler.pdf"
                       className="w-full h-full"
                       title="Lucas Schottler Resume"
                     />
                     <a 
-                      href="./documents/LucasSchottler.pdf" 
+                      href="/documents/LucasSchottler.pdf" 
                       className="absolute top-8 right-2 bg-navy text-aqua1 hover:text-white hover:bg-blue1 px-4 py-2 rounded-md"
                       download
                     >
@@ -142,12 +142,12 @@ export default function About() {
                 return (
                   <div className="w-full h-[50vh] md:h-[95vh] overflow-hidden relative">
                     <iframe
-                      src="./documents/CV.pdf"
+                      src="/documents/CV.pdf"
                       className="w-full h-full"
                       title="Lucas Schottler CV"
                     />
                     <a 
-                      href="./documents/CV.pdf" 
+                      href="/documents/CV.pdf" 
                       className="absolute top-8 right-2 bg-navy text-aqua1 hover:text-white hover:bg-blue1 px-4 py-2 rounded-md"
                       download
                     >
