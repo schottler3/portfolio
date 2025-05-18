@@ -5,6 +5,10 @@ import projectData from './projects.json' assert { type: 'json' };
 import ProjectItem from '../components/ProjectItem';
 import Storage from '../storage';
 
+interface PdfItem {
+    url: string;
+}
+
 interface ProjectItemType {
     index: number;
     start: string;
@@ -18,7 +22,7 @@ interface ProjectItemType {
         live?: string;
         git?: string;
     };
-    pdfs?: string[];
+    pdfs?: PdfItem[];
 }
 
 export default function Projects() {
@@ -137,7 +141,6 @@ export default function Projects() {
                             {selectedProject && selectedProject.pdfs && (
                                 <div className="p-4 flex flex-row">
                                     {selectedProject.pdfs.map((pdf, index) => {
-                                        console.log("PDF: " + pdf);
                                         return (
                                             <div className="w-full max-w-4xl aspect-video" key={index}>
                                                 <iframe
