@@ -4,7 +4,14 @@
         "title": "Text Based Adventure Game",
         "start": "Fall 2020",
         "tagline": "My First Programming Project",
-        "description": ["A text-based game created in Java that utilizes class structures and object-oriented programming. The game is a simple text-based adventure where the user can explore a dungeon, fight monsters, collect items, and progress through levels."],
+        "description": [
+            "Created a text-based RPG adventure game in Java that demonstrates strong object-oriented programming principles. The game features a comprehensive combat system, inventory management, equipment upgrades, and a shop interface. Players can equip different weapons with varying stats, use consumable items like health potions, and encounter boss enemies with unique abilities. The implementation showcases the ability to create complex interactive systems with multiple interconnected classes and maintain game state across various player actions.",
+            "The architecture follows a modular design with separate classes handling distinct gameplay elements - Player, Boss, Items, Balance, Strength, Level, and Equip - demonstrating an understanding of encapsulation and class relationships. Implemented sophisticated game mechanics including randomized encounters, variable attack patterns, and multiple progression systems. The shop system features dynamic pricing and inventory management, while the boss encounters include unique mechanics like identification systems and enrage abilities to increase challenge and engagement.",
+            "This project highlights proficiency in Java, including class design, user input handling, conditional logic, and state management across complex systems. The combat loop demonstrates the ability to create engaging gameplay through varied options and strategic choices. Implemented multiple subsystems that interact seamlessly, including an equipment system with different weapon types and effects, a currency system with upgrade paths, and a level progression system with key-based unlocks. The project shows the capability to develop complete interactive experiences with layered mechanics that provide both challenge and player agency."
+        ],
+        "links": {
+            "git": "https://github.com/schottler3/DungeonCrawl"
+        },
         "images": [
             "/projects/adventure/adventure1.png",
             "/projects/adventure/adventure2.png",
@@ -16,7 +23,12 @@
         "title": "Dice Simulator",
         "start": "Fall 2020",
         "tagline": "My First Graphical Program",
-        "description": ["Created in my AP Computer Science class, this project was my first experience with programming. It is a simple dice simulator that allows the user to roll dice."],
+        "description": [
+            "Developed an interactive dice physics simulation application using Java Swing framework. The project features a realistic physics engine that simulates dice movement with gravity, collision detection, and bouncing mechanics. Implemented responsive dice that roll when triggered by user input (spacebar) and display appropriate dot patterns based on randomly generated values. The application renders two dice with accurate visual representations that interact naturally with screen boundaries and with each other through collision.",
+            "Enhanced the user experience through fluid animation achieved by implementing a consistent frame rate system and efficient refresh cycles. The simulation incorporates realistic physics behaviors including velocity changes, friction effects, and gravity simulation. Key technical achievements include collision detection algorithms, graphical rendering of dice faces with proper dot patterns, and an event-driven architecture to handle user input. The project demonstrates strong object-oriented programming principles with clear separation of concerns between physics simulation, rendering, and application control."
+        ],
+        "links":{
+            "git": "https://github.com/schottler3/Dice"},
         "video": ["gMlLK8fD3hM"]
     },
     {
@@ -32,14 +44,31 @@
         "title": "Fractal Drawer",
         "start": "Spring 2022",
         "tagline": "Draws Fractals Using Recursion",
-        "description": ["A project created in my Data Structures class. This project uses recursion to draw fractals. The user can select the type of fractal."]
+        "description": ["Developed a recursive fractal generation application in Java leveraging object-oriented principles to create visually complex patterns from simple geometric shapes. The program allows users to select from multiple base shapes (circles, rectangles, triangles) and generates intricate fractals through recursive function calls with precise position and size adjustments. Each implementation features dynamic color patterns based on recursion level and accurate area calculation functionality. The program incorporates custom shape classes, canvas rendering for visualization, and user input handling through command-line interface. This project demonstrates strong competencies in recursive algorithm design, geometric calculations, object-oriented programming, and creating interactive user experiences."],
+        "links": {
+            "git": "https://github.com/schottler3/Fractal"
+        },
+        "images": [
+            "/projects/fractal/FractalCircle.png",
+            "/projects/fractal/FractalRectangle.png",
+            "/projects/fractal/FractalTriangle.png"
+        ]
     },
     {
         "index": 4,
         "title": "Text Based Battleship",
         "start": "Spring 2022",
         "tagline": "Character Display Based Battleship",
-        "description": ["This project is a text based battleship game where the user can play against a randomly generated board. The game is displayed in a character grid, and allows for multiple play types."]
+        "description": [
+            "Developed a console-based Battleship game application in Java featuring multiple gameplay mechanics and an interactive command-line interface. The program implements a robust architecture using object-oriented principles with a clear separation between the Game logic controller and Board representation. Key features include various attack options (standard fire, missile strikes, drone reconnaissance, and scanner functionality), customizable board dimensions, comprehensive gameplay statistics tracking, and an optional debug mode for development testing.",
+            "The implementation showcases strong software engineering practices including structured program flow control, input validation, user-friendly command options, and state management throughout the gameplay lifecycle. The modular design allows for flexibility in gameplay parameters while maintaining a consistent user experience through well-defined interface methods. Technical highlights include effective use of Java's switch expressions for command handling, object composition for game state management, and thoughtful implementation of game mechanics that create an engaging tactical experience for users."
+        ],
+        "links": {
+            "git": "https://github.com/schottler3/Battleship"
+        },
+        "video": [
+            "vLy1K6wDbkI"
+        ]
     },
     {
         "index": 5,
@@ -279,7 +308,7 @@
     {
         "index": 27,
         "title": "Personal Website",
-        "start": "September 2023",
+        "start": "Fall 2023",
         "end": "Current",
         "tagline": "Showcasing My Work and Skills",
         "description": [
