@@ -46,7 +46,16 @@
         "title": "Java Technical Description",
         "start": "Spring 2022",
         "tagline": "Java Introduction Manual",
-        "description":["A short introduction for the Java programming language for beginners. This project was created for my Technical Writing class."]
+        "description":[
+            "Authored a comprehensive introduction to Java methods and their implementation for programming beginners. This technical documentation explains core concepts including access modifiers, return types, parameters, and method bodies with clear examples and structured organization.",
+            "Demonstrated technical writing skills by creating a well-organized manual that breaks down complex programming concepts into digestible sections. The document follows professional documentation standards with proper formatting, table of contents, and references.",
+            "Created for my Technical Writing course, this project showcases my ability to communicate technical information clearly while maintaining accuracy and readability for a beginner audience."
+        ],
+        "pdfs": [
+            {
+                "url": "https://docs.google.com/document/d/e/2PACX-1vQZGIZAJHOApUA5_vVGngvgFf6-j37qeNnXQDZ2nPIz7xiCgJKOoJCTb37qtNdLRQ/pub?embedded=true"
+            }
+        ]
     },
     {
         "index": 6,
@@ -72,7 +81,13 @@
         "links": {
             "live": "https://schottler3.github.io",
             "git": "https://github.com/schottler3/schottler3.github.io"
-        }
+        },
+        "images": [
+            "/projects/schottler3.github.io/1.png",
+            "/projects/schottler3.github.io/2.png",
+            "/projects/schottler3.github.io/3.png",
+            "/projects/schottler3.github.io/4.png"
+        ]
     },
     {
         "index": 9,

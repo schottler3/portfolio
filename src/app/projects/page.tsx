@@ -18,6 +18,7 @@ interface ProjectItemType {
         live?: string;
         git?: string;
     };
+    pdfs?: string[];
 }
 
 export default function Projects() {
@@ -25,6 +26,7 @@ export default function Projects() {
     const projectItems: ProjectItemType[] = projectData as ProjectItemType[];
     const [selectedProject, setSelectedProject] = useState<ProjectItemType>(projectItems[0]);
     const [imageUrls, setImageUrls] = useState<{ [key: string]: string }>({});
+    const [pdfs, setPdfs] = useState<{ [key: string]: string }>({});
 
     useEffect(() => {
         if (selectedProject && selectedProject.images) {
@@ -129,6 +131,26 @@ export default function Projects() {
                                     );
                                 })}
                             </div>
+                            )}
+                        </div>
+                        <div>
+                            {selectedProject && selectedProject.pdfs && (
+                                <div className="p-4 flex flex-row">
+                                    {selectedProject.pdfs.map((pdf, index) => {
+                                        console.log("PDF: " + pdf);
+                                        return (
+                                            <div className="w-full max-w-4xl aspect-video" key={index}>
+                                                <iframe
+                                                    className="w-full h-full"
+                                                    src={pdf.url}
+                                                    title="PDF viewer"
+                                                    allow="picture-in-picture"
+                                                    allowFullScreen
+                                                />
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             )}
                         </div>
                     </div>
