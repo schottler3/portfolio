@@ -4,30 +4,13 @@ import Header from '../components/Header';
 import projectData from './projects.json' assert { type: 'json' };
 import ProjectItem from '../components/ProjectItem';
 import Storage from '../storage';
-
-interface PdfItem {
-    url: string;
-}
-
-interface ProjectItemType {
-    index: number;
-    start: string;
-    end?: string;
-    title: string;
-    tagline: string;
-    description: string[];
-    images?: string[];
-    video?: string[];
-    links?: {
-        live?: string;
-        git?: string;
-    };
-    pdfs?: PdfItem[];
-}
+import Sort from './Sort';
+import { ProjectItemType, PdfItem } from './types';
 
 export default function Projects() {
 
-    const projectItems: ProjectItemType[] = projectData as ProjectItemType[];
+    const allProjects: ProjectItemType[] = projectData as ProjectItemType[];
+    const [projectItems, setProjectItems] = useState<ProjectItemType[]>(allProjects);
     const [selectedProject, setSelectedProject] = useState<ProjectItemType>(projectItems[0]);
     const [imageUrls, setImageUrls] = useState<{ [key: string]: string }>({});
     const [pdfs, setPdfs] = useState<{ [key: string]: string }>({});
@@ -53,18 +36,26 @@ export default function Projects() {
         <div className="bg-charcoal min-h-screen">
             <Header />
             <div className="flex flex-col sm:grid sm:grid-cols-2 h-[100vh]">
-                <div className="flex sm:grid max-h-[50vh] sm:min-h-full overflow-y-auto sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8 p-8 pt-32">
-                    {projectItems.map(item => (
-                        <div 
-                        key={item.index} 
-                        className="aspect-[3/2] transform hover:scale-110 hover:cursor-pointer transition-all duration-300 ease-in-out origin-center"
-                        onClick={() => setSelectedProject(item)}
-                        >
-                            <ProjectItem
-                            title={item.title}
-                            />
-                        </div>
-                    ))}
+                <div className="flex max-h-[50vh] flex-col sm:min-h-full overflow-y-auto px-8">
+                    <div className="pt-24 pb-8">
+                        <Sort 
+                            projectItems={projectItems}
+                            setProjectItems={setProjectItems} 
+                        />
+                    </div>
+                    <div className="grid sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8 pb-8">
+                        {projectItems.map(item => (
+                            <div 
+                            key={item.index} 
+                            className="aspect-[3/2] transform hover:scale-110 hover:cursor-pointer transition-all duration-300 ease-in-out origin-center"
+                            onClick={() => setSelectedProject(item)}
+                            >
+                                <ProjectItem
+                                title={item.title}
+                                />
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <div className="bg-gray1 h-full overflow-y-auto">
                     <div className="flex flex-col h-full pt-6 sm:pt-32">
