@@ -321,5 +321,17 @@
             "git": "https://github.com/schottler3/portfolio"
         }
 
+    },
+    {
+        "index": 28,
+        "title": "Earthpol Scraper",
+        "start": "Summer 2025",
+        "tagline": "Scraper for Earthpol",
+        "description": [
+            "Using the public Earthpol API to display interesting information."
+        ],
+        "links": {
+            "live": "/projects/earthpol"
+        }
     }
 ]
