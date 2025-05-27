@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {Status, Stats, Player, Coordinates} from "./types";
 import {Town} from "./Town"
 
@@ -56,58 +56,70 @@ export function nationCast(json: any): Nation {
     };
 }
 
-export default function Nation({ name }: { name: string }) {
+export default function Nation({ name, collapse}: { name: string, collapse: boolean}) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [towns, setTowns] = useState<{name: string}[] | null>(null);
     const [nationData, setNationData] = useState<{data: Nation} | null>(null);
-    const [expanded, setExpanded] = useState(false);
+    const [isRendered, setIsRendered] = useState<boolean>(false);
+    const [isExpanded, setIsExpanded] = useState(false);
 
-    const handleClick = async() => {
-        // Toggle expanded state if we already have data
-        if(towns || error) {
-            setExpanded(!expanded);
+    useEffect(() => {
+        if(collapse){
+            setIsExpanded(true);
+            renderNation(name);
+        }
+        else{
+            setIsExpanded(false);
+        }
+    }, [collapse]);
+
+    const renderNation = async (nationName: string) => {
+        setLoading(true);
+        setError(null);
+        try {
+            // First fetch to get nation data
+            const response = await fetch('/api/earthpol/nations', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    query: [nationName]
+                }),
+            });
+            
+            if (!response.ok) {
+                throw new Error(`Error fetching nation data. Status: ${response.status}`);
+            }
+            
+            const nationDataInc = await response.json();
+            console.log('Nation data:', nationDataInc);
+
+            const nationObject = nationCast(nationDataInc[0]);
+            setNationData({ data: nationObject });
+            setTowns(nationObject.towns);
+            setLoading(false);
+            setNationData({data: nationObject})
+        } catch (error: any) {
+            console.error('Error:', error);
+            setError(error.message || 'An error occurred fetching nation data');
+            return undefined;
+        }
+    };
+
+    const handleClick = async () => {
+        if (towns || error) {
+            setIsExpanded(!isExpanded);
             return;
         }
         
-        // Only fetch if we're expanding and don't have data yet
-        if(!expanded) {
-            setLoading(true);
-            setError(null);
-            try {
-                // First fetch to get nation data
-                const response = await fetch('/api/earthpol/nations', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        query: [name]
-                    }),
-                });
-                
-                if (!response.ok) {
-                    throw new Error(`Error fetching nation data. Status: ${response.status}`);
-                }
-                
-                const nationDataInc = await response.json();
-                console.log('Nation data:', nationDataInc);
-
-                const nationObject = nationCast(nationDataInc[0]);
-                setNationData({ data: nationObject });
-                setTowns(nationObject.towns);
-            } catch (error: any) {
-                console.error('Error:', error);
-                setError(error.message || 'An error occurred fetching nation data');
-            } finally {
-                setLoading(false);
-                setExpanded(true);
-            }
+        if (!isExpanded) {
+            renderNation(name);
         } else {
-            setExpanded(false);
+            setIsExpanded(false);
         }
-    }
-
+    };
 
     return (
         <>
@@ -116,10 +128,10 @@ export default function Nation({ name }: { name: string }) {
                     <div onClick={handleClick} className={`
                         relative flex items-center gap-2
                         text-2xl font-bold hover:cursor-pointer
-                        ${expanded ? 'text-aqua1' : 'text-white hover:text-blue1'}
+                        ${isExpanded ? 'text-aqua1' : 'text-white hover:text-blue1'}
                     `}>
                         <svg 
-                            className={`w-4 h-4 transition-transform ${expanded ? 'rotate-180' : ''}`} 
+                            className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`} 
                             xmlns="http://www.w3.org/2000/svg" 
                             viewBox="0 0 24 24" 
                             fill="none" 
@@ -137,7 +149,7 @@ export default function Nation({ name }: { name: string }) {
                 <div 
                 className={`
                     overflow-hidden transition-all duration-300 ease-in-out
-                    ${expanded 
+                    ${isExpanded 
                     ? 'max-h-[500px] opacity-100 translate-y-0' 
                     : 'max-h-0 opacity-0 -translate-y-2'
                     }
