@@ -110,29 +110,57 @@ export default function Nation({ name }: { name: string }) {
 
 
     return (
-        <div className="flex flex-col p-2">
-            
-            <div>
-                <div onClick={handleClick} className={expanded ? `text-aqua1 text-2xl font-bold hover:cursor-pointer` : `text-white font-bold text-2xl hover:cursor-pointer hover:text-blue1`}>
-                    {name}
+        <>
+            <div className="flex flex-col p-2">
+                <div className="flex gap-2 items-center">
+                    <div onClick={handleClick} className={`
+                        relative flex items-center gap-2
+                        text-2xl font-bold hover:cursor-pointer
+                        ${expanded ? 'text-aqua1' : 'text-white hover:text-blue1'}
+                    `}>
+                        <svg 
+                            className={`w-4 h-4 transition-transform ${expanded ? 'rotate-180' : ''}`} 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            viewBox="0 0 24 24" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            strokeWidth="2"
+                        >
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        {name}
+                    </div>
+                    <h2 className="text-md text-gray-400">
+                        {nationData?.data?.board != "/nation set board [msg]" ? nationData?.data?.board : ""}
+                    </h2>
                 </div>
-                <h2>
-
-                </h2>
-            </div>
-            <div className={expanded ? `block text-white hover:cursor-pointer` : `hidden`}>
-                {towns && towns.length > 0 && (
-                    <>
-                        <div className="pl-2 mb-2">Member Towns:</div>
+                <div 
+                className={`
+                    overflow-hidden transition-all duration-300 ease-in-out
+                    ${expanded 
+                    ? 'max-h-[500px] opacity-100 translate-y-0' 
+                    : 'max-h-0 opacity-0 -translate-y-2'
+                    }
+                `}
+                >
+                    {loading && <div className="pl-2">Loading...</div>}
+                    {error && <div className="pl-2 text-red-500">{error}</div>}
+                    {towns && towns.length > 0 && (
+                    <div className="text-gray-400 pl-2 mb-2">
+                        <div className="">Member Towns:</div>
                         {towns.map((item: any, index: number) => (
-                            <div key={`town-${index}`} className="pl-4 flex flex-col">
-                                <div>{item.name}</div>
+                            <div key={`town-${index}`} className="flex flex-col">
+                            <div>{item.name}</div>
                             </div>
                         ))}
-                    </>
-                )}
+                    </div>
+                    )}
+                    {towns && towns.length === 0 && (
+                        <div className="pl-2">No towns found</div>
+                    )}
+                </div>
             </div>
-        </div>
+        </>
     )
 }
     

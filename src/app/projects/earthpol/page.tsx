@@ -41,7 +41,7 @@ export default function EarthPol() {
     }, [])
 
     return (
-        <div className="bg-charcoal min-h-screen">
+        <div className="bg-charcoal min-h-screen pl-16 pt-16">
             {loading ? (
                 <div className="text-white p-4">Loading...</div>
             ) : error ? (
