@@ -185,7 +185,10 @@
         "title": "Raytracer",
         "start": "Spring 2024",
         "tagline": "A Raytracer Built From Scratch",
-        "description": ["Implementation of a raytracer from scratch. This project was created for my Computer Graphics class. The project includes a scene description file that describes the objects in the scene, and the program renders the scene using raytracing. It also implements shadows, textures, reflections, and refractions."]
+        "description": ["Implementation of a raytracer from scratch. This project was created for my Computer Graphics class. The project includes a scene description file that describes the objects in the scene, and the program renders the scene using raytracing. It also implements shadows, textures, reflections, and refractions."],
+        "links":{
+            "git": "https://github.com/schottler3/Raytracer"
+        }
     },
     {
         "index": 18,

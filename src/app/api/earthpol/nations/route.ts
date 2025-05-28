@@ -10,18 +10,20 @@ export async function GET() {
     });
     
     if (!response.ok) {
-      throw new Error(`Error! Status: ${response.status}`);
+      console.log(`Error! Status: ${response.status}`);
+      return NextResponse.json(
+        null
+      );
     }
     const data = await response.json();
     if (!data) {
-        throw new Error('No data found');
+        console.log('No data found');
     }
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error fetching EarthPol data:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch data from EarthPol API' },
-      { status: 500 }
+      null
     );
   }
 }
@@ -42,20 +44,20 @@ export async function POST(request: Request) {
     });
     
     if (!response.ok) {
-      throw new Error(`Error! Status: ${response.status}`);
+      console.log(`Error! Status: ${response.status}`);
+      return null;
     }
     
     const data = await response.json();
     if (!data) {
-      throw new Error('No data found');
+      console.log('No data found');
     }
     
     return NextResponse.json(data);
   } catch (error) {
     console.error('Error querying EarthPol nations:', error);
     return NextResponse.json(
-      { error: 'Failed to query data from EarthPol API' },
-      { status: 500 }
+      null
     );
   }
 }
