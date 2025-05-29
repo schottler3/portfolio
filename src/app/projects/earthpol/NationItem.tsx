@@ -1,9 +1,9 @@
 import { useState, useEffect} from "react";
-import {type Nation, type ReactStateHandler} from "./types";
+import {Town, type Nation, type ReactStateHandler} from "./types";
 import { renderNation } from "./queries";
 import TownItem from "./TownItem";
 
-export default function NationItem({ name, collapse, selectedItem, setSelectedItem}: { name: string, collapse: boolean, selectedItem:string | null, setSelectedItem: ReactStateHandler}) {
+export default function NationItem({ name, collapse, selectedItem, setSelectedItem}: { name: string, collapse: boolean, selectedItem:Nation | Town | null, setSelectedItem: ReactStateHandler}) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [towns, setTowns] = useState<{name: string}[] | null>(null);
@@ -29,7 +29,7 @@ export default function NationItem({ name, collapse, selectedItem, setSelectedIt
     }, [collapse]);
 
     function handleNationClick() : void {
-        setSelectedItem(name);
+        setSelectedItem(nationData);
     }
 
     function handleExpandClick() : void {

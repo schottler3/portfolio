@@ -2,23 +2,36 @@
 import { Dispatch, SetStateAction } from "react"
 
 export type Nation = {
-    allies: Nation[];
+    allies: [
+        {
+            name: string,
+            uuid: string
+        }
+    ]
     board: string;
-    capital: Town;
+    capital: {
+        name: string,
+        uuid: string
+    }
     coordinates: {
-        "spawn": {
-            "world": string,
-            "x": number,
-            "y": number,
-            "z": number,
-            "pitch": number,
-            "yaw": number
+        spawn: {
+            world: string,
+            x: number,
+            y: number,
+            z: number,
+            pitch: number,
+            yaw: number
         }
     };
-    enemies: Nation[];
+    enemies: [
+        {
+            name: string,
+            uuid: string
+        }
+    ]
     king: {
-        "name": string,
-        "uuid": string
+        name: string,
+        uuid: string
     };
     name: string;
     ranks: {
@@ -28,8 +41,13 @@ export type Nation = {
         soldier: [];
         general: [];
     };
-    residents: [];
-    sanctioned: Town[];
+    residents: [
+        {
+            name: string,
+            uuid: string
+        }
+    ]
+    sanctioned: string[];
     stats: {
         numTownBlocks: number;
         numResidents: number;
@@ -46,7 +64,12 @@ export type Nation = {
     timestamps: {
         registered: number;
     };
-    towns: Town[];
+    towns: [
+        {
+            name: string,
+            uuid: string
+        }
+    ]
     uuid: string;
 }
 
@@ -59,7 +82,10 @@ export type Town = {
         name: string;
         uuid: string;
     };
-    nation: Nation | null;
+    nation: {
+        name: string,
+        uuid: string
+    }
     timestamps: {
         registered: number;
         joinedNationAt?: number;
@@ -131,7 +157,15 @@ export type Player = {
   profileActions: any[];
 }
 
-export type ReactStateHandler = Dispatch<SetStateAction<string | null>>;
+export type ReactStateHandler = Dispatch<SetStateAction<Nation | Town | null>>;
+
+export function isTown(item: Town | Nation | null): item is Town {
+  return item !== null && 'nation' in item;
+}
+
+export function isNation(item: Town | Nation | null): item is Nation {
+  return item !== null && 'towns' in item;
+}
 
 export const FAKENATIONS = 
 [

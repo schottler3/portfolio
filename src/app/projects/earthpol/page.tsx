@@ -2,7 +2,10 @@
 import { useEffect, useState } from "react"
 import NationItem from "./NationItem";
 import Header from "./Header";
-import { FAKENATIONS } from "./types";
+import { FAKENATIONS, isTown, Nation, Town } from "./types";
+import Verifier from "./Verifier";
+import NationPage from "./NationPage";
+import TownPage from "./TownPage";
 
 interface NationItem {
   index: number;
@@ -17,7 +20,8 @@ export default function EarthPol() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [expanded, setExpanded] = useState<boolean>(false);
-    const [selectedItem, setSelectedItem] = useState<string | null>(null);
+    const [selectedItem, setSelectedItem] = useState<Nation | Town | null>(null);
+    const [isVerifying, setIsVerifying] = useState<boolean>(false);
 
     useEffect(() => {
         if(usingFake){
@@ -55,6 +59,17 @@ export default function EarthPol() {
         }
     }, [])
 
+    useEffect(() => {
+        // This will run whenever selectedItem changes
+        console.log("Selected item changed to:", selectedItem?.name);
+        
+        // Close the verifier if it's open
+        if (isVerifying) {
+            console.log("Closing verifier due to selectedItem change");
+            setIsVerifying(false);
+        }
+    }, [selectedItem]);
+
     return (
         <>
             <Header>
@@ -62,6 +77,15 @@ export default function EarthPol() {
             </Header>
             
             <div className="bg-charcoal pt-20 min-h-screen oswald-earth">
+                {isVerifying && selectedItem ? (
+                    <Verifier
+                        uuid={isTown(selectedItem) ? selectedItem?.mayor?.uuid : selectedItem?.king?.uuid}
+                    >
+                    </Verifier>
+                ) :
+                (
+                    null
+                )}
                 {loading ? (
                     <div className="text-white p-4">Loading...</div>
                 ) : error ? (
@@ -104,8 +128,27 @@ export default function EarthPol() {
                                 }
                             </div>
                         </div>
-                        <div className="bg-navy text-white text-4xl">
-                            {selectedItem}
+                        <div className="bg-navy overflow-y-scroll">
+                            {selectedItem ? 
+                                <>
+                                    <div onClick={() => setIsVerifying(!isVerifying)} className="text-white text-md font-bold absolute top-24 right-6 p-2 bg-blue1 rounded-md hover:cursor-pointer">
+                                        Your {isTown(selectedItem) ? "town" : "nation"}?
+                                    </div>
+                                    <div className="bg-navy pt-8 text-white flex justify-center text-4xl">
+                                        {isTown(selectedItem) ? 
+                                            <TownPage
+                                                townData={selectedItem}
+                                            />
+                                            :
+                                            <NationPage
+                                                nationData={selectedItem}
+                                            />
+                                        }
+                                    </div>
+                                </>
+                                :
+                                null
+                            }
                         </div>
                     </div>
             )}

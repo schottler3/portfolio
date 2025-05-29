@@ -1,3 +1,4 @@
+import { Timestamp } from "firebase/firestore";
 import {FAKENATION, FAKETOWN, Nation, Player, Town } from "./types";
 
 const usingFake: boolean = true;
@@ -61,57 +62,54 @@ export const renderTown = async (query: string): Promise<Town> => {
     }
 };
 
-export const renderUUID = async(query: string): Promise<Player> => {
-    // Use fake data if usingFake is true
-    if(usingFake) {
-        // Return a fake player object matching your Player type
-        return {
-            id: "9a2657ea-e15c-4469-8886-6c101151eff0",
-            name: "jhjhjh098k",
-            properties: [
-                {
-                    name: "textures",
-                    value: "some-base64-value"
-                }
-            ],
-            profileActions: []
-        };
-    }
-    
+export const renderSkin = async(uuid: string): Promise<string> => {
     try {
-        const response = await fetch(`/api/earthpol/mojang?query=${encodeURIComponent(query)}`, {
-            method: 'GET',
+            
+        const crafatarUrl = `https://crafatar.com/avatars/${uuid}?overlay`;
+
+        return`https://crafatar.com/avatars/${uuid}?overlay`;
+
+    } catch (error) {
+        console.error("Error fetching player:", error);
+        return`https://mc-heads.net/avatar/steve`;
+    }
+};
+
+export const verifyUser = async(uuid: string, code:number, time:string) : Promise<boolean> => {
+    //if(usingFake){
+    //    return true;
+    //}
+
+    let query = 
+    {
+        "query": {
+            "uuid": [`${uuid}`],
+            "message": [`${code}`],
+            "startTimestamp": time,
+        }
+    }
+
+    try {
+        const response = await fetch('/api/earthpol/chat', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-            }
+            },
+            body: JSON.stringify({
+                query: [query]
+            }),
         });
         
         if (!response.ok) {
-            throw new Error(`Error fetching mojang data. Status: ${response.status}`);
+            throw new Error(`Error fetching town data. Status: ${response.status}`);
         }
         
-        const responseData = await response.json();
-        
-        if (!responseData) {
-            throw new Error('No player data received');
-        }
-        
-        const newPlayer: Player = {
-            id: responseData.id || "",
-            name: responseData.name || "",
-            properties: responseData.properties || [],
-            profileActions: responseData.profileActions || []
-        };
-        
-        return newPlayer;
+        const townDataInc = await response.json();
+
+        const townObject = townDataInc[0];
+        return townObject;
     } catch (error: any) {
-        console.error("Error in renderUUID:", error);
-        return {
-            id: query,
-            name: "Unknown Player",
-            properties: [],
-            profileActions: []
-        };
+        return error;
     }
-};
+}
 

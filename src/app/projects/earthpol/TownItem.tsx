@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Player, ReactStateHandler, Town } from "./types";
-import { renderTown, renderUUID } from "./queries";
+import { Nation, Player, ReactStateHandler, Town } from "./types";
+import { renderSkin, renderTown} from "./queries";
 
-export default function TownItem({name, selectedItem, setSelectedItem}: {name:string, selectedItem:string | null, setSelectedItem:ReactStateHandler}) {
+export default function TownItem({name, selectedItem, setSelectedItem}: {name:string, selectedItem:Nation | Town | null, setSelectedItem:ReactStateHandler}) {
 
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const [players, setPlayers] = useState<{"name": string, "uuid":string}[] | null>(null);
@@ -10,7 +10,7 @@ export default function TownItem({name, selectedItem, setSelectedItem}: {name:st
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [townData, setTownData] = useState<Town | null>(null);
-    const [imageData, setImageData] = useState<string | null>("");
+    const [imageData, setImageData] = useState<string | null>(null);
     
     useEffect(() => {
         if(isRendered) return;
@@ -37,7 +37,8 @@ export default function TownItem({name, selectedItem, setSelectedItem}: {name:st
     }, [name, isRendered]);
 
     function handleTownClick() : void {
-        setSelectedItem(name);
+        console.log(townData?.name)
+        setSelectedItem(townData);
     }
 
     function handleExpandClick() : void {
@@ -45,39 +46,9 @@ export default function TownItem({name, selectedItem, setSelectedItem}: {name:st
     }
 
     async function handleUserClick(uuid: string) {
-    console.log("Clicked UUID:", uuid);
-    try {
-        const user = await renderUUID(uuid);
-        console.log("User data:", user);
-        
-        // Find the texture property in the array
-        const textureProperty = user.properties.find(prop => prop.name === "textures");
-        
-        if (textureProperty && textureProperty.value) {
-            // Base64 decode and extract the skin URL
-            try {
-                // For browser environment
-                const decodedData = atob(textureProperty.value);
-                const textureData = JSON.parse(decodedData);
-                const skinUrl = textureData.textures?.SKIN?.url;
-                
-                console.log("Skin URL:", skinUrl);
-                setImageData(skinUrl || null);
-            } catch (error) {
-                console.error("Error parsing texture data:", error);
-                setImageData(null);
-            }
-        } else {
-            console.log("No texture property found");
-            setImageData(null);
-        }
-    } catch (error) {
-        console.error("Error fetching player:", error);
-        setImageData(null);
-    }
+        console.log("Clicked UUID:", uuid);
+        setImageData(await renderSkin(uuid));
 }
-
-    console.log(townData);
 
     return (
         <div className="mb-2">
@@ -120,7 +91,17 @@ export default function TownItem({name, selectedItem, setSelectedItem}: {name:st
                                         {townData.residents.map((resident, index:number) => (
                                             <div onClick={() => handleUserClick(resident.uuid)} key={resident.uuid || `resident-${index}`}>{resident.name}</div>
                                         ))}
-                                        <img src={imageData}></img>
+                                        {imageData && (
+                                            <img 
+                                                src={imageData} 
+                                                alt="Player avatar"
+                                                className="w-8 h-8 mt-1"
+                                                onError={(e) => {
+                                                    console.log("Image failed to load, using fallback");
+                                                    e.currentTarget.src = `https://mc-heads.net/avatar/steve`;
+                                                }}
+                                            />
+                                        )}
                                     </div>
                                 </div>
                             )}
