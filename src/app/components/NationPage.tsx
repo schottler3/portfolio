@@ -1,4 +1,4 @@
-import { Nation } from "./types";
+import { Nation } from "../types";
 
 export default function NationPage({nationData}: {nationData: Nation}){
     return (

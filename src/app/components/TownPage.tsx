@@ -1,4 +1,4 @@
-import { Town } from "./types";
+import { Town } from "../types";
 
 export default function TownPage({townData}: {townData: Town}){
     return (

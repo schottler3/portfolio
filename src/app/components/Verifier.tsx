@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { verifyUser } from "./queries";
+import { verifyUser } from "../queries";
 
 export default function Verifier({uuid}: {uuid:string}) {
 
