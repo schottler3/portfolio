@@ -1,0 +1,48 @@
+[debug] [2025-01-22T04:52:42.171Z] ----------------------------------------------------------------------
+[debug] [2025-01-22T04:52:42.173Z] Command:       /usr/bin/node /usr/local/bin/firebase init
+[debug] [2025-01-22T04:52:42.173Z] CLI Version:   13.29.1
+[debug] [2025-01-22T04:52:42.174Z] Platform:      linux
+[debug] [2025-01-22T04:52:42.174Z] Node Version:  v18.19.1
+[debug] [2025-01-22T04:52:42.174Z] Time:          Tue Jan 21 2025 22:52:42 GMT-0600 (Central Standard Time)
+[debug] [2025-01-22T04:52:42.174Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-01-22T04:52:42.235Z] Object ".extensions" in "firebase.json" has unknown property: {"additionalProperty":"firestore-send-email"}
+[debug] [2025-01-22T04:52:42.238Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-01-22T04:52:42.238Z] > authorizing via signed-in user (lucasschottler@gmail.com)
+[debug] [2025-01-22T04:52:42.239Z] Object ".extensions" in "firebase.json" has unknown property: {"additionalProperty":"firestore-send-email"}
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /root/schottler3
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2025-01-22T04:52:45.673Z] Using project from CLI flag: schottler3
+[debug] [2025-01-22T04:52:45.674Z] Checked if tokens are valid: true, expires at: 1737525111138
+[debug] [2025-01-22T04:52:45.674Z] Checked if tokens are valid: true, expires at: 1737525111138
+[debug] [2025-01-22T04:52:45.676Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/schottler3 [none]
+[debug] [2025-01-22T04:52:45.944Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/schottler3 200
+[debug] [2025-01-22T04:52:45.944Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/schottler3 {"projectId":"schottler3","projectNumber":"467935353527","displayName":"schottler3","name":"projects/schottler3","resources":{"hostingSite":"schottler3"},"state":"ACTIVE","etag":"1_41801d52-1785-43d5-80b9-145c0d4c156a"}
+[info] i  Using project schottler3 (schottler3) 
+[info] 
+=== Hosting Setup
+[debug] [2025-01-22T04:52:45.991Z] Checked if tokens are valid: true, expires at: 1737525111138
+[debug] [2025-01-22T04:52:45.991Z] Checked if tokens are valid: true, expires at: 1737525111138
+[debug] [2025-01-22T04:52:45.991Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/schottler3 [none]
+[debug] [2025-01-22T04:52:46.239Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/schottler3 200
+[debug] [2025-01-22T04:52:46.240Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/schottler3 {"projectId":"schottler3","projectNumber":"467935353527","displayName":"schottler3","name":"projects/schottler3","resources":{"hostingSite":"schottler3"},"state":"ACTIVE","etag":"1_41801d52-1785-43d5-80b9-145c0d4c156a"}
