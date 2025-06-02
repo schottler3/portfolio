@@ -16,8 +16,8 @@ jobs:
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
-          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_SCHOTTLER3 }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_EARTHPOL_INSIGHTS }}
           channelId: live
-          projectId: schottler3
+          projectId: earthpol-insights
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks

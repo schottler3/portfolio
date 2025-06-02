@@ -205,3 +205,21 @@
   transition: background-color 0.2s ease;
 }
 /* End Contact */
+
+/* Earthpol */
+
+@layer utilities {
+  .no-scrollbar {
+    @apply [scrollbar-width:none] [&::-webkit-scrollbar]:hidden;
+  }
+}
+
+.oswald-earth {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+/*End Earthpol */
