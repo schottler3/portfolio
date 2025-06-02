@@ -185,7 +185,10 @@
         "title": "Raytracer",
         "start": "Spring 2024",
         "tagline": "A Raytracer Built From Scratch",
-        "description": ["Implementation of a raytracer from scratch. This project was created for my Computer Graphics class. The project includes a scene description file that describes the objects in the scene, and the program renders the scene using raytracing. It also implements shadows, textures, reflections, and refractions."]
+        "description": ["Implementation of a raytracer from scratch. This project was created for my Computer Graphics class. The project includes a scene description file that describes the objects in the scene, and the program renders the scene using raytracing. It also implements shadows, textures, reflections, and refractions."],
+        "links":{
+            "git": "https://github.com/schottler3/Raytracer"
+        }
     },
     {
         "index": 18,
@@ -321,5 +324,21 @@
             "git": "https://github.com/schottler3/portfolio"
         }
 
+    },
+    {
+        "index": 28,
+        "title": "Earthpol Insights",
+        "start": "Summer 2025",
+        "tagline": "API utilization for Earthpol",
+        "description": [
+            "A comprehensive web application that serves as a community hub and information portal for the EarthPol Minecraft server. The application is built using Next.js with React and TypeScript, featuring a modern interface styled with Tailwind CSS and integrated with Firebase/Firestore for data persistence.",
+            "The core functionality centers around displaying detailed information about nations and towns within the EarthPol server ecosystem. Users can browse through an interactive list of nations, expand to view member towns, and access comprehensive pages showing statistics, leadership hierarchies, resident information, and geographical data. Each nation and town page includes rich details such as coordinates, founding dates, political relationships (allies/enemies), and an embedded interactive map. The application also displays player information with Minecraft skin avatars and provides visual representations of the server's political landscape.",
+            "A standout feature is the Discord integration and verification system. Server administrators and nation/town leaders can claim ownership of their locations through an in-game verification process that generates temporary codes. Once verified, they can link their Discord server invites to their nation or town pages, creating a bridge between the Minecraft server and external community platforms. This verification system uses Firebase for secure storage and includes anti-fraud measures with time-limited codes and proper authentication flows.",
+            "The application serves as both an information resource for players wanting to learn about different nations and towns, and a community building tool that helps server factions maintain their external presence through Discord integration. With features like real-time map embedding, comprehensive statistics tracking, and social connectivity, EarthPol Insights transforms raw server data into an engaging community platform that enhances the overall EarthPol Minecraft experience."
+        ],
+        "links": {
+            "live": "https://Earthpol-Insights.cc",
+            "git": "https://github.com/schottler3/EarthPol-Insights"
+        }
     }
 ]
