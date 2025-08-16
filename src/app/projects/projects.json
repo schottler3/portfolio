@@ -215,7 +215,7 @@
         "index": 21,
         "title": "FriendCore",
         "start": "Summer 2024",
-        "end": "Current",
+        "end": "Fall 2024",
         "tagline": "Minecraft Plugin",
         "description": ["Created as a plugin for a Minecraft server that I play with friends on. This plugin adds a commands description board, elevators, server state voting, custom minecarts, and custom tools with special abilities."],
         "links": {
@@ -329,6 +329,7 @@
         "index": 28,
         "title": "Earthpol Insights",
         "start": "Summer 2025",
+        "end": "Current",
         "tagline": "API compilation for Earthpol",
         "description": [
             "A comprehensive web application that serves as a community hub and information portal for the EarthPol Minecraft server. The application is built using Next.js with React and TypeScript, featuring a modern interface styled with Tailwind CSS and integrated with Firebase/Firestore for data persistence.",
