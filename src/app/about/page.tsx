@@ -1,5 +1,5 @@
 "use client"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../components/Header';
 import TimelineItem from '../components/TimelineItem';
 import timelineData from './timeline.json';
@@ -22,7 +22,7 @@ export default function About() {
     <div className="bg-charcoal min-h-screen w-full max-h-screen overflow-y-auto">
     <Header />
     <div className="flex flex-col md:grid md:grid-cols-2 bg-charcoal text-white text-center pt-10 overflow-y-auto">
-      <div className="bg-navy h-1/2-screen md:h-[95vh] flex flex-col items-center justify-center pt-16 pb-16">
+      <div className="bg-navy flex flex-col items-center pt-16 pb-16">
         <div className="justify-center flex"> 
           <div className="flex w-full items-center flex-col xl:flex-row xl:justify-start xl:gap-8">
             <img 
@@ -53,7 +53,7 @@ export default function About() {
                   </p>
 
                   <p className="text-left text-xl">
-                    Music is a big part of my life. My taste spans across alternative, indie, and pop genres. When coding, I prefer 
+                    Music is a big part of my life. I used to play the violin, but now I only listen; my taste spans across alternative, indie, and pop genres. When coding, I prefer 
                     familiar songs to maintain focus. During other activities like chores or commuting, I love discovering new music and artists.
                   </p>
                 </article>
@@ -88,7 +88,7 @@ export default function About() {
           switch(page) {
             case 'timeline':
               return (
-                <div className="grid grid-cols-2 gap-x-4 w-full max-h-[50vh] md:max-h-[95vh] hide-scrollbar overflow-y-scroll timeline-pulse" >
+                <div className="grid grid-cols-2 gap-x-4 w-full hide-scrollbar overflow-y-scroll timeline-pulse" >
                   <div className="bg-charcoal w-full h-full">
                     {timelineItems.map(item => (
                       item.key % 2 === 0 && (
@@ -125,12 +125,12 @@ export default function About() {
                 return (
                   <div className="w-full h-[50vh] md:h-[95vh] overflow-hidden relative">
                     <iframe
-                      src="/documents/LucasSchottler.pdf"
+                      src="/documents/Lucas Schottler.pdf"
                       className="w-full h-full"
                       title="Lucas Schottler Resume"
                     />
                     <a 
-                      href="/documents/LucasSchottler.pdf" 
+                      href="/documents/Lucas Schottler.pdf" 
                       className="absolute top-8 right-2 bg-navy text-aqua1 hover:text-white hover:bg-blue1 px-4 py-2 rounded-md"
                       download
                     >
