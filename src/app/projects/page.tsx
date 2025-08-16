@@ -27,8 +27,8 @@ interface ProjectItemType {
 
 export default function Projects() {
 
-    const projectItems: ProjectItemType[] = projectData as ProjectItemType[];
-    const [selectedProject, setSelectedProject] = useState<ProjectItemType>(projectItems[0]);
+    const [projectItems, setProjectItems] = useState<ProjectItemType[] | null>(null);
+    const [selectedProject, setSelectedProject] = useState<ProjectItemType | null>(null);
     const [imageUrls, setImageUrls] = useState<{ [key: string]: string }>({});
     const [pdfs, setPdfs] = useState<{ [key: string]: string }>({});
 
@@ -49,22 +49,38 @@ export default function Projects() {
         }
     }, [selectedProject]);
 
+    useEffect(() => {
+        if(projectData){
+            const sortedItems = (projectData as ProjectItemType[]).sort((a, b) => {
+                const aYear = parseInt(a.start.split(" ")[1]);
+                const bYear = parseInt(b.start.split(" ")[1]);
+                
+                return bYear - aYear;
+            });
+            setProjectItems(sortedItems);
+            setSelectedProject(sortedItems[0]);
+        }
+    }, [projectData]);
+
     return (
         <div className="bg-charcoal min-h-screen">
             <Header />
             <div className="flex flex-col sm:grid sm:grid-cols-2 h-[100vh]">
                 <div className="flex sm:grid max-h-[50vh] sm:min-h-full overflow-y-auto sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8 p-8 pt-32">
-                    {projectItems.map(item => (
-                        <div 
-                        key={item.index} 
-                        className="aspect-[3/2] transform hover:scale-110 hover:cursor-pointer transition-all duration-300 ease-in-out origin-center"
-                        onClick={() => setSelectedProject(item)}
-                        >
-                            <ProjectItem
-                            title={item.title}
-                            />
-                        </div>
-                    ))}
+                    {projectItems ? 
+                        projectItems.map(item => (
+                            <div 
+                            key={item.index} 
+                            className="aspect-[3/2] transform hover:scale-110 hover:cursor-pointer transition-all duration-300 ease-in-out origin-center"
+                            onClick={() => setSelectedProject(item)}
+                            >
+                                <ProjectItem
+                                title={item.title}
+                                />
+                            </div>
+                    ))
+                :
+                null}
                 </div>
                 <div className="bg-gray1 h-full overflow-y-auto">
                     <div className="flex flex-col h-full pt-6 sm:pt-32">
