@@ -226,7 +226,7 @@
         "index": 22,
         "title": "Maze Search Comparison",
         "start": "Fall 2024",
-        "end": "Current",
+        "end": "Spring 2025",
         "tagline": "Research Paper on Graph Search Algorithms",
         "description": ["Implementation of graph search algorithms and comparison of their performance. This project was created for my Introduction to AI class. The project includes a research paper that compares the performance of BFS, DFS, Best First Search, Dijkstra's, and A* search algorithms. The user interface is hosted on a server and allows the user to select a start and end node or a random maze and run the algorithms."],
         "links": {
@@ -347,5 +347,27 @@
             "live": "https://Earthpol-Insights.cc",
             "git": "https://github.com/schottler3/EarthPol-Insights"
         }
+    },
+    {
+        "index": 29,
+        "title": "Artist Website Redesign",
+        "start": "Summer 2025",
+        "end": "Current",
+        "tagline": "A recreation in progress of redesigning TeriSchottlerArt.com",
+        "description": [
+            "This website was originally created to be functional and not stylistic. The current stack involves default CSS, Redux, React.js, Node.js, Cloudflare instance hosting with NoSQL storage options, and integration with Square for E-Commerce ability.",
+            "The redesign is porting over from that default CSS with a custom responsive design framework to Tailwind CSS to streamline the process and have a more cohesive theme. The change will also add more pages and take inspiration from other artists' websites to stay current and have the features the clientbase expects."
+        ]
+    },
+    {
+        "index": 30,
+        "title": "Amazon Updater",
+        "start": "Fall 2025",
+        "end": "Current",
+        "tagline": "Automatic inventory and price updater for Superior Tool",
+        "description": [
+            "Hosted on a RaspberryPi and scheduled to run once a day with a backend of Flask with Python in a Pip environment. The server does not have a frontend due to the nature of the tool. This will be updated in the future to allow for more functionality.",
+            "This internal tool is consuming an API by Great Lakes Tools and using that item data to assist with our item inventory and pricing. The system then uses the consumed data and applies our business logic of pricing based on UPS and USPS pricing tables and inventory. It then automatically updates the Amazon listings using the Amazon SP-API and logs the results as it goes."
+        ]
     }
 ]
