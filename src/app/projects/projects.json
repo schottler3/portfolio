@@ -158,7 +158,18 @@
         "title": "Schedule Website",
         "start": "Spring 2024",
         "tagline": "Add and Remove Events",
-        "description": ["A website that allows the user to add and remove events from a schedule. This project was created for my Internet Programming class. It utilizes a form to add events and a json file to store the events locally."]
+        "description": [
+            "Developed a fully functional HTTP web server using Python's http.server module to host a dynamic personal portfolio website. Implemented custom request handling for both GET and POST methods, enabling seamless navigation across multiple pages including a personal schedule, biography, and interactive event submission form. The server architecture efficiently manages static file delivery (HTML, CSS, JavaScript, and images) with proper MIME type handling and includes robust error handling with custom 404 pages.",
+            "Engineered a dynamic form processing system that captures user input through POST requests, parses URL-encoded data, and generates real-time HTML table entries to display submitted events. The application demonstrates proficiency in server-side programming, HTTP protocol implementation, data parsing and validation, and full-stack web development principles. Successfully deployed the server on localhost:4131, providing a responsive and user-friendly interface for event management and personal content presentation."
+        ],
+        "links":{
+            "git": "https://github.com/schottler3/4131-Schedule-Website.git"
+        },
+        "images":[
+            "/projects/schedule-website/Schedule1.png",
+            "/projects/schedule-website/Schedule2.png",
+            "/projects/schedule-website/Schedule3.png"
+        ]
     },
     {
         "index": 14,
@@ -379,7 +390,7 @@
         "description": [
             "Hosted on a RaspberryPi and scheduled to run once a day with a backend of Flask with Python in a Pip environment. The server does not have a frontend due to the nature of the tool. This will be updated in the future to allow for more functionality.",
             "This internal tool is consuming an API by Great Lakes Tools and using that item data to assist with our item inventory and pricing. The system then uses the consumed data and applies our business logic of pricing based on UPS and USPS pricing tables and inventory. It then automatically updates the Amazon listings using the Amazon SP-API and logs the results as it goes."
-            ,"The next step of this project is current under development to use this data to also update Ebay Listings using the EBay Developer Portal"
+            ,"The next step of this project is currently under development to use this data to also update Ebay Listings using the EBay Developer Portal"
         ]
     }
 ]
