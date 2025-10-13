@@ -200,13 +200,22 @@
     },
     {
         "index": 17,
-        "title": "Raytracer",
+        "title": "Ray Tracer",
         "start": "Spring 2024",
-        "tagline": "A Raytracer Built From Scratch",
-        "description": ["Implementation of a raytracer from scratch. This project was created for my Computer Graphics class. The project includes a scene description file that describes the objects in the scene, and the program renders the scene using raytracing. It also implements shadows, textures, reflections, and refractions."],
+        "tagline": "A ray tracer Built From Scratch",
+        "description":[
+            "This ray tracer is a comprehensive rendering engine built from scratch in C, implementing advanced computer graphics techniques to generate photorealistic images. The project supports multiple geometric primitives including spheres and various triangle types (flat, smooth-shaded, and textured), with full support for the Blinn-Phong illumination model. The renderer handles complex lighting scenarios with both directional and point light sources, calculating accurate shadows, reflections, and refractions. Key features include texture mapping with barycentric coordinate interpolation for triangles and spherical UV mapping for spheres, opacity-based transparency, and recursive ray tracing for realistic reflections and refractions using Fresnel equations and Snell's law.",
+            "The architecture demonstrates strong software engineering principles with modular design and efficient memory management. The renderer processes scene descriptions from configuration files, supporting materials with customizable diffuse and specular components, ambient occlusion coefficients, shininess values, and refraction indices. The implementation carefully tracks refraction index changes as rays pass through different media using a custom stack data structure, enabling accurate rendering of transparent and semi-transparent objects. The output is generated in PPM format, making it easy to view and process the rendered images. This project showcases proficiency in 3D mathematics, geometric algorithms, and low-level C programming while implementing production-quality rendering techniques used in modern graphics applications."
+        ],
         "links":{
             "git": "https://github.com/schottler3/Raytracer"
-        }
+        },
+        "images": [
+            "/projects/ray-tracer/1da.png",
+            "/projects/ray-tracer/1db.png",
+            "/projects/ray-tracer/example6.png",
+            "/projects/ray-tracer/example7.png"
+        ]
     },
     {
         "index": 18,
