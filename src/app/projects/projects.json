@@ -144,14 +144,32 @@
         "title": "Simple Website",
         "start": "Spring 2024",
         "tagline": "First Website Project",
-        "description": ["Consisting of a couple of pages with information about me. This project was created for my Internet Programming class."]
+        "description": ["Consisting of a couple of pages with information about me. This project was created for my Internet Programming class."],
+        "links": {
+            "git": "https://github.com/schottler3/4131-Website1"
+        },
+        "images": [
+            "/projects/simple-website/SimpleAbout.png",
+            "/projects/simple-website/SimpleSchedule.png"
+        ]
     },
     {
         "index": 13,
         "title": "Schedule Website",
         "start": "Spring 2024",
         "tagline": "Add and Remove Events",
-        "description": ["A website that allows the user to add and remove events from a schedule. This project was created for my Internet Programming class. It utilizes a form to add events and a json file to store the events locally."]
+        "description": [
+            "Developed a fully functional HTTP web server using Python's http.server module to host a dynamic personal portfolio website. Implemented custom request handling for both GET and POST methods, enabling seamless navigation across multiple pages including a personal schedule, biography, and interactive event submission form. The server architecture efficiently manages static file delivery (HTML, CSS, JavaScript, and images) with proper MIME type handling and includes robust error handling with custom 404 pages.",
+            "Engineered a dynamic form processing system that captures user input through POST requests, parses URL-encoded data, and generates real-time HTML table entries to display submitted events. The application demonstrates proficiency in server-side programming, HTTP protocol implementation, data parsing and validation, and full-stack web development principles. Successfully deployed the server on localhost:4131, providing a responsive and user-friendly interface for event management and personal content presentation."
+        ],
+        "links":{
+            "git": "https://github.com/schottler3/4131-Schedule-Website.git"
+        },
+        "images":[
+            "/projects/schedule-website/Schedule1.png",
+            "/projects/schedule-website/Schedule2.png",
+            "/projects/schedule-website/Schedule3.png"
+        ]
     },
     {
         "index": 14,
@@ -178,17 +196,34 @@
         "title": "Grocery List App",
         "start": "Spring 2024",
         "tagline": "Ideation, Research, and Design of an App",
-        "description": ["Created for my User Interface and Design class. This project was a group project that involved ideation, research, and design of an app of our choosing. We chose to pursue a grocery list app. The project included a user study, data analysis, design process, AB testing, and final presentation."]
+        "description": ["Created for my User Interface and Design class. This project was a group project that involved ideation, research, and design of an app of our choosing. We chose to pursue a grocery list app. The project included a user study, data analysis, design process, AB testing, and final presentation."],
+        "pdfs": [
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/schottler3.firebasestorage.app/o/projects%2Fgrocery-app%2Flofi-group-6.pdf?alt=media&token=04eda9d3-b668-4b59-bffc-619123673f38"
+            }
+        ],
+        "video": [
+            "0D3ucKlynsU"
+        ]
     },
     {
         "index": 17,
-        "title": "Raytracer",
+        "title": "Ray Tracer",
         "start": "Spring 2024",
-        "tagline": "A Raytracer Built From Scratch",
-        "description": ["Implementation of a raytracer from scratch. This project was created for my Computer Graphics class. The project includes a scene description file that describes the objects in the scene, and the program renders the scene using raytracing. It also implements shadows, textures, reflections, and refractions."],
+        "tagline": "A ray tracer Built From Scratch",
+        "description":[
+            "This ray tracer is a comprehensive rendering engine built from scratch in C, implementing advanced computer graphics techniques to generate photorealistic images. The project supports multiple geometric primitives including spheres and various triangle types (flat, smooth-shaded, and textured), with full support for the Blinn-Phong illumination model. The renderer handles complex lighting scenarios with both directional and point light sources, calculating accurate shadows, reflections, and refractions. Key features include texture mapping with barycentric coordinate interpolation for triangles and spherical UV mapping for spheres, opacity-based transparency, and recursive ray tracing for realistic reflections and refractions using Fresnel equations and Snell's law.",
+            "The architecture demonstrates strong software engineering principles with modular design and efficient memory management. The renderer processes scene descriptions from configuration files, supporting materials with customizable diffuse and specular components, ambient occlusion coefficients, shininess values, and refraction indices. The implementation carefully tracks refraction index changes as rays pass through different media using a custom stack data structure, enabling accurate rendering of transparent and semi-transparent objects. The output is generated in PPM format, making it easy to view and process the rendered images. This project showcases proficiency in 3D mathematics, geometric algorithms, and low-level C programming while implementing production-quality rendering techniques used in modern graphics applications."
+        ],
         "links":{
             "git": "https://github.com/schottler3/Raytracer"
-        }
+        },
+        "images": [
+            "/projects/ray-tracer/1da.png",
+            "/projects/ray-tracer/1db.png",
+            "/projects/ray-tracer/example6.png",
+            "/projects/ray-tracer/example7.png"
+        ]
     },
     {
         "index": 18,
@@ -226,7 +261,7 @@
         "index": 22,
         "title": "Maze Search Comparison",
         "start": "Fall 2024",
-        "end": "Current",
+        "end": "Spring 2025",
         "tagline": "Research Paper on Graph Search Algorithms",
         "description": ["Implementation of graph search algorithms and comparison of their performance. This project was created for my Introduction to AI class. The project includes a research paper that compares the performance of BFS, DFS, Best First Search, Dijkstra's, and A* search algorithms. The user interface is hosted on a server and allows the user to select a start and end node or a random maze and run the algorithms."],
         "links": {
@@ -347,5 +382,32 @@
             "live": "https://Earthpol-Insights.cc",
             "git": "https://github.com/schottler3/EarthPol-Insights"
         }
+    },
+    {
+        "index": 29,
+        "title": "Artist Website Redesign",
+        "start": "Summer 2025",
+        "end": "Current",
+        "tagline": "A recreation in progress of redesigning TeriSchottlerArt.com",
+        "description": [
+            "This website was originally created to be functional and not stylistic. The current stack involves default CSS, Redux, React.js, Node.js, Cloudflare instance hosting with NoSQL storage options, and integration with Square for E-Commerce ability.",
+            "The redesign is porting over from that default CSS with a custom responsive design framework to Tailwind CSS to streamline the process and have a more cohesive theme. The change will also add more pages and take inspiration from other artists' websites to stay current and have the features the clientbase expects."
+            ,"The current project link is live and contains the non-edited website as we will be moving to the design in the near future."
+        ],
+        "links":{
+            "live": "https://TeriSchottlerArt.com"
+        }
+    },
+    {
+        "index": 30,
+        "title": "Amazon Updater",
+        "start": "Fall 2025",
+        "end": "Current",
+        "tagline": "Automatic inventory and price updater for Superior Tool",
+        "description": [
+            "Hosted on a RaspberryPi and scheduled to run once a day with a backend of Flask with Python in a Pip environment. The server does not have a frontend due to the nature of the tool. This will be updated in the future to allow for more functionality.",
+            "This internal tool is consuming an API by Great Lakes Tools and using that item data to assist with our item inventory and pricing. The system then uses the consumed data and applies our business logic of pricing based on UPS and USPS pricing tables and inventory. It then automatically updates the Amazon listings using the Amazon SP-API and logs the results as it goes."
+            ,"The next step of this project is currently under development to use this data to also update Ebay Listings using the EBay Developer Portal"
+        ]
     }
 ]
