@@ -196,7 +196,12 @@
         "title": "Grocery List App",
         "start": "Spring 2024",
         "tagline": "Ideation, Research, and Design of an App",
-        "description": ["Created for my User Interface and Design class. This project was a group project that involved ideation, research, and design of an app of our choosing. We chose to pursue a grocery list app. The project included a user study, data analysis, design process, AB testing, and final presentation."]
+        "description": ["Created for my User Interface and Design class. This project was a group project that involved ideation, research, and design of an app of our choosing. We chose to pursue a grocery list app. The project included a user study, data analysis, design process, AB testing, and final presentation."],
+        "pdfs": [
+            {
+                "url": "https://firebasestorage.googleapis.com/v0/b/schottler3.firebasestorage.app/o/projects%2Fgrocery-app%2Flofi-group-6.pdf?alt=media&token=04eda9d3-b668-4b59-bffc-619123673f38"
+            }
+        ]
     },
     {
         "index": 17,
