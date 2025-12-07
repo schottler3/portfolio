@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Lucas Schottler",
   description: "A portfolio website for Lucas Schottler.",
   icons: {
@@ -21,6 +21,8 @@ export const metadata = {
     ]
   }
 };
+
+export const metadataBase = new URL("https://www.LucasSchottler.dev");
 
 export default function RootLayout({
   children,

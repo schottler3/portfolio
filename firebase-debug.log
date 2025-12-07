@@ -46,3 +46,84 @@ Before we get started, keep in mind:
 [debug] [2025-01-22T04:52:45.991Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/schottler3 [none]
 [debug] [2025-01-22T04:52:46.239Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/schottler3 200
 [debug] [2025-01-22T04:52:46.240Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/schottler3 {"projectId":"schottler3","projectNumber":"467935353527","displayName":"schottler3","name":"projects/schottler3","resources":{"hostingSite":"schottler3"},"state":"ACTIVE","etag":"1_41801d52-1785-43d5-80b9-145c0d4c156a"}
+[debug] [2025-12-07T00:51:50.379Z] ----------------------------------------------------------------------
+[debug] [2025-12-07T00:51:50.381Z] Command:       /usr/bin/node /usr/local/bin/firebase deploy
+[debug] [2025-12-07T00:51:50.381Z] CLI Version:   13.29.1
+[debug] [2025-12-07T00:51:50.381Z] Platform:      linux
+[debug] [2025-12-07T00:51:50.381Z] Node Version:  v20.19.6
+[debug] [2025-12-07T00:51:50.381Z] Time:          Sat Dec 06 2025 18:51:50 GMT-0600 (Central Standard Time)
+[debug] [2025-12-07T00:51:50.381Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-12-07T00:51:50.436Z] Object ".extensions" in "firebase.json" has unknown property: {"additionalProperty":"firestore-send-email"}
+[debug] [2025-12-07T00:51:50.439Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-12-07T00:51:50.439Z] > authorizing via signed-in user (lucasschottler@gmail.com)
+[debug] [2025-12-07T00:51:50.440Z] [iam] checking project schottler3 for permissions ["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update",null]
+[debug] [2025-12-07T00:51:50.440Z] Checked if tokens are valid: true, expires at: 1765070909408
+[debug] [2025-12-07T00:51:50.441Z] Checked if tokens are valid: true, expires at: 1765070909408
+[debug] [2025-12-07T00:51:50.441Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/schottler3:testIamPermissions [none]
+[debug] [2025-12-07T00:51:50.441Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/schottler3:testIamPermissions x-goog-quota-user=projects/schottler3
+[debug] [2025-12-07T00:51:50.441Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/schottler3:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update",null]}
+[debug] [2025-12-07T00:51:50.649Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/schottler3:testIamPermissions 200
+[debug] [2025-12-07T00:51:50.649Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/schottler3:testIamPermissions {"permissions":["datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-12-07T00:51:50.649Z] [iam] error while checking permissions, command may fail: Authorization failed. This account is missing the following required permissions on project schottler3:
+
+  
+[debug] [2025-12-07T00:51:50.649Z] Checked if tokens are valid: true, expires at: 1765070909408
+[debug] [2025-12-07T00:51:50.649Z] Checked if tokens are valid: true, expires at: 1765070909408
+[debug] [2025-12-07T00:51:50.650Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/schottler3 [none]
+[debug] [2025-12-07T00:51:50.922Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/schottler3 200
+[debug] [2025-12-07T00:51:50.922Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/schottler3 {"projectId":"schottler3","projectNumber":"467935353527","displayName":"schottler3","name":"projects/schottler3","resources":{"hostingSite":"schottler3"},"state":"ACTIVE","etag":"1_b5bb7a8c-e62c-46c8-85d6-85f2a21a60d8"}
+[debug] [2025-12-07T00:51:51.703Z] Checked if tokens are valid: true, expires at: 1765070909408
+[debug] [2025-12-07T00:51:51.703Z] Checked if tokens are valid: true, expires at: 1765070909408
+[debug] [2025-12-07T00:51:51.704Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/schottler3/sites pageToken=&pageSize=10
+[debug] [2025-12-07T00:51:52.060Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/schottler3/sites 200
+[debug] [2025-12-07T00:51:52.060Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/schottler3/sites {"sites":[{"name":"projects/schottler3/sites/schottler3","defaultUrl":"https://schottler3.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2025-12-07T00:51:52.061Z] Checked if tokens are valid: true, expires at: 1765070909408
+[debug] [2025-12-07T00:51:52.061Z] Checked if tokens are valid: true, expires at: 1765070909408
+[debug] [2025-12-07T00:51:52.061Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/schottler3/sites 
+[debug] [2025-12-07T00:51:52.218Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/schottler3/sites 200
+[debug] [2025-12-07T00:51:52.219Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/schottler3/sites {"sites":[{"name":"projects/schottler3/sites/schottler3","defaultUrl":"https://schottler3.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2025-12-07T00:51:52.219Z] Checked if tokens are valid: true, expires at: 1765070909408
+[debug] [2025-12-07T00:51:52.219Z] Checked if tokens are valid: true, expires at: 1765070909408
+[debug] [2025-12-07T00:51:52.219Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/schottler3/webApps/-/config [none]
+[debug] [2025-12-07T00:51:52.555Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/schottler3/webApps/-/config 200
+[debug] [2025-12-07T00:51:52.555Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/schottler3/webApps/-/config {"projectId":"schottler3","appId":"1:467935353527:web:8959177620ba096c55cb32","storageBucket":"schottler3.firebasestorage.app","apiKey":"AIzaSyDdHGttrdO2w6mwZoi7T4G6Xki-BBAWf5k","authDomain":"schottler3.firebaseapp.com","messagingSenderId":"467935353527","projectNumber":"467935353527","version":"2"}
+[info] 
+   Thank you for trying our early preview of Next.js support on Firebase Hosting.
+   During the preview, support is best-effort and breaking changes can be expected. Proceed with caution.
+   The integration is known to work with Next.js version 12 - 15.0. You may encounter errors.
+
+   Documentation: https://firebase.google.com/docs/hosting/frameworks/nextjs
+   File a bug: https://github.com/firebase/firebase-tools/issues/new?template=bug_report.md
+   Submit a feature request: https://github.com/firebase/firebase-tools/issues/new?template=feature_request.md
+
+   We'd love to learn from you. Express your interest in helping us shape the future of Firebase Hosting: https://goo.gle/41enW5X
+
+[debug] [2025-12-07T00:51:57.167Z] Checked if tokens are valid: true, expires at: 1765070909408
+[debug] [2025-12-07T00:51:57.167Z] Checked if tokens are valid: true, expires at: 1765070909408
+[debug] [2025-12-07T00:51:57.168Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/schottler3/sites/schottler3 [none]
+[debug] [2025-12-07T00:51:57.266Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/schottler3/sites/schottler3 200
+[debug] [2025-12-07T00:51:57.266Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/schottler3/sites/schottler3 {"name":"projects/schottler3/sites/schottler3","defaultUrl":"https://schottler3.web.app","type":"DEFAULT_SITE"}
+[info]    ▲ Next.js 15.5.7
+
+[info] 
+
+[info]    Creating an optimized production build ...
+
+[info]  ✓ Compiled successfully in 8.6s
+
+[info]    Linting and checking validity of types ...
+
+[info] Failed to compile.
+
+
+[info] src/app/layout.tsx
+Type error: Layout "src/app/layout.tsx" does not match the required types of a Next.js Layout.
+  "metadataBase" is not a valid Layout export field.
+
+
+[info] Next.js build worker exited with code: 1 and signal: null
+
+[debug] [2025-12-07T00:52:11.781Z] Error: ENOENT: no such file or directory, open '/root/portfolio/.next/export-marker.json'
+[error] 
+[error] Error: An unexpected error has occurred.
