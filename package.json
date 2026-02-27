@@ -11,6 +11,7 @@
   "dependencies": {
     "firebase": "^11.2.0",
     "next": "^15.5.7",
+    "nextjs": "^0.0.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0"
   },

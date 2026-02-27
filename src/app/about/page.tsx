@@ -125,12 +125,12 @@ export default function About() {
                 return (
                   <div className="w-full h-[50vh] md:h-[95vh] overflow-hidden relative">
                     <iframe
-                      src="/documents/Lucas Schottler.pdf"
+                      src="/documents/Schottler Lucas.pdf"
                       className="w-full h-full"
                       title="Lucas Schottler Resume"
                     />
                     <a 
-                      href="/documents/Lucas Schottler.pdf" 
+                      href="/documents/Schottler Lucas.pdf" 
                       className="absolute top-8 right-2 bg-navy text-aqua1 hover:text-white hover:bg-blue1 px-4 py-2 rounded-md"
                       download
                     >

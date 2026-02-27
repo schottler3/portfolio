@@ -54,5 +54,12 @@
         "title": "Graduated",
         "description": "Bachelor of Science in Computer Science",
         "location": "Minneapolis, MN"
+    },
+    {
+        "key": 8,
+        "date": "August 2025",
+        "title": "Started Freelance",
+        "description": "Full Stack Developer, Superior Tool LLC",
+        "location": "Minneapolis, MN"
     }
 ]
