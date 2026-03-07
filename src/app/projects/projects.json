@@ -408,10 +408,10 @@
             "Hosted on a Raspberry Pi using Nginx and Spring Boot, this backend is a REST API that processes PostgreSQL data by applying business logic to individual SKUs, then publishes that data to third-party e-commerce platforms via their REST APIs. The frontend is a Next.js, React.js, and TailwindCSS self hosted ",
             "This internal tool consumes an API provided by Great Lakes Tools, using that item data to manage inventory and pricing. The system applies business logic to determine pricing based on UPS and USPS rate tables, then automatically updates Amazon and eBay listings via the Amazon SP-API and the eBay Developer API respectively.",
             "There are several planned enhancements as the project grows with the business:",
-            "- Live Inventory Management, powered by callback endpoints from Amazon & eBay and Square's barcode reader + API",
-            "- Predictive Ordering Suggestions, algorithmically driven ordering recommendations based on historical ordering patterns and demand forecasting",
-            "- BOM Compatibility, a live inventory management solution for items composed of other items (bill of materials)",
-            "- E-Commerce Website, a self-hosted marketplace to enable lower prices and increased brand awareness"
+            "$b Live Inventory Management, powered by callback endpoints from Amazon & eBay and Square's barcode reader + API",
+            "$b Predictive Ordering Suggestions, algorithmically driven ordering recommendations based on historical ordering patterns and demand forecasting",
+            "$b BOM Compatibility, a live inventory management solution for items composed of other items (bill of materials)",
+            "$b E-Commerce Website, a self-hosted marketplace to enable lower prices and increased brand awareness"
         ]
     }
 ]

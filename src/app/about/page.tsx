@@ -22,7 +22,7 @@ export default function About() {
     <div className="bg-charcoal min-h-screen w-full max-h-screen overflow-y-auto">
     <Header />
     <div className="flex flex-col md:grid md:grid-cols-2 bg-charcoal text-white text-center pt-10 overflow-y-auto">
-      <div className="bg-navy flex flex-col items-center pt-16 pb-16">
+      <div className="bg-navy flex flex-col items-center pt-16 pb-16 w-[50vw]">
         <div className="justify-center flex"> 
           <div className="flex w-full items-center flex-col xl:flex-row xl:justify-start xl:gap-8">
             <img 
@@ -73,7 +73,7 @@ export default function About() {
         <div className="
           absolute left-3 top-0 md:top-16 *:pb-1 w-shrink *:pl-1 *:pr-1 h-6 gap-4
           origin-left *:rounded-b md:*:rounded-b-none md:*:rounded-t hover:cursor-pointer md:rotate-90 z-10 flex
-          tracking-widest text-center *:bg-navy text-aqua1 *:border-b-2 md:*:border-b-0 md:*:border-t-2 *:border-r-2 *:border-l-2 *:border-white"
+          tracking-widest text-center *:bg-navy text-aqua1 *:border-b-2 md:*:border-b-0 md:*:border-t-2 *:border-r-2 *:border-l-2 *:border-white font-bold"
         > 
         {
         personal ? 

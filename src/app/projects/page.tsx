@@ -30,11 +30,12 @@ export default function Projects() {
     const [projectItems, setProjectItems] = useState<ProjectItemType[] | null>(null);
     const [selectedProject, setSelectedProject] = useState<ProjectItemType | null>(null);
     const [imageUrls, setImageUrls] = useState<{ [key: string]: string }>({});
-    const [pdfs, setPdfs] = useState<{ [key: string]: string }>({});
+    const [sortOpen, setSortOpen] = useState<boolean>(false);
+    const [sorting, setSorting] = useState<string>("newest");
+    const [showSort, setShowSort] = useState<boolean>(true);
 
     useEffect(() => {
         if (selectedProject && selectedProject.images) {
-            // Load all image URLs for the selected project
             selectedProject.images.forEach(async (image) => {
                 try {
                     const url = await Storage.getImageUrl(image);
@@ -62,27 +63,74 @@ export default function Projects() {
         }
     }, [projectData]);
 
+    useEffect(() => {
+        if (sortOpen) {
+            setShowSort(false);
+        } else {
+            const timer = setTimeout(() => setShowSort(true), 300);
+            return () => clearTimeout(timer);
+        }
+    }, [sortOpen]);
+
+    useEffect(() => {
+        if(projectItems && sorting === "newest"){
+            const newProjectItems = projectItems.sort((a, b) => {
+                const aYear = parseInt(a.start.split(" ")[1]);
+                const bYear = parseInt(b.start.split(" ")[1]);
+                return bYear - aYear;
+            });
+            setProjectItems(newProjectItems);
+        } else if(projectItems && sorting === "oldest"){
+            const newProjectItems = projectItems.sort((a, b) => {
+                const aYear = parseInt(a.start.split(" ")[1]);
+                const bYear = parseInt(b.start.split(" ")[1]);
+                return aYear - bYear;
+            });
+            setProjectItems(newProjectItems);
+        }
+    }, [sorting, projectItems]);
+
     return (
         <div className="bg-charcoal min-h-screen">
             <Header />
-            <div className="flex flex-col sm:grid sm:grid-cols-2 h-[100vh]">
-                <div className="flex sm:grid max-h-[50vh] sm:min-h-full overflow-y-auto sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8 p-8 pt-32">
-                    {projectItems ? 
-                        projectItems.map(item => (
-                            <div 
-                            key={item.index} 
-                            className="aspect-[3/2] transform hover:scale-110 hover:cursor-pointer transition-all duration-300 ease-in-out origin-center"
-                            onClick={() => setSelectedProject(item)}
-                            >
-                                <ProjectItem
-                                title={item.title}
-                                />
-                            </div>
-                    ))
-                :
-                null}
+            <div className="flex flex-col sm:grid sm:grid-cols-2 h-[100vh] relative">
+                <div className="flex sm:grid max-h-[50vh] z-20 relative sm:min-h-full overflow-y-auto sm:grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 gap-8 p-8 pt-32 hide-scrollbar">
+                    {projectItems 
+                        ? 
+                            projectItems.map(item => (
+                                <div 
+                                    key={item.index} 
+                                    className="aspect-[3/2] transform hover:scale-110 hover:cursor-pointer transition-all duration-300 ease-in-out origin-center"
+                                    onClick={() => {setSelectedProject(item); setSortOpen(false)}}
+                                >
+                                    <ProjectItem title={item.title}/>
+                                </div>
+                            ))
+                        :
+                            null}
                 </div>
-                <div className="bg-gray1 h-full overflow-y-auto">
+                <div className="bg-gray1 h-full overflow-y-auto relative ">
+                    <div 
+                        onClick={() => {setSortOpen(!sortOpen)}} 
+                        className={` 
+                            ${sortOpen ? "!w-64" : "hover:cursor-pointer "} 
+                            delay-200 z-10 sticky sm:min-h-12 h-7 top-64 left-1 sm:left-auto sm:top-32 w-12 sm:w-7 border-x-2 border-b-2 sm:border-x-0 sm:border-y-2 sm:border-r-2 py-2 text-center justify-center font-bold bg-charcoal ease-in-out duration-600 transition-[width] sm:-translate-x-1 flex items-center rounded-b-md sm:rounded-bl-none sm:rounded-r-md hover:bg-blue1 hover:*:text-white hover:border-aqua1`
+                        }
+                    >
+                       {sortOpen && !showSort ? (
+                    <div className="flex flex-row justify-around w-full">
+                        <button className={`${sorting === "newest" ? "text-aqua1" : "text-white"}`} onClick={() => {setSortOpen(false); setSorting("newest")}}>
+                            Newest
+                        </button>
+                        <button className={`${sorting === "oldest" ? "text-aqua1" : "text-white"}`} onClick={() => {setSortOpen(false); setSorting("oldest")}}>
+                            Oldest
+                        </button>
+                    </div>
+                    ) : (
+                        showSort ? <p className="sm:rotate-90 text-aqua1">Sort</p> : null
+                    )}
+                        
+                    </div>
                     <div className="flex flex-col h-full pt-6 sm:pt-32">
                         {selectedProject ? (
                             <div className="p-4 items-center text-center text-white h-max">
@@ -94,8 +142,15 @@ export default function Projects() {
                                 </div>
                                 <div>
                                     {selectedProject.description.map((paragraph, index) => (
-                                        <div key={index} className="p-4 text-xl text-left text-white">
-                                            <p>{paragraph}</p>
+                                        <div key={index} className=" p-4 text-left text-white">
+                                          <div className="flex flex-row items-center gap-4">
+                                            {paragraph.indexOf("$b") >= 0 && (
+                                                <span className="w-2 h-2 rounded-full bg-white border-2 ml-16"></span>
+                                            )}
+                                            <p className={`${paragraph.includes("$b") ? "text-sm" : "text-xl"} p-4 text-left text-white`}>
+                                                {paragraph.replace("$b", "")}
+                                            </p>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
