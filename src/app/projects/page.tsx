@@ -113,8 +113,8 @@ export default function Projects() {
                     <div 
                         onClick={() => {setSortOpen(!sortOpen)}} 
                         className={` 
-                            ${sortOpen ? "!w-64" : "hover:cursor-pointer "} 
-                            delay-200 z-10 sticky sm:min-h-12 h-7 top-64 left-1 sm:left-auto sm:top-32 w-12 sm:w-7 border-x-2 border-b-2 sm:border-x-0 sm:border-y-2 sm:border-r-2 py-2 text-center justify-center font-bold bg-charcoal ease-in-out duration-600 transition-[width] sm:-translate-x-1 flex items-center rounded-b-md sm:rounded-bl-none sm:rounded-r-md hover:bg-blue1 hover:*:text-white hover:border-aqua1`
+                            ${sortOpen ? "!w-64" : "hover:cursor-pointer hover:border-aqua1 hover:bg-blue1"} 
+                            delay-200 z-10 sticky sm:min-h-12 h-7 top-64 left-1 sm:left-auto sm:top-32 w-12 sm:w-7 border-x-2 border-b-2 sm:border-x-0 sm:border-y-2 sm:border-r-2 py-2 text-center justify-center font-bold bg-charcoal ease-in-out duration-600 transition-[width] sm:-translate-x-1 flex items-center rounded-b-md sm:rounded-bl-none sm:rounded-r-md hover:*:text-white`
                         }
                     >
                        {sortOpen && !showSort ? (
