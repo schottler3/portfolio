@@ -61,5 +61,12 @@
         "title": "Started Freelance",
         "description": "Full Stack Developer, Superior Tool LLC",
         "location": "Minneapolis, MN"
+    },
+    {
+        "key": 9,
+        "date": "April 2026",
+        "title": "Transferred to Target Corporate",
+        "description": "Engineer, Sort & Sequencing Team",
+        "location": "Brooklyn Park, MN"
     }
 ]

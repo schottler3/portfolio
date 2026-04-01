@@ -60,10 +60,10 @@ export default function About() {
               </>
             ) : (
               <p className="text-xl text-left w-full">
-                I'm a recent graduate from the University of Minnesota - Twin Cities with a degree in Computer Science from the college of Science and Engineering.
+                Graduate from the University of Minnesota - Twin Cities with a degree in Computer Science from the college of Science and Engineering. Currently employed at Target's Corporate office
+                as a backend engineer for the Sort & Sequencing team.
                 I have a passion for software development and am always looking for new ways to learn and grow as a developer, but I have a particular interest in web development. 
                 I have experience with a variety of programming languages and frameworks, and am always looking to expand my skillset.
-                I am currently seeking a full-time software development position where I can continue to grow and learn as a developer.
               </p>
             )}
           </div>
